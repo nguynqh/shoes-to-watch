@@ -112,11 +112,11 @@
                     session_start();
                     if (!isset($_SESSION['user'])) {
                     ?>
-                        <a href="./tai-khoan/dang-nhap.php">
+                        <a href="../tai-khoan/dang-nhap.php">
                             <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
                         </a>
                     <?php } else { ?>
-                        <a href="./tai-khoan/thong-tin-tk.php">
+                        <a href="../tai-khoan/thong-tin-tk.php">
                             <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
                         </a>
                     <?php } ?>

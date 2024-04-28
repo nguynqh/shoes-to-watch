@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/trang-chu/plugin/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/trang-chu/style.css">
-    <link rel="shortcut icon" type="image/png" href="css/trang-chu/img/iconweb.png" />
+    <link rel="shortcut icon" type="image/png" href="hinh-anh/trang-web/iconweb.png" />
 </head>
 
 <body>
@@ -316,7 +316,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="fo">
-                            <img src="css/trang-chu/img/iconweb.png" alt="" style="width:60px;">
+                            <img src="hinh-anh/trang-web/iconweb.png" alt="" style="width:60px;">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -396,16 +396,16 @@
                         <div class="fo">
                             <ul>
                                 <li>
-                                    <p>Nike</p>
+                                    <p>Gshock</p>
                                 </li>
                                 <li>
-                                    <p>Adidas</p>
+                                    <p>Mtp</p>
                                 </li>
                                 <li>
-                                    <p>Pegasus</p>
+                                    <p>Edifice</p>
                                 </li>
                                 <li>
-                                    <p>Jordan</p>
+                                    <p>Baby-G</p>
                                 </li>
                             </ul>
                         </div>

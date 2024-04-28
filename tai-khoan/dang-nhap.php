@@ -8,26 +8,26 @@
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/fonts/iconic/css/material-design-iconic-font.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/animate/animate.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/css-hamburgers/hamburgers.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/animsition/css/animsition.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/select2/select2.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/vendor/daterangepicker/daterangepicker.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/css/util.css">
-	<link rel="stylesheet" type="text/css" href="./css/tai-khoan/css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="./css/trang-chu/img/TBT.png" />
+	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/iconweb.png" />
 </head>
 
 <body>
@@ -38,18 +38,18 @@
 	session_set_cookie_params($lifetime, '/');
 	session_start();
 
-	require_once('./admin/dao/khach-hang.php');
+	require_once('../admin/dao/khach-hang.php');
 
 	extract($_REQUEST);
 	if (array_key_exists('btn_login', $_REQUEST)) {
-		$user = khach_hang_select_by_id($ma_kh);
+		$user = khach_hang_select_by_id($ten_dang_nhap);
 		if ($user) {
 			if ($user['mat_khau'] == $mat_khau) {
-				if ($user['vai_tro'] == 1) {
+				if ($user['trang_thai'] == 1) {
 					$_SESSION['user'] = $user;
 					header("location: ../admin/content/thong-ke/thong-ke-list.php");
 				}
-				if ($user['vai_tro'] == 0) {
+				if ($user['trang_thai'] == 0) {
 					$_SESSION['user'] = $user;
 					header("location: ../trang-chinh/danh-sach-sp.php");
 				}
@@ -67,7 +67,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-logo">
-						<a href="../../bigshoes/trang-chinh/index.php"><img src="../css/tai-khoan/images/TBT.png" width="80px" alt=""></a>
+						<a href="../index.php"><img src="../css/trang-chu/img/iconweb.png" width="80px" alt=""></a>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
@@ -75,7 +75,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="ma_kh" placeholder="Tên đăng nhập">
+						<input class="input100" type="text" name="ten_dang_nhap" placeholder="Tên đăng nhập">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 

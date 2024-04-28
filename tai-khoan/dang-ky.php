@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/iconweb.png" />
 
 </head>
 
@@ -39,12 +39,13 @@
 
 	extract($_REQUEST);
 	if (array_key_exists('btn_register', $_REQUEST)) {
-		khach_hang_insert($ma_kh, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
+		khach_hang_insert($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
 		echo '<script language="javascript">';
 		echo 'alert("Mời bạn đăng nhập để mua hàng !")';
 		echo '</script>';
+		header('location: dang-nhap.php');
 
-		unset($ma_kh, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
+		unset($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
 	}
 	?>
 
@@ -64,7 +65,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="ma_kh" placeholder="Tên đăng nhập">
+						<input class="input100" type="text" name="ten_dang_nhap" placeholder="Tên đăng nhập">
 						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
 					</div>
 

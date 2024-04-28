@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/iconweb.png" />
 
 </head>
 
