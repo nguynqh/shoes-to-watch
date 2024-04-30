@@ -167,7 +167,7 @@
 
                     ?>
                         <div class="item">
-                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px;height: 230px;" src="css/admin/images/products/<?= $hinh ?>" alt="ds"></a>
+                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px;height: 230px;" src="hinh-anh/san-pham/<?= $hinh ?>" alt="ds"></a>
                         </div>
                     <?php } ?>
                 </div>

@@ -10,10 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
     <title>Chi tiết sản phẩm</title>
     <style>
         .item {
@@ -41,7 +41,7 @@
 
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../../bigshoes/css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
 
 
     <div class="container-fluid">
@@ -52,11 +52,11 @@
                     session_start();
                     if (!isset($_SESSION['user'])) {
                     ?>
-                        <a href="../../bigshoes/tai-khoan/dang-nhap.php">
+                        <a href="../tai-khoan/dang-nhap.php">
                             <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
                         </a>
                     <?php } else { ?>
-                        <a href="../../bigshoes/tai-khoan/thong-tin-tk.php">
+                        <a href="../tai-khoan/thong-tin-tk.php">
                             <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
                         </a>
                     <?php } ?>
@@ -65,7 +65,7 @@
 
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
                 <div class="logo">
-                    <a href="index.php"><img src="../css/danh-sach-sp/img/TBT.png" alt="anh"></a>
+                    <a href="index.php"><img src="../hinh-anh/trang-web/iconweb.png" alt="anh"></a>
                 </div>
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
@@ -108,7 +108,7 @@
             <div class="col-md-12" style="background-color: rgb(211, 211, 211);">
                 <div class="nav">
                     <ul>
-                        <li><a href="index.php">TRANG CHỦ</a></li>
+                        <li><a href="../index.php">TRANG CHỦ</a></li>
                         <li><a href="danh-sach-sp.php">SẢN PHẨM</a></li>
                         <li><a href="gioi-thieu.php">GIỚI THIỆU</a></li>
                         <li><a href="bao-hanh.php">BẢO HÀNH</a></li>
@@ -140,15 +140,15 @@
     <div class="container" style="margin-top: 80px;">
         <div class="row">
             <?php
-            require_once('../../bigshoes/admin/dao/hang-hoa.php');
+            require_once('../admin/dao/hang-hoa.php');
             extract($_REQUEST);
             $items = hang_hoa_select_by_id($ma_hh);
             extract($items);
             ?>
             <div class="product-content row">
                 <div class="product-content-left row">
-                    <div class="product-content-left-big-img" style="">
-                        <img style="height:423px;" src="../css/admin/images/products/<?= $hinh ?>" alt="" id="imgbig">
+                    <div class="product-content-left-big-img">
+                        <img style="height:423px;" src="../hinh-anh/san-pham/<?= $hinh ?>" alt="" id="imgbig">
                     </div>
                     <div class="product-content-left-small-img">
                         <img src="../css/admin/images/products/<?= $hinh ?>" alt="" onclick="myFunction1(this)">

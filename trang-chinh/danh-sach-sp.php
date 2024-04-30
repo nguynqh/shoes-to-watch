@@ -288,7 +288,7 @@
                             <a href="../trang-chinh/chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
                                 <span class="chi-tiet" style="margin-left: 10px">CHI TIẾT</span></a>
                             <a href="chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
-                                <img style="height: 250px;" src="../css/admin/images/products/<?= $item['hinh'] ?>" alt=""></a>
+                                <img style="height: 250px;" src="../hinh-anh/san-pham/<?= $item['hinh'] ?>" alt=""></a>
                             <span class='hang-moi'>Hàng mới</span></a>
                             <div class="glow-wrap">
                                 <i class="glow"></i>
