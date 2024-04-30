@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../bigshoes/css/danh-sach-sp/products.css">
+    <link rel="stylesheet" href="../css/danh-sach-sp/products.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../bigshoes/css/danh-sach-sp/plugin/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../bigshoes/css/danh-sach-sp/plugin/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/danh-sach-sp/plugin/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/danh-sach-sp/plugin/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
     <title>Sản phẩm</title>
 
     <style>
@@ -99,7 +99,7 @@
 
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../../bigshoes/css/danh-sach-sp/plugin/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../css/danh-sach-sp/plugin/js/owl.carousel.min.js"></script>
 
 
     <div class="container-fluid">
@@ -113,11 +113,11 @@
                     session_start();
                     if (!isset($_SESSION['user'])) {
                     ?>
-                        <a href="../../bigshoes/tai-khoan/dang-nhap.php">
+                        <a href="../tai-khoan/dang-nhap.php">
                             <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
                         </a>
                     <?php } else { ?>
-                        <a href="../../bigshoes/tai-khoan/thong-tin-tk.php">
+                        <a href="../tai-khoan/thong-tin-tk.php">
                             <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
                         </a>
                     <?php } ?>
@@ -127,7 +127,7 @@
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
                 <div class="logo">
-                    <a href="index.php"><img src="../css/danh-sach-sp/img/TBT.png" alt="anh"></a>
+                    <a href="../index.php"><img src="../hinh-anh/trang-web/iconweb.png" alt="anh"></a>
                 </div>
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
@@ -169,7 +169,7 @@
             <div class="col-md-12" style="background-color: rgb(211, 211, 211);">
                 <div class="nav">
                     <ul>
-                        <li><a href="index.php">TRANG CHỦ</a></li>
+                        <li><a href="../index.php">TRANG CHỦ</a></li>
                         <li><a href="danh-sach-sp.php">SẢN PHẨM</a></li>
                         <li><a href="gioi-thieu.php">GIỚI THIỆU</a></li>
                         <li><a href="bao-hanh.php">BẢO HÀNH</a></li>
@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-md-7" style="padding-left: 0px;">
                 <div class="chuyen">
-                    <p><span><a href="index.php" style="text-decoration:none;color:black">TRANG CHỦ </a></span> / SẢN PHẨM</p>
+                    <p><span><a href="../index.php" style="text-decoration:none;color:black">TRANG CHỦ </a></span> / SẢN PHẨM</p>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
                 </div>
                 <div class="row" style="margin-left: 0px;">
                     <?php
-                    require_once('../../bigshoes/admin/dao/loai-hang.php');
+                    require_once('../admin/dao/loai-hang.php');
                     extract($_REQUEST);
                     $items = loai_hang_select_all();
                     ?>
@@ -229,7 +229,7 @@
                     <div class="row" style="margin-top: 35px;margin-left: 0px;">
                         <ul class="list-group">
                             <?php
-                            require_once('../../bigshoes/admin/dao/hang-hoa.php');
+                            require_once('../admin/dao/hang-hoa.php');
                             extract($_REQUEST);
                             $items = hang_hoa_sale();
                             ?>
@@ -239,7 +239,7 @@
                             ?>
                                 <li class="list-group-item">
                                     <div class="row">
-                                        <div class="col-sm-4"><a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>&ma_loai=<?= $ma_loai ?>"><img style="width:80px;" src="../../bigshoes/css/admin/images/products/<?= $hinh ?>" alt=""></a></div>
+                                        <div class="col-sm-4"><a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>&ma_loai=<?= $ma_loai ?>"><img style="width:80px;" src="../hinh-anh/san-pham/<?= $hinh ?>" alt=""></a></div>
                                         <div class="col-sm-8"><?= $ten_hh ?><br><br><b><?= number_format($don_gia - ($don_gia * $giam_gia / 100)) ?> VNĐ</b></div>
                                     </div>
                                 </li>
@@ -260,7 +260,7 @@
                     <div class="sanpham">
                         <a href="../trang-chinh/chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
                             <span class="chi-tiet" style="margin-left: 10px">CHI TIẾT</span></a>
-                        <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="height: 250px;" src="../../bigshoes/css/admin/images/products/<?= $hinh ?>" alt=""></a>
+                        <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="height: 250px;" src="../hinh-anh/san-pham/<?= $hinh ?>" alt=""></a>
                         <div class="text">
                             <div class="name">
                                 <?= $ten_hh ?>
@@ -292,7 +292,7 @@
                         extract($item);
                     ?>
                         <div class="item">
-                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px" src="../../bigshoes/css/admin/images/products/<?= $hinh ?>" alt="ds"><span class='noi-bat'>HOT</span></a>
+                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px" src="../hinh-anh/san-pham/<?= $hinh ?>" alt="ds"><span class='noi-bat'>HOT</span></a>
                         </div>
                     <?php } ?>
                 </div>
@@ -306,7 +306,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="fo">
-                            <img src="../css/trang-chu/img/TBT.png" alt="" style="width:60px;">
+                            <img src="../hinh-anh/trang-web/iconweb.png" alt="" style="width:60px;">
                         </div>
                     </div>
                     <div class="col-md-3">
