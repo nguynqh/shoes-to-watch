@@ -29,13 +29,13 @@
     <div class="container-fluid">
         <div class="banner">
             <video autoplay muted loop id="myVideo">
-                <source src="css/trang-chu/img/tvc.mp4" type="video/mp4">
+                <source src="hinh-anh/trang-web/tvc.mp4" type="video/mp4">
             </video>
             <div class="row">
 
                 <div class="col-sm-2">
                     <div class="logo">
-                        <img src="css/trang-chu/img/iconweb.png" alt="">
+                        <img src="hinh-anh/trang-web/iconweb.png" alt="">
                     </div>
 
                 </div>
@@ -90,8 +90,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="caption">
-                    <p> 2021-2022 </p>
-                    <h2><span>BEST</span> 2022</h2>
+                    <p> 2021-2023 </p>
+                    <h2><span>BEST</span> 2023</h2>
                 </div>
             </div>
         </div>
@@ -104,24 +104,24 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="anhmoi">
-                    <img src="css/trang-chu/img/poster-s3.jpg" alt="" style="height:700px;">
+                    <img src="hinh-anh/trang-web/banner1-2.jpg" alt="" style="height:700px;">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="anhmoi">
-                        <img src="css/trang-chu/img/s1.jpg" alt="">
+                        <img src="hinh-anh/trang-web/banner2.jpg" alt="">
                     </div>
                 </div>
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-md-6">
                         <div class="anhmoi">
-                            <img src="css/trang-chu/img/poster-s2.jpg" alt="">
+                            <img src="hinh-anh/trang-web/banner3.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="anhmoi">
-                            <img src="css/trang-chu/img/poster-s4.jpg" alt="" style="height: 380px;">
+                            <img src="hinh-anh/trang-web/banner4.jpg" alt="">
                         </div>
                     </div>
 
@@ -131,6 +131,11 @@
         </div>
     </div>
 
+    <!-- <style>
+        .anhmoi {
+            overflow: hidden;
+        }
+    </style> -->
 
 
     <div class="container" style="margin-top: 100px;">
@@ -147,7 +152,7 @@
 
     <?php
     require_once('admin/dao/hang-hoa.php');
-    $items = hang_hoa_select_all_adidas();
+    $items = hang_hoa_ban_chay();
 
     ?>
 
@@ -276,7 +281,7 @@
     </div>
 
     <?php
-    $items = hang_hoa_select_all_pegasus();
+    $items = hang_hoa_noi_bat();
     ?>
 
     <div class="container" style="margin-top: 30px;">

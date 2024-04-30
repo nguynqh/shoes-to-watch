@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2024 at 09:25 AM
+-- Generation Time: Apr 30, 2024 at 11:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,15 +35,6 @@ CREATE TABLE `binh_luan` (
   `ngay_bl` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `binh_luan`
---
-
-INSERT INTO `binh_luan` (`ma_bl`, `ma_kh`, `ma_hh`, `noi_dung`, `ngay_bl`) VALUES
-(18, 1, 35, 'Giày đẹp lắm shop <3', '04-12-2020'),
-(19, 1, 39, 'Giày chất lắm shop <3 ', '05-12-2020'),
-(20, 1, 27, 'sdfsdfdsfdsfdsf', '05-12-2020');
-
 -- --------------------------------------------------------
 
 --
@@ -53,7 +44,8 @@ INSERT INTO `binh_luan` (`ma_bl`, `ma_kh`, `ma_hh`, `noi_dung`, `ngay_bl`) VALUE
 CREATE TABLE `hang_hoa` (
   `ma_hh` int(11) NOT NULL,
   `ten_hh` varchar(50) NOT NULL,
-  `hinh` varchar(50) NOT NULL,
+  `hinh` varchar(200) NOT NULL,
+  `so_luong` int(10) NOT NULL,
   `don_gia` int(11) NOT NULL,
   `giam_gia` int(11) NOT NULL,
   `mo_ta` varchar(500) NOT NULL,
@@ -64,34 +56,18 @@ CREATE TABLE `hang_hoa` (
 -- Dumping data for table `hang_hoa`
 --
 
-INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `don_gia`, `giam_gia`, `mo_ta`, `ma_loai`) VALUES
-(27, 'Adidas Continental 80', 'adidascontinental80.png', 1200000, 5, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(28, 'Adidas Cyber Punk', 'adidascyberpunk.png', 1300000, 5, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(29, 'Adidas NMD R1', 'adidasnmd_r1.png', 1250000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(30, 'Adidas Reponse', 'adidasresponse.png', 1500000, 5, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(31, 'Adidas Super Star', 'adidassupperstar.png', 990000, 0, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(32, 'Adidas UltraBoost', 'adidasultraboost.png', 1800000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(33, 'Adidas UltraBoost 20', 'adidasultraboost20.png', 2000000, 15, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(34, 'Adidas UltraBoost DNA City', 'adidasultraboostdnacity.png', 2100000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(35, 'Adidas ZK 2K Boost', 'adidaszk2kboost.png', 2300000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 24),
-(36, 'Pegasus Chaz', 'pegasuschaz.png', 880000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 23),
-(37, 'Pegasus Trail 2', 'pegasustrail2.png', 1230000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 23),
-(38, 'Pegasus Zoom 35', 'pegasuszoom35.png', 1450000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 23),
-(39, 'Pegasus Zoom 37', 'pegasuszoom37.png', 2120000, 30, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 23),
-(40, 'Converse Chuck Taylor', 'conversechucktaylor.png', 1990000, 20, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 20),
-(41, 'Blazer Mid', 'blazermid.png', 1470000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 21),
-(42, 'Blazer 77 Infinitive ', 'blazermid77infinitive.png', 1360000, 20, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 21),
-(43, 'Blazer 77 Suede', 'blazermid77suede.png', 1250000, 50, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 21),
-(44, 'Blazer 77 Vintage', 'blazermid77vintage.png', 2010000, 40, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 21),
-(45, 'Jordan 1 Lowse', 'jordan1lowse.png', 1760000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 22),
-(46, 'Jordan 6 Retro', 'jordan6retro.png', 1510000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 22),
-(47, 'Jordan ADG 2', 'jordanadg2.png', 1320000, 20, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 22),
-(48, 'Jordan Delta', 'jordandelta.png', 2080000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 22),
-(49, 'Nike Air Force', 'nikeairforce.png', 1100000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 25),
-(50, 'Nike Air Max 1', 'nikeairmax1.png', 1210000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 25),
-(51, 'Nike Air Vapomax', 'nikeairvapormax.png', 1750000, 20, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 25),
-(52, 'Nike Air Zoom', 'nikeairzoom.png', 2500000, 50, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 25),
-(53, 'Nike Justin', 'nikejustin.png', 1500000, 10, 'Các sản phẩm của BIGSHOES thích hợp sử dụng trong mọi thời tiết và địa hình, đặc biệt là trong những ngày mưa. Phần đế được ép nhiệt nên cực bền sau thời gian sử dụng, kết hợp với da công nghiệp tạo ra kiểu dáng trẻ trung sang trọng đem lại sự hài lòng tuyệt đối cho quý khách hàng.', 25);
+INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `so_luong`, `don_gia`, `giam_gia`, `mo_ta`, `ma_loai`) VALUES
+(2, 'G-shock H23487', '', 12, 1400000, 0, '', 20),
+(13, 'Casio G-Shock GA2100-4A', 'casio_ga2100_4a.jpg', 100, 150, 10, 'A rugged yet stylish analog-digital watch with carbon core guard structure.', 21),
+(14, 'Casio Classic Digital F91W', 'casio_f91w.jpg', 200, 20, 5, 'The iconic digital watch known for its simplicity, durability, and affordability.', 26),
+(15, 'Casio Edifice EFV130D-1A', 'casio_efv130d_1a.jpg', 50, 120, 15, 'A sophisticated analog watch with a stainless steel bracelet and chronograph features.', 21),
+(16, 'Casio Pro Trek PRW-60-2A', 'casio_prw_60_2a.jpg', 80, 250, 20, 'A high-performance outdoor watch with triple sensor technology for accurate readings.', 21),
+(17, 'Casio Exilim EX-ZR4100', 'casio_ex_zr4100.jpg', 30, 300, 25, 'A compact digital camera with advanced shooting capabilities and image stabilization.', 21),
+(18, 'Casio Privia PX-770 Digital Piano', 'casio_px_770.jpg', 10, 800, 30, 'An elegant digital piano with realistic sound and feel, suitable for both beginners and professionals.', 21),
+(19, 'Casio CTK-3500 Portable Keyboard', 'casio_ctk_3500.jpg', 15, 150, 10, 'A versatile portable keyboard with touch-sensitive keys and built-in lessons.', 21),
+(20, 'Casio Scientific Calculator FX-991EX', 'casio_fx_991ex.jpg', 100, 30, 5, 'A powerful scientific calculator with high-resolution display and comprehensive functions.', 21),
+(21, 'Casio Baby-G BGA-190BC-1B', 'casio_bga_190bc_1b.jpg', 70, 100, 10, 'A sporty and stylish women\'s watch with shock resistance and world time feature.', 25),
+(22, 'Casio Youth Series AE-1000W', 'casio_ae_1000w.jpg', 120, 40, 5, 'A digital watch designed for outdoor enthusiasts, featuring world time and stopwatch functions.', 21);
 
 -- --------------------------------------------------------
 
@@ -101,7 +77,7 @@ INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `don_gia`, `giam_gia`, `mo_ta
 
 CREATE TABLE `hoa_don` (
   `ma_hd` int(11) NOT NULL,
-  `ngay_mua` varchar(20) NOT NULL,
+  `ngay_mua` date NOT NULL DEFAULT current_timestamp(),
   `ghi_chu` varchar(50) NOT NULL,
   `tinh_trang` varchar(20) NOT NULL DEFAULT '0',
   `ma_kh` int(10) UNSIGNED NOT NULL
@@ -112,15 +88,7 @@ CREATE TABLE `hoa_don` (
 --
 
 INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VALUES
-(93, '04-12-2020', '', '1', 1),
-(94, '05-12-2020', '', '1', 1),
-(95, '05-12-2020', '', '1', 1),
-(96, '05-12-2020', '', '1', 1),
-(97, '05-12-2020', '', '1', 1),
-(98, '05-12-2020', '', '1', 1),
-(99, '05-12-2020', '', '1', 1),
-(100, '05-12-2020', 'sdf', '1', 1),
-(101, '08-12-2020', '', '1', 1);
+(1, '2024-04-30', 'test hoa don 1', 'đang chờ xử lý', 4);
 
 -- --------------------------------------------------------
 
@@ -130,35 +98,8 @@ INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VA
 
 CREATE TABLE `hoa_don_chi_tiet` (
   `ma_hd` int(11) NOT NULL,
-  `so_luong` int(11) NOT NULL,
-  `don_gia` int(11) NOT NULL,
   `ma_hh` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `hoa_don_chi_tiet`
---
-
-INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `so_luong`, `don_gia`, `ma_hh`) VALUES
-(93, 1, 2300000, 35),
-(94, 6, 1500000, 30),
-(94, 5, 2120000, 39),
-(94, 3, 2300000, 35),
-(95, 6, 1500000, 30),
-(95, 5, 2120000, 39),
-(95, 3, 2300000, 35),
-(96, 6, 1500000, 30),
-(96, 5, 2120000, 39),
-(96, 3, 2300000, 35),
-(97, 2, 2120000, 39),
-(97, 2, 2300000, 35),
-(98, 4, 2120000, 39),
-(98, 3, 2300000, 35),
-(99, 11, 2500000, 52),
-(99, 3, 2100000, 34),
-(100, 4, 1200000, 27),
-(101, 4, 2500000, 52),
-(101, 1, 2300000, 35);
 
 -- --------------------------------------------------------
 
@@ -168,9 +109,11 @@ INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `so_luong`, `don_gia`, `ma_hh`) VALUES
 
 CREATE TABLE `khach_hang` (
   `ma_kh` int(10) UNSIGNED NOT NULL,
+  `ten_dang_nhap` varchar(50) NOT NULL,
   `ho_ten` varchar(50) NOT NULL,
   `mat_khau` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `sdt` int(12) NOT NULL,
   `dia_chi` varchar(50) NOT NULL,
   `trang_thai` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -179,10 +122,11 @@ CREATE TABLE `khach_hang` (
 -- Dumping data for table `khach_hang`
 --
 
-INSERT INTO `khach_hang` (`ma_kh`, `ho_ten`, `mat_khau`, `email`, `dia_chi`, `trang_thai`) VALUES
-(1, 'Phong', '123123', 'phanvanphongk49c@gmail.com', 'Đà Nẵng', b'0'),
-(2, 'Biiiiiii', '123123', 'bi@gmail.com', 'Đà Nẵng', b'0'),
-(3, 'a', '123456', 'thao@gmail.com', 'Huế a', b'0');
+INSERT INTO `khach_hang` (`ma_kh`, `ten_dang_nhap`, `ho_ten`, `mat_khau`, `email`, `sdt`, `dia_chi`, `trang_thai`) VALUES
+(1, 'john_doe', 'John Doe', 'password123', 'john.doe@example.com', 1234567890, '123 Main Street, City, Country', b'0'),
+(2, 'jane_smith', 'Jane Smith', 'p@ssw0rd', 'jane.smith@example.com', 987654321, '456 Elm Street, City, Country', b'0'),
+(3, 'alex_williams', 'Alex Williams', 'securepass', 'alex.williams@example.com', 2147483647, '789 Oak Street, City, Country', b'0'),
+(4, 'quanghieu', 'Nguyễn Quang Hiếu', '123', 'h@gmail.com', 12345678, 'Quận 12', b'0');
 
 -- --------------------------------------------------------
 
@@ -223,14 +167,14 @@ ALTER TABLE `binh_luan`
 --
 ALTER TABLE `hang_hoa`
   ADD PRIMARY KEY (`ma_hh`),
-  ADD KEY `ma_loai` (`ma_loai`);
+  ADD KEY `hanghoa_loaihang` (`ma_loai`);
 
 --
 -- Indexes for table `hoa_don`
 --
 ALTER TABLE `hoa_don`
   ADD PRIMARY KEY (`ma_hd`),
-  ADD KEY `khachhang_hoadon` (`ma_kh`);
+  ADD KEY `hoadon_khachhang` (`ma_kh`);
 
 --
 -- Indexes for table `hoa_don_chi_tiet`
@@ -259,19 +203,25 @@ ALTER TABLE `loai_hang`
 -- AUTO_INCREMENT for table `binh_luan`
 --
 ALTER TABLE `binh_luan`
-  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hang_hoa`
 --
 ALTER TABLE `hang_hoa`
-  MODIFY `ma_hh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ma_hh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `hoa_don`
 --
 ALTER TABLE `hoa_don`
-  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `khach_hang`
+--
+ALTER TABLE `khach_hang`
+  MODIFY `ma_kh` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `loai_hang`
@@ -294,20 +244,13 @@ ALTER TABLE `binh_luan`
 -- Constraints for table `hang_hoa`
 --
 ALTER TABLE `hang_hoa`
-  ADD CONSTRAINT `hang_hoa_ibfk_1` FOREIGN KEY (`ma_loai`) REFERENCES `loai_hang` (`ma_loai`);
+  ADD CONSTRAINT `hanghoa_loaihang` FOREIGN KEY (`ma_loai`) REFERENCES `loai_hang` (`ma_loai`);
 
 --
 -- Constraints for table `hoa_don`
 --
 ALTER TABLE `hoa_don`
-  ADD CONSTRAINT `khachhang_hoadon` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`);
-
---
--- Constraints for table `hoa_don_chi_tiet`
---
-ALTER TABLE `hoa_don_chi_tiet`
-  ADD CONSTRAINT `hoa_don_chi_tiet_ibfk_2` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
-  ADD CONSTRAINT `hoa_don_chi_tiet_ibfk_3` FOREIGN KEY (`ma_hd`) REFERENCES `hoa_don` (`ma_hd`);
+  ADD CONSTRAINT `hoadon_khachhang` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

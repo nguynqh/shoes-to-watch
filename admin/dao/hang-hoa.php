@@ -32,17 +32,17 @@ function hang_hoa_select_all()
     return pdo_query($sql);
 }
 
-function hang_hoa_select_all_adidas()
-{
-    $sql = "SELECT * FROM hang_hoa JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai WHERE ten_loai='Adidas'";
-    return pdo_query($sql);
-}
+// function hang_hoa_select_all_adidas()
+// {
+//     $sql = "SELECT * FROM hang_hoa JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai WHERE ten_loai='Adidas'";
+//     return pdo_query($sql);
+// }
 
-function hang_hoa_select_all_pegasus()
-{
-    $sql = "SELECT * FROM hang_hoa JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai WHERE ten_loai='Pegasus'";
-    return pdo_query($sql);
-}
+// function hang_hoa_select_all_pegasus()
+// {
+//     $sql = "SELECT * FROM hang_hoa JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai WHERE ten_loai='Pegasus'";
+//     return pdo_query($sql);
+// }
 
 function hang_hoa_select_all_price()
 {

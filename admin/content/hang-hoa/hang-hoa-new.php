@@ -15,7 +15,7 @@
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/png" href="../../../css/admin/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
 </head>
 
 <body>
@@ -92,7 +92,7 @@
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_insert", $_REQUEST)) {
-                        $up_hinh = save_file("hinh", "../../../../bigshoes/css/admin/images/products/");
+                        $up_hinh = save_file("hinh", "../../../hinh-anh/san-pham/");
                         $hinh = strlen($up_hinh) > 0 ? $up_hinh : 'product.png';
 
                         // $up_hinh1 = save_file("hinh1", "../../../../bigshoes/css/admin/images/products/");
