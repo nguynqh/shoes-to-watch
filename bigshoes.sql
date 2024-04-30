@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 11:52 AM
+-- Generation Time: Apr 30, 2024 at 12:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,11 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `binh_luan` (
-  `ma_bl` int(11) NOT NULL,
   `ma_kh` int(10) UNSIGNED NOT NULL,
   `ma_hh` int(11) NOT NULL,
   `noi_dung` varchar(50) NOT NULL,
-  `ngay_bl` varchar(20) NOT NULL
+  `ngay_bl` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,8 +97,16 @@ INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VA
 
 CREATE TABLE `hoa_don_chi_tiet` (
   `ma_hd` int(11) NOT NULL,
-  `ma_hh` int(11) NOT NULL
+  `ma_hh` int(11) NOT NULL,
+  `so_luong` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hoa_don_chi_tiet`
+--
+
+INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `ma_hh`, `so_luong`) VALUES
+(1, 19, 2);
 
 -- --------------------------------------------------------
 
@@ -158,7 +165,7 @@ INSERT INTO `loai_hang` (`ma_loai`, `ten_loai`) VALUES
 -- Indexes for table `binh_luan`
 --
 ALTER TABLE `binh_luan`
-  ADD PRIMARY KEY (`ma_bl`),
+  ADD PRIMARY KEY (`ma_kh`,`ma_hh`),
   ADD KEY `ma_hh` (`ma_hh`),
   ADD KEY `ma_kh` (`ma_kh`);
 
@@ -180,8 +187,8 @@ ALTER TABLE `hoa_don`
 -- Indexes for table `hoa_don_chi_tiet`
 --
 ALTER TABLE `hoa_don_chi_tiet`
-  ADD KEY `ma_hh` (`ma_hh`),
-  ADD KEY `ma_hd` (`ma_hd`);
+  ADD PRIMARY KEY (`ma_hd`,`ma_hh`,`so_luong`),
+  ADD KEY `hdchitiet_hanghoa` (`ma_hh`);
 
 --
 -- Indexes for table `khach_hang`
@@ -198,12 +205,6 @@ ALTER TABLE `loai_hang`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `binh_luan`
---
-ALTER TABLE `binh_luan`
-  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hang_hoa`
@@ -251,6 +252,13 @@ ALTER TABLE `hang_hoa`
 --
 ALTER TABLE `hoa_don`
   ADD CONSTRAINT `hoadon_khachhang` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`);
+
+--
+-- Constraints for table `hoa_don_chi_tiet`
+--
+ALTER TABLE `hoa_don_chi_tiet`
+  ADD CONSTRAINT `hdchitiet_hanghoa` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
+  ADD CONSTRAINT `hdchitiet_hoadon` FOREIGN KEY (`ma_hd`) REFERENCES `hoa_don` (`ma_hd`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
