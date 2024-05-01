@@ -3,7 +3,7 @@ $lifetime = 60*60*24*365;
 session_set_cookie_params($lifetime,'/');
 session_start();
 
-require_once ('../../bigshoes/admin/dao/hang-hoa.php');
+require_once ('../admin/dao/hang-hoa.php');
     extract($_REQUEST);
     $item = hang_hoa_select_by_id($ma_hh);
     extract($item);

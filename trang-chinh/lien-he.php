@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../bigshoes/css/lien-he/products.css">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/products.css">
+    <link rel="stylesheet" href="../css/lien-he/products.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/products.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
     <title>Liên hệ</title>
 </head>
 
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../../bigshoes/css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
 
 
     <div class="container-fluid">
@@ -34,11 +34,11 @@
                     session_start();
                     if (!isset($_SESSION['user'])) {
                     ?>
-                        <a href="../../bigshoes/tai-khoan/dang-nhap.php">
+                        <a href="../tai-khoan/dang-nhap.php">
                             <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
                         </a>
                     <?php } else { ?>
-                        <a href="../../bigshoes/tai-khoan/thong-tin-tk.php">
+                        <a href="../tai-khoan/thong-tin-tk.php">
                             <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
                         </a>
                     <?php } ?>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
                 <div class="logo">
-                    <a href="index.php"><img src="../css/danh-sach-sp/img/TBT.png" alt="anh"></a>
+                    <a href="index.php"><img src="../hinh-anh/trang-web/iconweb.png" alt="anh"></a>
                 </div>
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
@@ -120,24 +120,24 @@
 
                     <table class="tus">
                         <tr>
-                            <td> <img src="../../bigshoes/css/lien-he/img/a.png" alt=""> </td>
+                            <td> <img src="../hinh-anh/trang-web/a.png" alt=""> </td>
                             <td>273 An Dương Vương - Phường 3 - Quận 5 - TPHCM</td>
                         </tr>
                         <tr>
-                            <td><img src="../../bigshoes/css/lien-he/img/f.png" alt=""></td>
+                            <td><img src="../hinh-anh/trang-web/f.png" alt=""></td>
                             <td>0375736735</td>
                         </tr>
                         <tr>
-                            <td><img src="../../bigshoes/css/lien-he/img/s.png" alt=""></td>
-                            <td>bigshoes@gmail.com</td>
+                            <td><img src="../hinh-anh/trang-web/s.png" alt=""></td>
+                            <td>mvhwatch@gmail.com</td>
                         </tr>
                         <tr>
-                            <td><img src="../../bigshoes/css/lien-he/img/d.png" alt=""></td>
-                            <td>bigshoes.com</td>
+                            <td><img src="../hinh-anh/trang-web/d.png" alt=""></td>
+                            <td>mvhwatch.com</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td class="nu"><img src="../../bigshoes/css/lien-he/img/u.png" alt=""></td>
+                            <td class="nu"><img src="../hinh-anh/trang-web/u.png" alt=""></td>
 
                         </tr>
                     </table>
@@ -157,115 +157,8 @@
         </div>
     </div>
 
-
-    <div class="container-fluid now2" style="margin-top: 70px;">
-        <div class="row">
-            <div class="container" style="margin-top: 50px;">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <img src="../css/trang-chu/img/TBT.png" alt="" style="width:60px;">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <h5>Shop</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Hỗ trợ</h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Bộ sưu tập</h5>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-top: 0px;">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Nhiệm vụ của chúng tôi là mang đến những sản phẩm chất lượng với giá cả tốt nhất cho khách hàng.
-
-                                        Được hỗ trợ khách hàng là niềm vinh dự của chúng tôi . <br><br>
-                                        Xin cám ơn !
-                                    </p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-facebook "></i>
-                                    <i class="fa fa-firefox"></i>
-                                    <i class="fa fa-pinterest-p"></i>
-                                    <i class="fa fa-youtube"></i>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-
-                            <ul>
-
-                                <li>
-                                    <p>Trang chủ</p>
-                                </li>
-                                <li>
-                                    <p>Cửa hàng</p>
-                                </li>
-                                <li>
-                                    <p>Giới thiệu</p>
-                                </li>
-                                <li>
-                                    <p>Liên hệ</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Ưu đãi</p>
-                                </li>
-                                <li>
-                                    <p>Giao nhận</p>
-                                </li>
-                                <li>
-                                    <p>Đổi trả</p>
-                                </li>
-                                <li>
-                                    <p>Bảo mật</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Nike</p>
-                                </li>
-                                <li>
-                                    <p>Adidas</p>
-                                </li>
-                                <li>
-                                    <p>Pegasus</p>
-                                </li>
-                                <li>
-                                    <p>Jordan</p>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <!-- footer -->
+    <?php require('../footer.php');?>
 
 
     <script type="text/javascript">

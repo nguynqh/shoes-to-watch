@@ -1,7 +1,3 @@
-<?php
-    // require_once('xu-ly/kiem-tra-dang-nhap.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -254,7 +250,7 @@
                         extract($item);
                     ?>
                         <div class="item">
-                            <a href="trang-chinh/chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px;height: 230px;" src="css/admin/images/products/<?= $hinh ?>" alt="ds"></a>
+                            <a href="trang-chinh/chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px;height: 230px;" src="hinh-anh/san-pham/<?= $hinh ?>" alt="ds"></a>
                         </div>
                     <?php } ?>
 
@@ -291,7 +287,7 @@
             ?>
                 <div class="col-md-3">
                     <div class="card">
-                        <a href="trang-chinh/chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img class="card-img-top" src="css/admin/images/products/<?= $hinh ?>" alt="Card image top"></a>
+                        <a href="trang-chinh/chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img class="card-img-top" src="hinh-anh/san-pham/<?= $hinh ?>" alt="Card image top"></a>
                         <div class="card-body">
                             <h5 class="card-title"><?= $ten_hh ?></h5>
                             <p class="card-subtitle"><?= number_format($don_gia - ($don_gia * $giam_gia / 100)) ?> VNĐ</p>
@@ -315,114 +311,7 @@
 
 
 <!-- footer -->
-    <div class="container-fluid now2" style="margin-top: 70px;">
-        <div class="row">
-            <div class="container" style="margin-top: 50px;">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <img src="hinh-anh/trang-web/iconweb.png" alt="" style="width:60px;">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <h5>Shop</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Hỗ trợ</h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Bộ sưu tập</h5>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-top: 0px;">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Nhiệm vụ của chúng tôi là mang đến những sản phẩm chất lượng với giá cả tốt nhất cho khách hàng.
-
-                                        Được hỗ trợ khách hàng là niềm vinh dự của chúng tôi . <br><br>
-                                        Xin cám ơn !
-                                    </p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-facebook "></i>
-                                    <i class="fa fa-firefox"></i>
-                                    <i class="fa fa-pinterest-p"></i>
-                                    <i class="fa fa-youtube"></i>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-
-                            <ul>
-
-                                <li>
-                                    <p>Trang chủ</p>
-                                </li>
-                                <li>
-                                    <p>Cửa hàng</p>
-                                </li>
-                                <li>
-                                    <p>Giới thiệu</p>
-                                </li>
-                                <li>
-                                    <p>Liên hệ</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Ưu đãi</p>
-                                </li>
-                                <li>
-                                    <p>Giao nhận</p>
-                                </li>
-                                <li>
-                                    <p>Đổi trả</p>
-                                </li>
-                                <li>
-                                    <p>Bảo mật</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Gshock</p>
-                                </li>
-                                <li>
-                                    <p>Mtp</p>
-                                </li>
-                                <li>
-                                    <p>Edifice</p>
-                                </li>
-                                <li>
-                                    <p>Baby-G</p>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <?php require('footer.php'); ?>
 
     <script type="text/javascript">
         const nextIcon = ' <i class="fa fa-chevron-left" style="font-size:36px;color:black"></i>';
