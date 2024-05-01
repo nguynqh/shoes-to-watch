@@ -109,22 +109,29 @@
   height: 40px;
 }
 
-.serch {
+.search {
   position: relative;
 }
 
-.serch input {
+.search input {
   padding: 5px 20px;
   width: 270px;
 }
 
-.serch button {
+.search button {
   position: absolute;
   top: 0px;
   right: 0px;
   padding: 5px 20px;
   background-color: black;
   color: white;
+}
+
+.search-advanced{
+  /* position: absolute; */
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 2%;
 }
 
 .list-group {
