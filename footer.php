@@ -80,21 +80,23 @@
                         </ul>
                     </div>
                 </div>
+
+                <?php
+                $items = loai_hang_select_all();
+                ?>
                 <div class="col-md-3">
                     <div class="fo">
                         <ul>
+                            <?php
+                            for ($i=0; $i < 4; $i++) { 
+                                extract($items[$i]);
+                            ?>
+                            
                             <li>
-                                <p>Gshock</p>
+                                <p><?=$ten_loai?></p>
                             </li>
-                            <li>
-                                <p>Sheen</p>
-                            </li>
-                            <li>
-                                <p>Edifice</p>
-                            </li>
-                            <li>
-                                <p>Baby-G</p>
-                            </li>
+
+                            <?php }?>
                         </ul>
                     </div>
 
