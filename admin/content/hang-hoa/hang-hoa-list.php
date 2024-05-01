@@ -1,7 +1,19 @@
 <?php
 session_start();
 if(isset($_SESSION['login']) && $_SESSION['login']==1){
-}else{
+    // Kết nối đến cơ sở dữ liệu
+    require_once("../login/connect.php");
+
+    // Lấy thông tin người dùng từ cơ sở dữ liệu
+    $sodienthoai = $_SESSION['sodienthoai'];
+    $sql = "SELECT * FROM manager WHERE Manager_Phone = '$sodienthoai' LIMIT 1";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $_SESSION['Manager_Full_Name'] = $row['Manager_Full_Name']; // Lưu tên người dùng vào session
+    }
+} else {
     header('location: ../login/login.php');
 }
 ?>
@@ -40,20 +52,44 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
             </div>
 
             <!-- Nav bar-->
-
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../../../../bigshoes/tai-khoan/dang-xuat.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; 
+             display: inline-block; vertical-align: middle;
+             padding-right: 3px; font-weight: bold; font-size: 16px; color: #6c757d;">
+                <?php
+                if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+                    // Kết nối đến cơ sở dữ liệu và lấy tên người dùng
+                    require_once("../login/connect.php");
+
+                    $sodienthoai = $_SESSION['sodienthoai'];
+                    $sql = "SELECT * FROM manager WHERE Manager_Phone = '$sodienthoai' LIMIT 1";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows == 1) {
+                        $row = $result->fetch_assoc();
+                        echo 'Chào ' . $row['Manager_Full_Name'];
+                    }
+                }
+                ?>
+            </div>
+            <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <i class="fa fa-user fa-fw"></i>
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            
+            <li>
+                <form id="logoutForm" action="../../../tai-khoan/dang-xuat.php" method="post">
+                    <input type="hidden" name="logout" value="true">
+                    <button type="submit" class="btn-link"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</button>
+                </form>
+            </li>
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>
 
         </nav>
         <!--/. NAV TOP  -->
@@ -169,7 +205,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                     } else {
                                         if (isset($_GET['keyword'])) {
                                             echo '<li class="page-item">
-                     <a class="page-link" href="hang-hoa-list.php?keyword=' . $_GET['keyword'] . '&page=' . $i . '">' . $i . '</a></li ';
+                              <a class="page-link" href="hang-hoa-list.php?keyword=' . $_GET['keyword'] . '&page=' . $i . '">' . $i . '</a></li ';
                                         } else {
                                             echo '<li class="page-item"><a class="page-link" href="hang-hoa-list.php?page=' . $i . '">' . $i . '</a></li>';
                                         }

@@ -102,12 +102,11 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
             </div>
 
             <!-- Nav bar-->
-
+            </span>
             <ul class="nav navbar-top-links navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-            <i class="fa fa-user fa-fw"></i>
-            <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; display: inline-block; vertical-align: middle;">
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; 
+             display: inline-block; vertical-align: middle;
+             padding-right: 3px; font-weight: bold; font-size: 16px; color: #6c757d;">
                 <?php
                 if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                     // Kết nối đến cơ sở dữ liệu và lấy tên người dùng
@@ -123,10 +122,14 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     }
                 }
                 ?>
-            </span>
+            </div>
+            <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <i class="fa fa-user fa-fw"></i>
             <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
+            
             <li>
                 <form id="logoutForm" action="../../../tai-khoan/dang-xuat.php" method="post">
                     <input type="hidden" name="logout" value="true">
