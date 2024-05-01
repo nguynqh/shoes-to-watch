@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 08:12 PM
+-- Generation Time: May 01, 2024 at 06:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -161,6 +161,22 @@ INSERT INTO `loai_hang` (`ma_loai`, `ten_loai`) VALUES
 (29, 'Pro Trek'),
 (30, 'Women\'s');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `ManagerID` int(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `Manager_Full_Name` varchar(30) NOT NULL,
+  `Manager_Phone` varchar(15) NOT NULL,
+  `Manager_email` varchar(100) NOT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `status` bit(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -207,6 +223,12 @@ ALTER TABLE `loai_hang`
   ADD PRIMARY KEY (`ma_loai`);
 
 --
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`ManagerID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -233,6 +255,12 @@ ALTER TABLE `khach_hang`
 --
 ALTER TABLE `loai_hang`
   MODIFY `ma_loai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `ManagerID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

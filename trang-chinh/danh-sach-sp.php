@@ -102,154 +102,16 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../css/danh-sach-sp/plugin/js/owl.carousel.min.js"></script>
 
+    <!-- header -->
+    <?php require('../header.php');?>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="login">
-                    <!-- kiem tra dang nhap -->
-                    <?php
-                    session_start();
-                    if (!isset($_SESSION['user'])) {
-                    ?>
-                        <a href="../tai-khoan/dang-nhap.php">
-                            <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
-                        </a>
-                    <?php } else { ?>
-                        <a href="../tai-khoan/thong-tin-tk.php">
-                            <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
-                        </a>
-                    <?php } ?>
-                    
-                </div>
-            </div>
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="logo">
-                    <a href="../index.php"><img src="../css/trang-chu/img/iconweb.png" alt="anh"></a>
-                </div>
-            </div>
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="giohang" style="position: reletive;">
-
-                    <?php
-                    $sll = 0;
-                    if (isset($_SESSION['cart'])) {
-                        foreach ($_SESSION['cart'] as $item) {
-                            extract($item);
-                            $sll += $sl;
-                        }
-                    }
-                    ?>
-                    <span style="position: absolute;padding:3px 8px;background-color:#fff;border-radius:50px;left:295px;top:25px;"><?= $sll ?></span>
-                    <ul>
-                        <li style="list-style: none;">
-                            <p style="font-size: 14px;">
-                                <a href="don-mua.php" style="text-decoration:none;color:#f7941d;">ĐƠN MUA</a>
-                            </p>
-                        </li>
-                        <li style="list-style: none;">
-                            <p style="color: rgb(212, 212, 212);font-size: 14px;">GIỎ HÀNG</p>
-                        </li>
-                        <a href="danh-sach-gio-hang.php">
-                            <li style="list-style: none;">
-                                <i class="fa fa-shopping-basket" style="font-size:28px;color:rgb(255, 255, 255)"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12" style="background-color: rgb(211, 211, 211);">
-                <div class="nav">
-                    <ul>
-                        <li><a href="index.php">TRANG CHỦ</a></li>
-                        <li><a href="danh-sach-sp.php">SẢN PHẨM</a></li>
-                        <li><a href="gioi-thieu.php">GIỚI THIỆU</a></li>
-                        <li><a href="bao-hanh.php">BẢO HÀNH</a></li>
-                        <li><a href="lien-he.php">LIÊN HỆ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-md-7" style="padding-left: 0px;">
-                <div class="chuyen">
-                    <p><span><a href="index.php" style="text-decoration:none;color:black">TRANG CHỦ </a></span> / SẢN PHẨM</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
+    <!-- content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3" style="padding-left: 0px;margin-top: 42px;">
+            <!-- sidebar -->
+            <?php require('../sidebar.php')?>
 
-                <div class="row" style="margin-left: 0px;">
-                    <form action="tim-kiem-theo-ten.php" method="post">
-
-                        <div class="serch">
-                            <input type="text" placeholder="Tìm kiếm..." name="keywords">
-                            <button type="submit" name="search-keywords"><i class="fa fa-search" style="font-size:20px;color:rgb(255, 255, 255)"></i></button>
-                        </div>
-                    </form>
-                </div>
-                <div class="row" style="margin-left: 0px;">
-                    <?php
-                    require_once('../admin/dao/loai-hang.php');
-                    extract($_REQUEST);
-                    $items = loai_hang_select_all();
-                    ?>
-                    <div class="row" style="margin-top: 35px;margin-left: 0px;">
-
-                        <ul class="list-group">
-                            <li class="list-group-item active">DANH MỤC</li>
-                            <?php foreach ($items as $item) {
-                                extract($item);
-                            ?>
-                                <a href="sp-cung-loai.php?ma_loai=<?= $ma_loai ?>">
-                                    <li class="list-group-item"><?= $ten_loai ?></li>
-                                </a>
-                            <?php } ?>
-                        </ul>
-
-                    </div>
-
-                    <div class="row" style="margin-top: 35px;margin-left: 0px;">
-
-                        <ul class="list-group">
-                            <?php
-                            require_once('../admin/dao/hang-hoa.php');
-                            extract($_REQUEST);
-                            $items = hang_hoa_sale();
-
-                            ?>
-                            <li class="list-group-item active">SẢN PHẨM SALE UP 10 - 50%</li>
-                            <?php foreach ($items as $item) {
-                                extract($item);
-                            ?>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-sm-4"><a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>&ma_loai=<?= $ma_loai ?>"><img style="width:80px;" src="../hinh-anh/san-pham/<?= $hinh ?>" alt=""></a></div>
-                                        <div class="col-sm-8"><?= $ten_hh ?><br><br><b><?= number_format($don_gia - ($don_gia * $giam_gia / 100)) ?> VNĐ</b></div>
-                                    </div>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+            <!-- danh sach san pham -->
             <div class="col-md-9">
                 <div class="row">
                     <?php
@@ -362,6 +224,7 @@
 
     <!-- footer -->
     <?php require('../footer.php');?>
+
 
 
     <script type="text/javascript">

@@ -36,4 +36,16 @@
         $sql = "SELECT * FROM loai_hang WHERE ma_loai=?";
         return pdo_query_one($sql,$ma_loai);
     }
+
+    // Select toàn bộ mức giảm giá
+    function muc_giam_gia_select_all(){
+        $sql = "SELECT DISTINCT giam_gia FROM hang_hoa ORDER BY giam_gia ASC";
+        return pdo_query($sql);
+    }
+
+    // Select mức giá cao nhất
+    function don_gia_max(){
+        $sql = "SELECT * FROM `hang_hoa` ORDER BY `don_gia` DESC LIMIT 1";
+        return pdo_query_one($sql);
+    }
 ?>
