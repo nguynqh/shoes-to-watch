@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
                 
                 session_start();
                 $_SESSION['sodienthoai'] = $sodienthoai;
-                $_SESSIONp['login'] = true;
+                $_SESSION['login'] = true;
 
                 header('Location: ../../index.php');
         } else {
