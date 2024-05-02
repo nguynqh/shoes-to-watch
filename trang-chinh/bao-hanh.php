@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale =1.0">
@@ -112,7 +111,7 @@
             </div>
         </div>
 
-
+<!--ákjdalksdlaksjdlk-->
         <div class="container" style="margin-top: 50px;">
             <img src="../hinh-anh/trang-web/chinh-sach-bao-hanh.png" style="width:800px;height:400px;text-align:center;margin-left:180px"><br><br>
             <div class="content">
