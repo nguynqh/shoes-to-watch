@@ -143,6 +143,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     if (!empty(($_GET['keyword']))) {
                         $search = $_GET['keyword'];
                         $result = mysqli_query($conn, $sql = "SELECT count(ma_hh) AS total FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%')");
+                    
                     } else {
                         $result = mysqli_query($conn, 'select count(ma_hh) AS total FROM hang_hoa');
                     }
@@ -168,9 +169,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>MÃ HH</th>
-                                <th>TÊN HH</th>
+                                <th>MÃ HÀNG HÓA</th>
+                                <th>TÊN HÀNG HÓA</th>
                                 <th>HÌNH ẢNH</th>
+                                <th>SỐ LƯỢNG</th>
                                 <th>ĐƠN GIÁ</th>
                                 <th>GIẢM GIÁ</th>
                                 <th>HÀNH ĐỘNG</th>
@@ -182,8 +184,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <tr>
                                     <td><?= $item['ma_hh'] ?></td>
                                     <td><?= $item['ten_hh'] ?></td>
-                                    <td><img src="/bigshoes/css/admin/images/products/<?= $item['hinh'] ?>" alt="" style="width:120px;"></td>
-                                    <td><?= number_format($item['don_gia']) ?> VNĐ</td>
+                                    <td><img src="../../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="" style="width:120px;"></td>
+                                    <td><?= $item['so_luong'] ?></td>
+                                    <td ><?= number_format($item['don_gia']) ?> VNĐ</td>
                                     <td><?= $item['giam_gia'] ?> <sup>%</sup></td>
                                     <td>
                                         <a href="hang-hoa-update.php?ma_hh=<?= $item['ma_hh'] ?>"><button class="btn btn-primary">Sửa</button></a>

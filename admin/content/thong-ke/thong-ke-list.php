@@ -53,7 +53,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                 $items = thong_ke_hang_hoa();
 
                 foreach ($items as $item) {
-                    echo "['$item[ten_loai]',$item[so_luong],'#b87333'],";
+                    echo "['$item[ma_loai]',$item[so_luong],'#b87333'],";
                 }
                 ?>
             ]);
@@ -187,6 +187,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <table class="table table-bordered" style="background-color:#fff">
                         <thead>
                             <tr>
+                                <th>MÃ LOẠI HÀNG </th>
                                 <th>LOẠI HÀNG</th>
                                 <th>SỐ LƯỢNG HIỆN CÓ</th>
                                 <th>GIÁ CAO NHẤT</th>
@@ -199,6 +200,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 extract($item);
                             ?>
                                 <tr>
+                                    <td><?= $ma_loai ?></td>
                                     <td><?= $ten_loai ?></td>
                                     <td><?= $so_luong ?></td>
                                     <td><?= number_format($gia_max) ?> <sup>đ</sup></td>

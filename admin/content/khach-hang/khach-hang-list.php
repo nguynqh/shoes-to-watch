@@ -134,6 +134,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th>NÃ KHÁCH HÀNG</th>
                                 <th>TÊN ĐĂNG NHẬP</th>
                                 <th>HỌ VÀ TÊN</th>
                                 <th>MẬT KHẨU</th>
@@ -150,12 +151,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             ?>
                                 <tr>
                                     <td><?= $ma_kh ?></td>
+                                    <td><?= $ten_dang_nhap ?></td>
                                     <td><?= $ho_ten ?></td>
                                     <td><?= $mat_khau ?></td>
                                     <td><?= $email ?></td>
                                     <td><?= $sdt ?></td>
                                     <td><?= $dia_chi ?></td>
-                                    <td><?php if ($vai_tro == 0) {
+                                    <td><?php if ($trang_thai == 0) {
                                             echo "Khách hàng";
                                         } else {
                                             echo "Admin";
