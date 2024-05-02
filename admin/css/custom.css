@@ -1,0 +1,24 @@
+.square-image {
+    width: 200px; /* Kích thước chiều rộng mong muốn */
+    height: 200px; /* Kích thước chiều cao mong muốn */
+    overflow: hidden; /* Ẩn phần dư thừa nếu hình ảnh không phù hợp */
+}
+.square-image img {
+    width: 100%; /* Kích thước chiều rộng tương đương với kích thước hình vuông */
+    height: auto; /* Chiều cao tự động điều chỉnh cho phù hợp */
+    object-fit: cover; /* Thay đổi tỷ lệ để hình ảnh phù hợp hoàn toàn với kích thước hình vuông */
+}
+    .product-pic-container {
+        width: 150px; /* Định kích thước container */
+        height: 150px; /* Định kích thước container */
+        overflow: hidden; /* Ẩn phần vượt quá kích thước container */
+        border-radius: 50%; /* Bo tròn viền của container */
+        margin-bottom: 10px; /* Khoảng cách dưới */
+    }
+
+    #product-pic {
+        width: 100%; /* Kích thước hình ảnh 100% chiều ngang của container */
+        height: auto; /* Đảm bảo tỷ lệ khung hình */
+        object-fit: cover; /* Hiển thị hình ảnh mà không bị vùi lấp */
+    }
+

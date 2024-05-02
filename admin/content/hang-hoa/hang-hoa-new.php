@@ -32,6 +32,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/custom.css">
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
@@ -144,8 +145,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         // $up_hinh3 = save_file("hinh3", "../../../../bigshoes/css/admin/images/products/");
                         // $hinh3 = strlen($up_hinh3) > 0 ? $up_hinh3 : 'product.png';
 
-                        hang_hoa_insert($ten_hh, $hinh, $don_gia, $giam_gia, $mo_ta, $ma_loai);
-                        unset($ten_hh, $hinh, $don_gia, $giam_gia, $mo_ta, $ma_loai);
+                        hang_hoa_insert($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
+                        unset($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
                         $message = "Thêm hàng hóa thành công !";
                         echo "<script type='text/javascript'>alert('$message');</script>";
                     }
@@ -155,6 +156,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <div class="form-group">
                             <label for="">Tên hàng hóa:</label>
                             <input type="text" class="form-control" id="ten_hh" name="ten_hh" placeholder="Nhập tên hàng hóa ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Số Lượng:</label>
+                            <input type="text" class="form-control" id="so_luong" name="so_luong" placeholder="Nhập số lượng hàng hóa ...">
                         </div>
 
                         <div class="form-group">
@@ -168,9 +173,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Hình ảnh</label>
-                            <input type="file" class="form-control-file border" name="hinh">
-                        </div>
+    <label for="">Hình ảnh</label>
+    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" class="form-control-file border" name="hinh">
+    <div class="product-pic-container">
+        <img src="../../../hinh-anh/trang-web/images.png" id="product-pic">
+    </div>
+</div>
+
 
                         <!-- <div class="form-group">
                             <label for="">Hình ảnh 1</label>
@@ -220,6 +229,16 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <script src="../../../css/admin/js/jquery.metisMenu.js"></script>
     <!-- Custom Js -->
     <script src="../../../css/admin/js/custom-scripts.js"></script>
+    <script>
+      //add img
+    let productPic = document.getElementById("product-pic");
+    let inputFile = document.getElementById("input-file");
+
+    inputFile.onchange =function(){
+      productPic.src= URL.createObjectURL(inputFile.files[0]);
+    }
+    </script>
+                    
 
 
 </body>

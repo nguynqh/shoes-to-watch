@@ -35,6 +35,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../css/admin/img/TBT.png" />
+    <!--css custom-->
+    <link rel="stylesheet" href="../../css/custom.css">
 </head>
 
 <body>
@@ -163,6 +165,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     if (!empty(($_GET['keyword']))) {
                         $search = $_GET['keyword'];
                         $result = mysqli_query($conn, $sql = "SELECT * FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%') LIMIT $start, $limit");
+                        
                     } else {
                         $result = mysqli_query($conn, "SELECT * FROM hang_hoa  LIMIT $start, $limit");
                     }
@@ -186,7 +189,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <tr>
                                     <td><?= $item['ma_hh'] ?></td>
                                     <td><?= $item['ten_hh'] ?></td>
-                                    <td><img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="" style="width:120px;"></td>
+                                    <td class="square-image">
+                                        <img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="">
+                                    </td>
                                     <td><?= $item['so_luong'] ?></td>
                                     <td ><?= number_format($item['don_gia']) ?> VNĐ</td>
                                     <td><?= $item['giam_gia'] ?> <sup>%</sup></td>
@@ -228,7 +233,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <script src="../../../css/admin/js/jquery.metisMenu.js"></script>
                     <!-- Custom Js -->
                     <script src="../../../css/admin/js/custom-scripts.js"></script>
-
 
 </body>
 

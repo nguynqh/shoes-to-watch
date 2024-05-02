@@ -2,16 +2,16 @@
 require_once('pdo.php');
 require_once('loai-hang.php');
 
-function hang_hoa_insert($ten_hh, $hinh, $don_gia, $giam_gia, $mo_ta, $ma_loai)
+function hang_hoa_insert($ten_hh, $hinh,$so_luong,$don_gia, $giam_gia, $mo_ta, $ma_loai)
 { //hàm thêm hàng hóa
-    $sql = "INSERT INTO hang_hoa(ten_hh,hinh,don_gia,giam_gia,mo_ta,ma_loai) VALUES (?,?,?,?,?,?)"; //chèn vào bảng hh các thông tin tương ứng
-    pdo_execute($sql, $ten_hh, $hinh, $don_gia, $giam_gia, $mo_ta, $ma_loai);
+    $sql = "INSERT INTO hang_hoa(ten_hh,hinh,so_luong,don_gia,giam_gia,mo_ta,ma_loai) VALUES (?,?,?,?,?,?,?)"; //chèn vào bảng hh các thông tin tương ứng
+    pdo_execute($sql, $ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
 }
 
-function hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta)
+function hang_hoa_update($ma_hh, $ten_hh,$so_luong, $don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta)
 { //sửa sản phẩm
-    $sql = "UPDATE hang_hoa SET ten_hh=?, don_gia=?, giam_gia=?, hinh=?, ma_loai=?, mo_ta=? WHERE ma_hh=?"; //cập nhật tt sp theo mã sp
-    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta, $ma_hh);
+    $sql = "UPDATE hang_hoa SET ten_hh=?,so_luong=?, don_gia=?, giam_gia=?, hinh=?, ma_loai=?, mo_ta=? WHERE ma_hh=?"; //cập nhật tt sp theo mã sp
+    pdo_execute($sql, $ten_hh,$so_luong, $don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta, $ma_hh);
 }
 
 function hang_hoa_delete($ma_hh)

@@ -136,7 +136,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_update", $_REQUEST)) {
-                        $up_hinh = save_file("hinh", "../../../css/admin/images/products/");
+                        $up_hinh = save_file("hinh", "../../../hinh-anh/san-pham/");
                         $hinh = strlen($up_hinh) > 0 ? $up_hinh : $hinh;
 
                         // $up_hinh1 = save_file("hinh1", "../../../css/admin/images/products/");
@@ -148,7 +148,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         // $up_hinh3 = save_file("hinh3", "../../../css/admin/images/products/");
                         // $hinh3 = strlen($up_hinh3) > 0 ? $up_hinh3 : $hinh3;
 
-                        hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta);
+                        hang_hoa_update($ma_hh, $ten_hh,$so_luong ,$don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta);
                         $message = "Sửa thành công !";
                         echo "<script type='text/javascript'>alert('$message');</script>";
                     }
@@ -164,6 +164,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             <label for="">Tên hàng hóa:</label>
                             <input type="text" class="form-control" id="ten_hh" name="ten_hh" placeholder="Nhập tên hàng hóa ..." value="<?= $ten_hh ?>">
                         </div>
+                        <div class="form-group">
+                            <label for="">Số lượng </label>
+                            <input type="text" class="form-control" id="so_luong" name="so_luong" placeholder="Nhập số lượng hàng hóa ..." value="<?= $so_luong ?>">
+                        </div>
 
                         <div class="form-group">
                             <label for="">Đơn giá</label>
@@ -176,12 +180,18 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Hình ảnh</label>
-                            <input type="file" class="form-control-file border" name="hinh">
-                            <input name="hinh" type="hidden" value="<?= $hinh ?>"><br>
-                            <img src="../../../css/admin/images/products/<?= $hinh ?>" alt="" style="width:80px"><br>
-                            (<?= $hinh ?>)
-                        </div>
+                        <label for="">Hình Ảnh Hiện Tại</label>
+                        <!-- Hiển thị hình ảnh hiện tại -->
+                        <img id="current-image" src="../../../hinh-anh/san-pham/<?= $hinh ?>" alt="" style="width:80px">
+                        <br>
+                        <!-- Hiển thị tên tệp của hình ảnh hiện tại -->
+                        <div style="margin-left:50px">(file hình <?= $hinh ?>)</div>
+                        <!-- Input để chọn hình ảnh mới -->
+                        <input type="file" id="input-file" class="form-control-file border" name="hinh" onchange="previewImage(event)">
+                        <!-- Input ẩn chứa đường dẫn của hình ảnh hiện tại -->
+                        <input name="hinh" type="hidden" value="<?= $hinh ?>"><br>
+   
+</div>
 
                         
 
@@ -222,7 +232,21 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <script src="../../../css/admin/js/jquery.metisMenu.js"></script>
     <!-- Custom Js -->
     <script src="../../../css/admin/js/custom-scripts.js"></script>
+    <script>
+    // Function để xem trước hình ảnh mới
+    function previewImage(event) {
+        var reader = new FileReader(); // Tạo một đối tượng FileReader
 
+        // Xác định hành động khi đọc tệp hoàn tất
+        reader.onload = function () {
+            var output = document.getElementById('current-image'); // Lấy phần tử hình ảnh hiện tại
+            output.src = reader.result; // Đặt đường dẫn của hình ảnh mới vào thuộc tính src của phần tử hình ảnh hiện tại
+        }
+
+        // Đọc tệp hình ảnh
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 
 </body>
 
