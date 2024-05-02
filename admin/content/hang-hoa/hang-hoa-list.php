@@ -140,17 +140,19 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <?php
                     $result = "";
                     $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                    //thieu dieu kien kiem tra keyword co trong dtb khong 
+                    //kiểm tra keyword
                     if (!empty(($_GET['keyword']))) {
                         $search = $_GET['keyword'];
                         $result = mysqli_query($conn, $sql = "SELECT count(ma_hh) AS total FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%')");
-                    
                     } else {
                         $result = mysqli_query($conn, 'select count(ma_hh) AS total FROM hang_hoa');
                     }
+                    //phân trang
                     $row = mysqli_fetch_assoc($result);
                     $total_records = $row['total'];
                     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $limit = 6;
+                    $limit = 4;
                     $total_page = ceil($total_records / $limit);
                     if ($current_page > $total_page) {
                         $current_page = $total_page;
@@ -162,7 +164,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         $search = $_GET['keyword'];
                         $result = mysqli_query($conn, $sql = "SELECT * FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%') LIMIT $start, $limit");
                     } else {
-                        $result = mysqli_query($conn, "SELECT * FROM hang_hoa LIMIT $start, $limit");
+                        $result = mysqli_query($conn, "SELECT * FROM hang_hoa  LIMIT $start, $limit");
                     }
                     $html = '';
                     ?>
@@ -184,7 +186,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <tr>
                                     <td><?= $item['ma_hh'] ?></td>
                                     <td><?= $item['ten_hh'] ?></td>
-                                    <td><img src="../../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="" style="width:120px;"></td>
+                                    <td><img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="" style="width:120px;"></td>
                                     <td><?= $item['so_luong'] ?></td>
                                     <td ><?= number_format($item['don_gia']) ?> VNĐ</td>
                                     <td><?= $item['giam_gia'] ?> <sup>%</sup></td>
