@@ -28,8 +28,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <title>ADMIN</title>
     <!-- Bootstrap Styles-->
     <link href="../../../css/admin/css/bootstrap.css" rel="stylesheet" />
-    <!--BoxIcon-->
-    <link href="../../../css/admin/css/boxicons.min.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
@@ -139,7 +137,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <th>NÃ KHÁCH HÀNG</th>
                                 <th>TÊN ĐĂNG NHẬP</th>
                                 <th>HỌ VÀ TÊN</th>
-                                <th>MẬT KHẨU</th>
                                 <th>EMAIL</th>
                                 <th>SĐT</th>
                                 <th>ĐỊA CHỈ</th>
@@ -155,7 +152,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                     <td><?= $ma_kh ?></td>
                                     <td><?= $ten_dang_nhap ?></td>
                                     <td><?= $ho_ten ?></td>
-                                    <td><?= $mat_khau ?></td>
                                     <td><?= $email ?></td>
                                     <td><?= $sdt ?></td>
                                     <td><?= $dia_chi ?></td>

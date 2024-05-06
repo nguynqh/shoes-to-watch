@@ -133,7 +133,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_update", $_REQUEST)) {
-                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $mat_khau, $email, $sdt, $dia_chi);
+                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $email, $sdt, $dia_chi);
                         $message = "Cập nhật tài khoản thành công !";
                         echo "<script type='text/javascript'>alert('$message'); window.location.href='khach-hang-list.php';</script>";
                     }
@@ -152,12 +152,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             <label for="">Họ và tên:</label>
                             <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ và tên ..." value="<?= $ho_ten ?>">
                         </div>
-
-                        <div class="form-group">
-                            <label for="">Mật khẩu:</label>
-                            <input type="text" class="form-control" name="mat_khau" placeholder="Nhập mật khẩu ..." value="<?= $mat_khau ?>">
-                        </div>
-
                         <div class="form-group">
                             <label for="">Email:</label>
                             <input type="text" class="form-control" name="email" placeholder="Nhập email ..." value="<?= $email ?>">
