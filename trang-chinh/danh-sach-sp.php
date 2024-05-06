@@ -115,35 +115,73 @@
             <div class="col-md-9">
                 <div class="row">
                     <?php
-                    $result = "";
+                    // $result = "";
+                    // $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                    // if (!empty(($_GET['keyword']))) {
+                    //     $search = $_GET['keyword'];
+                    //     $result = mysqli_query($conn, $sql = "SELECT count(ma_hh) AS total FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%')");
+                    // } else {
+                    //     $result = mysqli_query($conn, 'select count(ma_hh) AS total FROM hang_hoa');
+                    // }
+                    // $row = mysqli_fetch_assoc($result);
+                    // $total_records = $row['total'];
+                    // $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    // $limit = 9;
+                    // $total_page = ceil($total_records / $limit);
+                    // if ($current_page > $total_page) {
+                    //     $current_page = $total_page;
+                    // } else if ($current_page < 1) {
+                    //     $current_page = 1;
+                    // }
+                    // $start = ($current_page - 1) * $limit;
+
+                    // if (!empty(($_GET['keyword']))) {
+                    //     $search = $_GET['keyword'];
+                    //     $result = mysqli_query($conn, $sql = "SELECT * FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%') LIMIT $start, $limit");
+                    // } else {
+                    //     $result = mysqli_query($conn, "SELECT * FROM hang_hoa LIMIT $start, $limit");
+                    // }
+                    // $html = '';
+                    // tạo connection
+                    require_once('../admin/dao/pdo.php');
                     $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
-                    if (!empty(($_GET['keyword']))) {
-                        $search = $_GET['keyword'];
-                        $result = mysqli_query($conn, $sql = "SELECT count(ma_hh) AS total FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%')");
-                    } else {
-                        $result = mysqli_query($conn, 'select count(ma_hh) AS total FROM hang_hoa');
-                    }
-                    $row = mysqli_fetch_assoc($result);
-                    $total_records = $row['total'];
-                    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $limit = 9;
-                    $total_page = ceil($total_records / $limit);
-                    if ($current_page > $total_page) {
-                        $current_page = $total_page;
-                    } else if ($current_page < 1) {
-                        $current_page = 1;
-                    }
-                    $start = ($current_page - 1) * $limit;
+                    
+                    // lấy dữ liệu đẩy đủ
+                    $sql = "SELECT * FROM hang_hoa";
 
-                    if (!empty(($_GET['keyword']))) {
-                        $search = $_GET['keyword'];
-                        $result = mysqli_query($conn, $sql = "SELECT * FROM hang_hoa WHERE (CONCAT(ten_hh,don_gia) LIKE '%" . $search . "%') LIMIT $start, $limit");
-                    } else {
-                        $result = mysqli_query($conn, "SELECT * FROM hang_hoa LIMIT $start, $limit");
+                    //lọc theo tác biến get
+                    if ( isset($_GET['keywords']) || isset($_GET['danh-muc']) || isset($_GET['muc-gia']) || isset($_GET['giam-gia']) ) {
+                        $sql .= " WHERE ";
+                        if (isset($_GET['keywords'])) {
+                            $sql .= " (CONCAT(ten_hh,don_gia) LIKE '%" . $_GET['keyword'] . "%') ";
+                        }
+                        if (isset($_GET['danh-muc'])) {
+                            if (isset($_GET['keyword'])) {
+                                $sql .= " AND ";
+                            }
+                            $sql .= " ma_loai = " . $_GET['danh-muc'];
+                        }
+                        if ( isset($_GET['muc-gia']) ) {
+                            if (isset($_GET['keyword']) || isset($_GET['danh-muc'])) {
+                                $sql .= " AND ";
+                            }
+                            $sql .= " don_gia <= " . $_GET['muc-gia'];
+                        }
+                        if (isset($_GET['giam-gia'])) {
+                            if (isset($_GET['keyword']) || isset($_GET['danh-muc']) || isset($_GET['muc-gia'])) {
+                                $sql .= " AND ";
+                            }
+                            $sql .= " giam_gia = " . $_GET['giam-gia'];
+                        }
                     }
-                    $html = '';
+                    // $sql .= " LIMIT $start, $limit";
+                    echo $sql;
+                    $result = mysqli_query($conn, $sql);
+                    
 
+                    // bắt đầu show sản phẩm
                     while ($item = $result->fetch_assoc()) {
+
                     ?>
 
                         <div class="sanpham">
@@ -165,29 +203,34 @@
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+
+                    <?php 
+                        } 
+                    ?>
                 </div>
 
 
                 <br>
                 <br>
 
-                <?php echo $html; ?>
+                <?php 
+                    // echo $html; 
+                ?>
                 <div class="" style="margin-left:350px;text-align: center;float:left">
                     <ul class="pagination">
                         <?php
-                        for ($i = 1; $i <= $total_page; $i++) {
-                            if ($i == $current_page) {
-                                echo '<li class="page-item"><a class="page-link">' . $i . '</a></li> ';
-                            } else {
-                                if (isset($_GET['keyword'])) {
-                                    echo '<li class="page-item">
-                     <a class="page-link" href="danh-sach-sp.php?keyword=' . $_GET['keyword'] . '&page=' . $i . '">' . $i . '</a></li ';
-                                } else {
-                                    echo '<li class="page-item"><a class="page-link" href="danh-sach-sp.php?page=' . $i . '">' . $i . '</a></li>';
-                                }
-                            }
-                        }
+                        // for ($i = 1; $i <= $total_page; $i++) {
+                        //     if ($i == $current_page) {
+                        //         echo '<li class="page-item"><a class="page-link">' . $i . '</a></li> ';
+                        //     } else {
+                        //         if (isset($_GET['keyword'])) {
+                        //             echo '<li class="page-item">
+                        //                 <a class="page-link" href="danh-sach-sp.php?keyword=' . $_GET['keyword'] . '&page=' . $i . '">' . $i . '</a></li ';
+                        //         } else {
+                        //             echo '<li class="page-item"><a class="page-link" href="danh-sach-sp.php?page=' . $i . '">' . $i . '</a></li>';
+                        //         }
+                        //     }
+                        // }
                         ?>
                         </li>
                     </ul>

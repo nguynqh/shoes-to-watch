@@ -1,15 +1,16 @@
 <div class="col-md-3" style="padding-left: 0px;margin-top: 42px;">
     <!-- tim kiem -->
     <div class="row" style="margin-left: 0px;">
-        <form action="tim-kiem-theo-ten.php" method="post">
+        <form action="danh-sach-sp.php" method="get">
             <!-- co ban -->
             <div class="search">
                 <input type="text" placeholder="Tìm kiếm..." name="keywords">
-                <button type="submit" name="search-keywords"><i class="fa fa-search" style="font-size:20px;color:rgb(255, 255, 255)"></i></button>
+                <button type="submit"><i class="fa fa-search" style="font-size:20px;color:rgb(255, 255, 255)"></i></button>
             </div>
             <!-- nang cao -->
             <button type="button" class="row" style="margin-left: 0; width: 100%; justify-content:center;" id="toggleButton">nâng cao</button>
             <div class="search-advanced row" id="advancedSearch" style="z-index: 3; width: 100%; margin-left: 0;  display: none;">
+                <!-- danh muc -->
                 <div class="danh-muc container">
                     <label for="danh-muc" class="form-label">Danh mục:</label>
                     <select class="form-select" name="danh-muc" id="search-danh-muc">
@@ -24,20 +25,28 @@
                         <?php } ?>
                     </select>
                 </div>
+                <!-- muc gia -->
                 <div class="muc-gia container">
+                    <?php
+                        require_once('../admin/dao/loai-hang.php');
+                        $temp = don_gia_max();
+                        $max_value = $temp['don_gia'];
+                    ?>
                     <label for="customRange1" class="form-label">Khoảng giá: 0 - <span id="value-of-range"></span></label> <br>
-                    <input type="range" class="form-range" id="customRange1" min="1" max="<?php require_once('../admin/dao/loai-hang.php'); $temp = don_gia_max(); echo $temp['don_gia']; ?>">
+                    <input type="range" name="muc-gia" class="form-range" id="customRange1" min="1" max="<?= $max_value?>" value="<?= $max_value?>">
                 </div>
+                <!-- giam gia -->
                 <div class="giam-gia container">
                     <label class="form-label">Mức giảm giá: <span id="discount"></span></label>
+                    <!-- <input class="form-check-input" type="radio" name="giam-gia" value="" checked hidden> -->
                     <?php
                         $giam_gias = muc_giam_gia_select_all();
                         foreach ($giam_gias as $giam_gia) {
                             extract($giam_gia);
                     ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="<?= $giam_gia?>">
-                        <label class="form-check-label" for="flexRadioDefault1"><?= $giam_gia?>%</label>
+                        <input class="form-check-input" type="radio" id="giam-gia" name="giam-gia" value="<?= $giam_gia?>">
+                        <label class="form-check-label"><?= $giam_gia?>%</label>
                     </div>
                     <?php }?>
                 </div>
@@ -118,8 +127,9 @@
     var toggleButton = document.getElementById('toggleButton');
     var advancedSearch = document.getElementById('advancedSearch');
 
+
     // Get value danh muc
-    var danhMuc = document.getElementById
+    var danhMuc = document.getElementById('search-danh-muc');
 
     // Add click event listener to the button
     toggleButton.addEventListener('click', function() {
@@ -128,6 +138,15 @@
             advancedSearch.style.display = 'block';
         } else {
             advancedSearch.style.display = 'none';
+            // reset danh muc
+            danhMuc.value = null;
+            // reset slider
+            slider.value = <?= $max_value?>;
+            output.innerHTML = <?= $max_value?>;
+            // reset radio
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
         }
     });
 </script>

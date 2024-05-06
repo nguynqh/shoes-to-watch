@@ -104,21 +104,16 @@
 						<a href="dang-xuat.php">
 							<button class="login100-form-btn" type="submit" name="btn_logout">
 								ĐĂNG XUẤT
-							</button></a>&nbsp;&nbsp;
-						<?php
-						if ($trang_thai == 1) {
-						?>
-							<button class="login100-form-btn" type="submit" name="btn_admin">
-								ADMIN
-							</button></a>
-						<?php } ?>
+							</button>
+						</a>&nbsp;&nbsp;
+						
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="../trang-chinh/index.php">
+						<a class="txt1" href="../index.php">
 							Home ?
 						</a> or
-						<a class="txt1" href="../../bigshoes/tai-khoan/cap-nhat-tk.php">
+						<a class="txt1" href="../tai-khoan/cap-nhat-tk.php">
 							Cập nhật tài khoản ?
 						</a>
 

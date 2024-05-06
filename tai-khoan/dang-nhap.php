@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/iconweb.png" />
+	<link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
 </head>
 
 <body>
@@ -42,24 +42,19 @@
 
 	extract($_REQUEST);
 	if (array_key_exists('btn_login', $_REQUEST)) {
-		$user = khach_hang_select_by_id($ten_dang_nhap);
+		$user = khach_hang_select_by_ten_dang_nhap($ten_dang_nhap);
 		if ($user) {
 			if ($user['mat_khau'] == $mat_khau) {
-				if ($user['trang_thai'] == 1) {
-					$_SESSION['user'] = $user;
-					header("location: ../admin/content/thong-ke/thong-ke-list.php");
-				}
-				if ($user['trang_thai'] == 0) {
-					$_SESSION['user'] = $user;
-					header("location: ../trang-chinh/danh-sach-sp.php");
-				}
+				$_SESSION['user'] = $user;
+				header('location: ../index.php');
+			} else {
+				echo '<script language="javascript">';
+				echo 'alert("Sai tên tài khoản hoặc mật khẩu")';
+				echo '</script>';
 			}
-		} else {
-			echo '<script language="javascript">';
-			echo 'alert("Sai tên tài khoản hoặc mật khẩu")';
-			echo '</script>';
 		}
 	}
+	
 	?>
 
 	<div class="limiter">
@@ -67,7 +62,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-logo">
-						<a href="../index.php"><img src="../css/trang-chu/img/iconweb.png" width="80px" alt=""></a>
+						<a href="../index.php"><img src="../hinh-anh/trang-web/iconweb.png" width="80px" alt=""></a>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
