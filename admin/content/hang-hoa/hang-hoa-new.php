@@ -148,7 +148,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         hang_hoa_insert($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
                         unset($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
                         $message = "Thêm hàng hóa thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'hang-hoa-list.php'</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
@@ -213,6 +213,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             </select>
                         </div>
                         <button type="submit" name="btn_insert" class="btn btn-primary">Thêm mới</button>
+                        <a href="./hang-hoa-list.php"><button type="button" name="btn_insert" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

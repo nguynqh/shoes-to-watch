@@ -135,7 +135,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     if (array_key_exists("btn_update", $_REQUEST)) {
                         loai_hang_update($ma_loai, $ten_loai);
                         $message = "Sửa thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'loai-hang-list.php';</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
@@ -150,6 +150,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
                         <div class="form-group form-check"></div>
                         <button type="submit" name="btn_update" class="btn btn-danger">Cập nhật</button>
+                        <a href="./loai-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
 

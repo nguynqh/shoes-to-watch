@@ -150,7 +150,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                         hang_hoa_update($ma_hh, $ten_hh,$so_luong ,$don_gia, $giam_gia, $hinh, $ma_loai, $mo_ta);
                         $message = "Sửa thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'hang-hoa-list.php'</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
@@ -201,7 +201,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Mã loại?</label>
+                            <label for="">Tên Loại</label>
                             <select name="ma_loai" class=form-control>
                                 <?php
                                 $loai_select_list = loai_hang_select_all();
@@ -216,6 +216,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             </select>
                         </div>
                         <button type="submit" name="btn_update" class="btn btn-danger">Cập nhật</button>
+                        <a href="./hang-hoa-list.php"><button type="button" name="btn_insert" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

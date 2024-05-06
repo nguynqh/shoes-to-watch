@@ -133,7 +133,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         khach_hang_insert($ma_kh, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
                         unset($ma_kh, $ho_ten_, $mat_khau, $email, $sdt, $dia_chi);
                         $message = "Thêm tài khoản thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'khach-hang-list.php'</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->

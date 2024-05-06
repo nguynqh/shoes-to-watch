@@ -133,7 +133,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         loai_hang_insert($ten_loai);
                         unset($ma_loai, $ten_loai);
                         $message = "Thêm danh mục thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'loai-hang-list.php'</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
@@ -148,6 +148,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
                         <div class="form-group form-check"></div>
                         <button type="submit" name="btn_insert" class="btn btn-danger">Thêm mới</button>
+                        <a href="./loai-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

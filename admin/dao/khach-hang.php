@@ -27,9 +27,9 @@
         return pdo_query($sql);
     }
 
-    function khach_hang_select_by_id($ten_dang_nhap){
-        $sql = "SELECT * FROM khach_hang WHERE ten_dang_nhap=?";
-        return pdo_query_one($sql,$ten_dang_nhap);
+    function khach_hang_select_by_id($ma_kh){
+        $sql = "SELECT * FROM khach_hang WHERE ma_kh =?";
+        return pdo_query_one($sql,$ma_kh);
     }
 
     function khach_hang_change_password($ma_kh, $mat_khau_moi){
