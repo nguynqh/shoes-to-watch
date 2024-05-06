@@ -28,6 +28,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <title>ADMIN</title>
     <!-- Bootstrap Styles-->
     <link href="../../../css/admin/css/bootstrap.css" rel="stylesheet" />
+    <!--BoxIcon-->
+    <link href="../../../css/admin/css/boxicons.min.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->

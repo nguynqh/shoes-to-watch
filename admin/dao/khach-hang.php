@@ -6,9 +6,9 @@
         pdo_execute($sql,$ten_dang_nhap,$ho_ten,$mat_khau,$email,$sdt,$dia_chi);
     }
 
-    function khach_hang_update($ma_kh,$ho_ten,$mat_khau,$email,$sdt,$dia_chi){
-        $sql = "UPDATE khach_hang SET ho_ten=?,mat_khau=?,email=?,sdt=?,dia_chi=? WHERE ma_kh=?";
-        pdo_execute($sql,$ho_ten,$mat_khau,$email,$sdt,$dia_chi,$ma_kh);
+    function khach_hang_update($ma_kh,$ten_dang_nhap,$ho_ten,$mat_khau,$email,$sdt,$dia_chi){
+        $sql = "UPDATE khach_hang SET ten_dang_nhap=?,ho_ten=?,mat_khau=?,email=?,sdt=?,dia_chi=? WHERE ma_kh=?";
+        pdo_execute($sql,$ten_dang_nhap,$ho_ten,$mat_khau,$email,$sdt,$dia_chi,$ma_kh);
     }
 
     function khach_hang_delete($ma_kh){

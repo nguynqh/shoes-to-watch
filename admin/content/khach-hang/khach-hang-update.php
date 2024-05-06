@@ -133,18 +133,21 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_update", $_REQUEST)) {
-                        khach_hang_update($ma_kh, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
+                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $mat_khau, $email, $sdt, $dia_chi);
                         $message = "Cập nhật tài khoản thành công !";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href='khach-hang-list.php';</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        <div class="form-group">
+                            <label for="">Mã khách hàng:</label>
+                            <input type="text" class="form-control" name="ma_kh" placeholder="Mã khách hàng đã được khóa" value="<?= $ma_kh ?>" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="">Tên đăng nhập:</label>
-                            <input type="text" class="form-control" name="ma_kh" placeholder="Nhập tên đăng nhập ..." value="<?= $ma_kh ?>" readonly>
+                            <input type="text" class="form-control" name="ten_dang_nhap" placeholder="Nhập tên đăng nhập ..." value="<?= $ten_dang_nhap ?>">
                         </div>
-
                         <div class="form-group">
                             <label for="">Họ và tên:</label>
                             <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ và tên ..." value="<?= $ho_ten ?>">
@@ -176,6 +179,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <button type="submit" name="btn_update" class="btn btn-danger">Cập nhật</button>
+                        <a href="./khach-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

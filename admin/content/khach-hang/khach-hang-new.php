@@ -130,7 +130,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     extract($_REQUEST);
                     if (array_key_exists("btn_insert", $_REQUEST)) {
 
-                        khach_hang_insert($ma_kh, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
+                        khach_hang_insert($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
                         unset($ma_kh, $ho_ten_, $mat_khau, $email, $sdt, $dia_chi);
                         $message = "Thêm tài khoản thành công !";
                         echo "<script type='text/javascript'>alert('$message'); window.location.href = 'khach-hang-list.php'</script>";
@@ -140,7 +140,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">Tên đăng nhập:</label>
-                            <input type="text" class="form-control" name="ma_kh" placeholder="Nhập tên đăng nhập ...">
+                            <input type="text" class="form-control" name="ten_dang_nhap" placeholder="Nhập tên đăng nhập ...">
                         </div>
 
                         <div class="form-group">

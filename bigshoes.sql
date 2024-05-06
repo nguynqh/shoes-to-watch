@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 01, 2024 at 06:13 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 06, 2024 lúc 08:19 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bigshoes`
+-- Cơ sở dữ liệu: `bigshoes`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `binh_luan`
+-- Cấu trúc bảng cho bảng `binh_luan`
 --
 
 CREATE TABLE `binh_luan` (
@@ -37,7 +37,7 @@ CREATE TABLE `binh_luan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hang_hoa`
+-- Cấu trúc bảng cho bảng `hang_hoa`
 --
 
 CREATE TABLE `hang_hoa` (
@@ -52,11 +52,11 @@ CREATE TABLE `hang_hoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `hang_hoa`
+-- Đang đổ dữ liệu cho bảng `hang_hoa`
 --
 
 INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `so_luong`, `don_gia`, `giam_gia`, `mo_ta`, `ma_loai`) VALUES
-(13, 'Casio G-Shock GA2100-4A', 'casio_ga2100_4a.jpg', 100, 150, 10, 'A rugged yet stylish analog-digital watch with carbon core guard structure.', 20),
+(13, 'Casio G-Shock GA2100-4A', 'casio_ga2100_4a.jpg', 100, 150000000, 10, 'A rugged yet stylish analog-digital watch with carbon core guard structure.', 20),
 (15, 'Casio Edifice EFV130D-1A', 'casio_efv130d_1a.jpg', 50, 120, 15, 'A sophisticated analog watch with a stainless steel bracelet and chronograph features.', 21),
 (16, 'Casio Pro Trek PRW-60-2A', 'casio_prw_60_2a.jpg', 80, 250, 20, 'A high-performance outdoor watch with triple sensor technology for accurate readings.', 29),
 (21, 'Casio Baby-G BGA-190BC-1B', 'casio_bga_190bc_1b.jpg', 70, 100, 10, 'A sporty and stylish women\'s watch with shock resistance and world time feature.', 25),
@@ -81,7 +81,7 @@ INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `so_luong`, `don_gia`, `giam_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hoa_don`
+-- Cấu trúc bảng cho bảng `hoa_don`
 --
 
 CREATE TABLE `hoa_don` (
@@ -93,16 +93,16 @@ CREATE TABLE `hoa_don` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `hoa_don`
+-- Đang đổ dữ liệu cho bảng `hoa_don`
 --
 
 INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VALUES
-(1, '2024-04-30', 'test hoa don 1', 'đang chờ xử lý', 4);
+(1, '2024-04-30', 'test hoa don 1', '1', 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hoa_don_chi_tiet`
+-- Cấu trúc bảng cho bảng `hoa_don_chi_tiet`
 --
 
 CREATE TABLE `hoa_don_chi_tiet` (
@@ -114,7 +114,7 @@ CREATE TABLE `hoa_don_chi_tiet` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khach_hang`
+-- Cấu trúc bảng cho bảng `khach_hang`
 --
 
 CREATE TABLE `khach_hang` (
@@ -129,19 +129,18 @@ CREATE TABLE `khach_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `khach_hang`
+-- Đang đổ dữ liệu cho bảng `khach_hang`
 --
 
 INSERT INTO `khach_hang` (`ma_kh`, `ten_dang_nhap`, `ho_ten`, `mat_khau`, `email`, `sdt`, `dia_chi`, `trang_thai`) VALUES
-(1, 'john_doe', 'John Doe', 'password123', 'john.doe@example.com', 1234567890, '123 Main Street, City, Country', b'0'),
-(2, 'jane_smith', 'Jane Smith', 'p@ssw0rd', 'jane.smith@example.com', 987654321, '456 Elm Street, City, Country', b'0'),
-(3, 'alex_williams', 'Alex Williams', 'securepass', 'alex.williams@example.com', 2147483647, '789 Oak Street, City, Country', b'0'),
-(4, 'quanghieu', 'Nguyễn Quang Hiếu', '123', 'h@gmail.com', 12345678, 'Quận 12', b'0');
+(4, 'hieu', 'Nguyễn Quang Hiếu', '123', 'h@gmail.com', 12345678, 'Quận 12', b'0'),
+(5, 'manh', 'tran manh', '123', 'manh@gmail.com', 931439171, '460 nơ trang long phường 13 quận bình thạnh', b'0'),
+(7, 'bebon', 'Thùy Trang', '0606', 'bon@gmail.com', 123456789, '460 nơ trang long phường 13 quận bình thạnh', b'0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loai_hang`
+-- Cấu trúc bảng cho bảng `loai_hang`
 --
 
 CREATE TABLE `loai_hang` (
@@ -150,7 +149,7 @@ CREATE TABLE `loai_hang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `loai_hang`
+-- Đang đổ dữ liệu cho bảng `loai_hang`
 --
 
 INSERT INTO `loai_hang` (`ma_loai`, `ten_loai`) VALUES
@@ -164,7 +163,7 @@ INSERT INTO `loai_hang` (`ma_loai`, `ten_loai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manager`
+-- Cấu trúc bảng cho bảng `manager`
 --
 
 CREATE TABLE `manager` (
@@ -178,11 +177,18 @@ CREATE TABLE `manager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Đang đổ dữ liệu cho bảng `manager`
+--
+
+INSERT INTO `manager` (`ManagerID`, `password`, `Manager_Full_Name`, `Manager_Phone`, `Manager_email`, `Address`, `status`) VALUES
+(1, '123', 'Tran Manh', '0931439171', 'phucmanhtran08@gmail.com', NULL, b'1');
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `binh_luan`
+-- Chỉ mục cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
   ADD PRIMARY KEY (`ma_kh`,`ma_hh`),
@@ -190,103 +196,103 @@ ALTER TABLE `binh_luan`
   ADD KEY `ma_kh` (`ma_kh`);
 
 --
--- Indexes for table `hang_hoa`
+-- Chỉ mục cho bảng `hang_hoa`
 --
 ALTER TABLE `hang_hoa`
   ADD PRIMARY KEY (`ma_hh`),
   ADD KEY `hanghoa_loaihang` (`ma_loai`);
 
 --
--- Indexes for table `hoa_don`
+-- Chỉ mục cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
   ADD PRIMARY KEY (`ma_hd`),
   ADD KEY `hoadon_khachhang` (`ma_kh`);
 
 --
--- Indexes for table `hoa_don_chi_tiet`
+-- Chỉ mục cho bảng `hoa_don_chi_tiet`
 --
 ALTER TABLE `hoa_don_chi_tiet`
   ADD PRIMARY KEY (`ma_hd`,`ma_hh`,`so_luong`),
   ADD KEY `hdchitiet_hanghoa` (`ma_hh`);
 
 --
--- Indexes for table `khach_hang`
+-- Chỉ mục cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
   ADD PRIMARY KEY (`ma_kh`);
 
 --
--- Indexes for table `loai_hang`
+-- Chỉ mục cho bảng `loai_hang`
 --
 ALTER TABLE `loai_hang`
   ADD PRIMARY KEY (`ma_loai`);
 
 --
--- Indexes for table `manager`
+-- Chỉ mục cho bảng `manager`
 --
 ALTER TABLE `manager`
   ADD PRIMARY KEY (`ManagerID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `hang_hoa`
+-- AUTO_INCREMENT cho bảng `hang_hoa`
 --
 ALTER TABLE `hang_hoa`
-  MODIFY `ma_hh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `ma_hh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT for table `hoa_don`
+-- AUTO_INCREMENT cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
   MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `khach_hang`
+-- AUTO_INCREMENT cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  MODIFY `ma_kh` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ma_kh` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `loai_hang`
+-- AUTO_INCREMENT cho bảng `loai_hang`
 --
 ALTER TABLE `loai_hang`
-  MODIFY `ma_loai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ma_loai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `manager`
+-- AUTO_INCREMENT cho bảng `manager`
 --
 ALTER TABLE `manager`
   MODIFY `ManagerID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `binh_luan`
+-- Các ràng buộc cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
   ADD CONSTRAINT `binh_luan_ibfk_1` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
   ADD CONSTRAINT `khachhang_binhluan` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`);
 
 --
--- Constraints for table `hang_hoa`
+-- Các ràng buộc cho bảng `hang_hoa`
 --
 ALTER TABLE `hang_hoa`
   ADD CONSTRAINT `hanghoa_loaihang` FOREIGN KEY (`ma_loai`) REFERENCES `loai_hang` (`ma_loai`);
 
 --
--- Constraints for table `hoa_don`
+-- Các ràng buộc cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
   ADD CONSTRAINT `hoadon_khachhang` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`);
 
 --
--- Constraints for table `hoa_don_chi_tiet`
+-- Các ràng buộc cho bảng `hoa_don_chi_tiet`
 --
 ALTER TABLE `hoa_don_chi_tiet`
   ADD CONSTRAINT `hdchitiet_hanghoa` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
