@@ -10,7 +10,7 @@ http://creativecommons.org/licenses/by/3.0/
 ------------------------------------------------*/
 body {
     font-family: 'Open Sans', sans-serif;
-    background: #3E3E3E;
+    background: #CC8C25;
 }
 
  #wrapper {
@@ -67,7 +67,7 @@ p {
 .panel{
 border-radius:0px;
 }
-.navbar-side .nav > li > a > i{color: #8C8C8C;padding: 8px;width: 30px;text-align: center;}
+.navbar-side .nav > li > a > i{color: #f5f5f5;padding: 8px;width: 30px;text-align: center;}
 .top-navbar{
 position: fixed;
   width: 100%;
@@ -441,9 +441,9 @@ max-width:170px;
 .top-navbar{
 margin:0px;
 }
-.top-navbar .navbar-brand {color: #fff;width: 260px;text-align: left;height: 60px;font-size: 24px;font-weight: 700;/* text-transform: uppercase; */line-height: 30px;background: #F36A5A;}
+.top-navbar .navbar-brand {color: #fff;width: 260px;text-align: left;height: 60px;font-size: 24px;font-weight: 700;/* text-transform: uppercase; */line-height: 30px;background: #CC8C25 !important;}
 .navbar-brand b{
-color: #4BD28C;
+color:#CC8C25;
 }
 .top-navbar .nav > li {
 position: relative;
@@ -525,7 +525,7 @@ padding-top: 4px;
 	padding:0;
 }
 .sidebar-collapse .nav > li > a {
-	color: #B8B8B8;
+	color: #fff;
 	background:transparent;
 	text-shadow:none;
 	font-size: 14px;
@@ -533,20 +533,20 @@ padding-top: 4px;
 .sidebar-collapse > .nav > li > a {
 	padding: 12px 10px;
 }
-.sidebar-collapse > .nav > li {
-	border-bottom: 1px solid rgba(107, 108, 109, 0.19);
-}
 ul.nav.nav-second-level.collapse.in {background: #131212;}
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
-	 outline:0;
-	 background: #575757;
-	 color: #F36A5A;
+	 
+outline:0;
+	 
+background: #575757;
+	 
+color: #F36A5A;
 }
  
 .navbar-side {
 	border:none;
-	background: #3E3E3E;
+	background: #CC8C25;
 }
 .top-navbar {
 	background: #FFFFFF;
@@ -555,7 +555,7 @@ ul.nav.nav-second-level.collapse.in {background: #131212;}
 .top-navbar .nav > li > a > i {
 margin-right: 2px;
 }
-.top-navbar .navbar-brand:hover {color: #FFFFFF;background-color: #F36A5A;}
+.top-navbar .navbar-brand:hover {color: black;background-color: #FFFFFF;border-radius:solid 1px black ; }
 .dropdown-user li {
 margin: 8px 0;
 }

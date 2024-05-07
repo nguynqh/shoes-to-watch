@@ -33,7 +33,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/png" href="../../../css/admin/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
 
     <!-- Chart 3D -->
     <script type="text/javascript" src="../../../js/loader.js"></script>
@@ -97,8 +97,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../../../bigshoes/trang-chinh/" style="background:#00CC99;">
-                    <strong style="margin-left: 40px;">BIG SHOES</strong></a>
+                <a class="navbar-brand" href="../../index.php" style="background:#CC8C25;">
+                    <strong style="margin-left: 40px;">MVH WATCH</strong></a>
             </div>
 
             <!-- Nav bar-->
