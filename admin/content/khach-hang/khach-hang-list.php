@@ -131,7 +131,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     $items = khach_hang_select_all();
                     ?>
                     <!-- /. CONTENT  -->
-                    <table class="table table-hover">
+                    <table class="table table-hover" 
+                    style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
                         <thead>
                             <tr>
                                 <th>NÃ KHÁCH HÀNG</th>

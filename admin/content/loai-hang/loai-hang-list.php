@@ -33,7 +33,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/png" href="../../../css/admin/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
 </head>
 
 <body>
@@ -119,7 +119,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div class="header">
-                <div class="page-header">
+                <div class="page-header" >
                     <h1>QUẢN LÝ LOẠI HÀNG</h1>
                     <p>Dưới đây là danh sách các loại hàng đã được thêm vào:</p>
 
@@ -130,7 +130,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     $items = loai_hang_select_all();
                     ?>
                     <!-- /. CONTENT  -->
-                    <table class="table table-hover">
+                    <table class="table table-hover" 
+                    style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
                         <thead>
                             <tr>
                                 <th>MÃ LOẠI</th>

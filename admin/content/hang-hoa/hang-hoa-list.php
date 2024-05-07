@@ -154,7 +154,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     $row = mysqli_fetch_assoc($result);
                     $total_records = $row['total'];
                     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $limit = 4;
+                    $limit = 3;
                     $total_page = ceil($total_records / $limit);
                     if ($current_page > $total_page) {
                         $current_page = $total_page;
