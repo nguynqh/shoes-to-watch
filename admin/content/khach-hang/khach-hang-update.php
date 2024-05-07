@@ -168,9 +168,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Vai trò:</label>
-                            <input type="text" class="form-control" placeholder="Khách hàng ..." readonly>
+                            <label for="">Tình trạng</label>
+                            <input type="text" class="form-control" name="trang_thai" value="<?= $trang_thai == 0 ? 'Hoạt động tốt' : 'Bị khóa' ?>" readonly>
                         </div>
+
 
                         <button type="submit" name="btn_update" class="btn btn-danger">Cập nhật</button>
                         <a href="./khach-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>

@@ -41,3 +41,11 @@
         $sql = "UPDATE khach_hang SET mat_khau=? WHERE ma_kh=?";
         pdo_execute($sql, $mat_khau_moi, $ma_kh);
     }
+    function khoa_mo_khach_hang($ma_kh, $trang_thai){
+        global $conn;
+    
+        // Thực hiện cập nhật trạng thái khóa/mở trong cơ sở dữ liệu
+        $new_trang_thai = ($trang_thai == 0) ? 1 : 0;
+        $sql_update = "UPDATE manager SET Trang_Thai = $new_trang_thai WHERE Ma_Khach_Hang = $ma_kh";
+        $conn->query($sql_update);
+    }

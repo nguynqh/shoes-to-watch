@@ -140,7 +140,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <th>EMAIL</th>
                                 <th>SĐT</th>
                                 <th>ĐỊA CHỈ</th>
-                                <th>VAI TRÒ</th>
+                                <th>TRẠNG THÁI</th>
                                 <th>HÀNH ĐỘNG</th>
                             </tr>
                         </thead>
@@ -155,15 +155,24 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                     <td><?= $email ?></td>
                                     <td><?= $sdt ?></td>
                                     <td><?= $dia_chi ?></td>
-                                    <td><?php if ($trang_thai == 0) {
-                                            echo "Khách hàng";
-                                        } else {
-                                            echo "Admin";
-                                        } ?></td>
+                                    <td><?php echo $trang_thai == 0 ? "Hoạt động tốt" : "Bị chặn"; ?></td>
                                     <td>
-                                        <a href="khach-hang-update.php?ma_kh=<?= $ma_kh ?>"><button class="btn btn-primary">Sửa</button></a>
-                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="khach-hang-delete.php?ma_kh=<?= $ma_kh ?>"><button class="btn btn-danger">Xóa</button></a>
-                                    </td>
+                                    <a href="khach-hang-update.php?ma_kh=<?= $ma_kh ?>">
+                                        <button class="btn btn-primary">Sửa</button>
+                                    </a>
+                                    <form method="post" action="khach-hang-khoa-mo.php">
+                                        <input type="hidden" name="ma_kh" value="<?= $ma_kh ?>">
+                                        <input type="hidden" name="trang_thai" value="<?= $trang_thai ?>">
+                                        <button type="submit" class="btn <?php echo $trang_thai == 0 ? 'btn-warning' : 'btn-success'; ?>">
+                                            <?php echo $trang_thai == 0 ? 'Khóa' : 'Mở'; ?>
+                                        </button>
+                                    </form>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="khach-hang-delete.php?ma_kh=<?= $ma_kh ?>">
+                                        <button class="btn btn-danger">Xóa</button>
+                                    </a>
+                                </td>
+
+
                                 </tr>
                             <?php } ?>
                         </tbody>
