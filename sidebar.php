@@ -38,7 +38,7 @@
                 <!-- giam gia -->
                 <div class="giam-gia container">
                     <label class="form-label">Mức giảm giá: <span id="discount"></span></label>
-                    <!-- <input class="form-check-input" type="radio" name="giam-gia" value="" checked hidden> -->
+                    <input class="form-check-input" type="radio" name="giam-gia" value="" checked hidden>
                     <?php
                         $giam_gias = muc_giam_gia_select_all();
                         foreach ($giam_gias as $giam_gia) {
@@ -67,7 +67,7 @@
                 <?php foreach ($items as $item) {
                     extract($item);
                 ?>
-                    <a href="sp-cung-loai.php?ma_loai=<?= $ma_loai ?>">
+                    <a href="danh-sach-sp.php?danh-muc=<?= $ma_loai ?>">
                         <li class="list-group-item"><?= $ten_loai ?></li>
                     </a>
                 <?php } ?>
@@ -139,14 +139,12 @@
         } else {
             advancedSearch.style.display = 'none';
             // reset danh muc
-            danhMuc.value = null;
+            danhMuc.querySelector("option[value='']").selected = true;
             // reset slider
             slider.value = <?= $max_value?>;
             output.innerHTML = <?= $max_value?>;
             // reset radio
-            radios.forEach(function(radio) {
-                radio.checked = false;
-            });
+            radios[0].checked = true;
         }
     });
 </script>

@@ -114,6 +114,7 @@
             <!-- danh sach san pham -->
             <div class="col-md-9">
                 <div class="row">
+
                     <?php
                     // $result = "";
                     // $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
@@ -148,36 +149,70 @@
                     
                     // lấy dữ liệu đẩy đủ
                     $sql = "SELECT * FROM hang_hoa";
+                    // echo $sql;
+                    if (isset($_GET['keywords'])) {
 
-                    //lọc theo tác biến get
-                    if ( isset($_GET['keywords']) || isset($_GET['danh-muc']) || isset($_GET['muc-gia']) || isset($_GET['giam-gia']) ) {
-                        $sql .= " WHERE ";
-                        if (isset($_GET['keywords'])) {
-                            $sql .= " (CONCAT(ten_hh,don_gia) LIKE '%" . $_GET['keyword'] . "%') ";
-                        }
-                        if (isset($_GET['danh-muc'])) {
-                            if (isset($_GET['keyword'])) {
-                                $sql .= " AND ";
+                        // boolean check
+                        $keyWordCheck = $_GET['keywords'] != "";
+                        $danhMucCheck = $_GET['danh-muc'] != "";
+                        require_once('../admin/dao/loai-hang.php');
+                        $temp = don_gia_max();
+                        $mucGiaCheck = $_GET['muc-gia'] != $temp['don_gia'];
+                        $giamGiaCheck = $_GET['giam-gia'] != "";
+
+                        //lọc theo tác biến get
+                        if ( $keyWordCheck || $danhMucCheck || $mucGiaCheck || $giamGiaCheck) {
+                            $sql .= " WHERE ";
+                            if ($danhMucCheck) {
+                                // if ($keyWordCheck) {
+                                //     $sql .= " AND ";
+                                // }
+                                $sql .= " ma_loai = " . $_GET['danh-muc'];
                             }
-                            $sql .= " ma_loai = " . $_GET['danh-muc'];
-                        }
-                        if ( isset($_GET['muc-gia']) ) {
-                            if (isset($_GET['keyword']) || isset($_GET['danh-muc'])) {
-                                $sql .= " AND ";
+                            if ($keyWordCheck) {
+                                if ($danhMucCheck) {
+                                    $sql .= " AND ";
+                                }
+                                $sql .= " (CONCAT(ten_hh,don_gia) LIKE '%" . $_GET['keywords'] . "%') ";
                             }
-                            $sql .= " don_gia <= " . $_GET['muc-gia'];
-                        }
-                        if (isset($_GET['giam-gia'])) {
-                            if (isset($_GET['keyword']) || isset($_GET['danh-muc']) || isset($_GET['muc-gia'])) {
-                                $sql .= " AND ";
+                            if ($mucGiaCheck) {
+                                if ($keyWordCheck || $danhMucCheck) {
+                                    $sql .= " AND ";
+                                }
+                                $sql .= " don_gia <= " . $_GET['muc-gia'];
                             }
-                            $sql .= " giam_gia = " . $_GET['giam-gia'];
+                            if ($giamGiaCheck) {
+                                if ($keyWordCheck || $danhMucCheck || $mucGiaCheck ) {
+                                    $sql .= " AND ";
+                                }
+                                $sql .= " giam_gia = " . $_GET['giam-gia'];
+                            }
                         }
+                        echo $sql;
+                        echo "<div style='width: 100%; margin-top: 43px;'><h5 style='margin-left: 10px;'>Kết quả tìm kiếm</h5></div>";
+                    } else if(isset($_GET['danh-muc']) && !isset($_GET['keywords'])) {
+                        echo "<div style='width: 100%; margin-top: 43px;'><h5 style='margin-left: 10px;'>Danh mục</h5></div>";
+                        $sql .= " WHERE ma_loai = " . $_GET['danh-muc'];
                     }
-                    // $sql .= " LIMIT $start, $limit";
-                    echo $sql;
+
+                    /////////// repair for pagination
+                    ///limit
+                    $limit = 9;
+                    ///page
+                    if (isset($_GET['page'])) {
+                        $current_page = $_GET['page'];
+                    } else {
+                        $current_page = 1;
+                    }
+                    ///item
+                    $start = ($current_page - 1) * $limit;
+                    ///total item
+                    $total = mysqli_num_rows(mysqli_query($conn, $sql));
+                    $total_records = $total;
+                    $total_page = ceil($total_records / $limit);
+                    ///done sql
+                    $sql .= " LIMIT $start, $limit";
                     $result = mysqli_query($conn, $sql);
-                    
 
                     // bắt đầu show sản phẩm
                     while ($item = $result->fetch_assoc()) {
@@ -198,8 +233,8 @@
                                     <?= $item['ten_hh'] ?>
                                 </div>
                                 <div class="price">
-                                    <?= number_format($don_gia - $don_gia * ($giam_gia / 100)) ?> VNĐ <span style="color:grey;font-size:14px;margin-left:40px;">
-                                        <strike><?= number_format($don_gia) ?> VNĐ</strike></span>
+                                    <?= number_format($item['don_gia'] - $item['don_gia'] * ($giam_gia / 100)) ?> VNĐ <span style="color:grey;font-size:14px;margin-left:40px;">
+                                        <strike><?= number_format($item['don_gia']) ?> VNĐ</strike></span>
                                 </div>
                             </div>
                         </div>
@@ -213,24 +248,21 @@
                 <br>
                 <br>
 
-                <?php 
-                    // echo $html; 
-                ?>
+
                 <div class="" style="margin-left:350px;text-align: center;float:left">
                     <ul class="pagination">
                         <?php
-                        // for ($i = 1; $i <= $total_page; $i++) {
-                        //     if ($i == $current_page) {
-                        //         echo '<li class="page-item"><a class="page-link">' . $i . '</a></li> ';
-                        //     } else {
-                        //         if (isset($_GET['keyword'])) {
-                        //             echo '<li class="page-item">
-                        //                 <a class="page-link" href="danh-sach-sp.php?keyword=' . $_GET['keyword'] . '&page=' . $i . '">' . $i . '</a></li ';
-                        //         } else {
-                        //             echo '<li class="page-item"><a class="page-link" href="danh-sach-sp.php?page=' . $i . '">' . $i . '</a></li>';
-                        //         }
-                        //     }
-                        // }
+                        for ($i = 1; $i <= $total_page; $i++) {
+                            if ($i == $current_page) {
+                                echo '<li class="page-item"><a class="page-link">' . $i . '</a></li> ';
+                            } else {
+                                if (isset($_GET['keywords'])) {
+                                    echo '<li class="page-item"><a class="page-link" href="danh-sach-sp.php?page='.$i. '&keywords='.$_GET['keywords']. '&danh-muc='.$_GET['danh-muc']. '&muc-gia='.$_GET['muc-gia']. '&giam-gia='.$_GET['giam-gia'].'">' . $i . '</a></li ';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="danh-sach-sp.php?page=' . $i . '">' . $i . '</a></li>';
+                                }
+                            }
+                        }
                         ?>
                         </li>
                     </ul>
