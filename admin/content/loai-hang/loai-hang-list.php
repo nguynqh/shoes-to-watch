@@ -80,7 +80,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <ul class="dropdown-menu dropdown-user">
             
             <li>
-                <form id="logoutForm" action="../../../tai-khoan/dang-xuat.php" method="post">
+                <form id="logoutForm" action="../../../tai-khoan/dang-xuat-admin.php" method="post">
                     <input type="hidden" name="logout" value="true">
                     <button type="submit" class="btn-link"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</button>
                 </form>

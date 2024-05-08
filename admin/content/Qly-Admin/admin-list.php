@@ -32,7 +32,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../css/custom.css">
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
@@ -93,7 +92,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <!-- /.dropdown -->
 </ul>
 
-
         </nav>
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -112,6 +110,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <li>
                         <a href="../khach-hang/khach-hang-list.php"><i class="fa fa-user"></i>KHÁCH HÀNG</a>
                     </li>
+
+                    <li>
+                        <a href="../Qly-Admin/admin-list.php"><i class="fa fa-user"></i>QUẢN TRỊ VIÊN</a>
+                    </li>
                     <li>
                         <a href="../hoa-don/hoa-don-list.php"><i class="fa fa-edit"></i>ĐƠN HÀNG</a>
                     </li>
@@ -123,106 +125,74 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <div id="page-wrapper">
             <div class="header">
                 <div class="page-header">
-                    <h1>QUẢN LÝ HÀNG HÓA</h1>
-                    <p>Điền đầy đủ thông tin để tiến hành thêm hàng hóa mới :</p>
+                    <h1>QUẢN LÝ DANH SÁCH KHÁCH HÀNG</h1>
+                    <p>Dưới đây là danh sách các khách hàng đã đăng ký: </p>
 
-                    <!-- /. CODE XỬ LÝ PHP  -->
+                    <!-- /. XỬ LÝ CODE PHP  -->
                     <?php
-                    require_once('../../dao/hang-hoa.php');
-                    require_once('../../dao/loai-hang.php');
+                    require_once('../../dao/khach-hang.php');
 
-                    extract($_REQUEST);
-                    if (array_key_exists("btn_insert", $_REQUEST)) {
-                        $up_hinh = save_file("hinh", "../../../hinh-anh/san-pham/");
-                        $hinh = strlen($up_hinh) > 0 ? $up_hinh : 'product.png';
-
-                        // $up_hinh1 = save_file("hinh1", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh1 = strlen($up_hinh1) > 0 ? $up_hinh1 : 'product.png';
-
-                        // $up_hinh2 = save_file("hinh2", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh2 = strlen($up_hinh2) > 0 ? $up_hinh2 : 'product.png';
-
-                        // $up_hinh3 = save_file("hinh3", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh3 = strlen($up_hinh3) > 0 ? $up_hinh3 : 'product.png';
-
-                        hang_hoa_insert($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
-                        unset($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
-                        $message = "Thêm hàng hóa thành công !";
-                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'hang-hoa-list.php'</script>";
-                    }
+                    $items = khach_hang_select_all();
                     ?>
                     <!-- /. CONTENT  -->
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="">Tên hàng hóa:</label>
-                            <input type="text" class="form-control" id="ten_hh" name="ten_hh" placeholder="Nhập tên hàng hóa ...">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Số Lượng:</label>
-                            <input type="text" class="form-control" id="so_luong" name="so_luong" placeholder="Nhập số lượng hàng hóa ...">
-                        </div>
+                    <table class="table table-hover" 
+                    style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
+                        <thead>
+                            <tr>
+                                <th>NÃ KHÁCH HÀNG</th>
+                                <th>TÊN ĐĂNG NHẬP</th>
+                                <th>HỌ VÀ TÊN</th>
+                                <th>EMAIL</th>
+                                <th>SĐT</th>
+                                <th>ĐỊA CHỈ</th>
+                                <th>TRẠNG THÁI</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($items as $item) {
+                                extract($item);
+                            ?>
+                                <tr>
+                                    <td><?= $ma_kh ?></td>
+                                    <td><?= $ten_dang_nhap ?></td>
+                                    <td><?= $ho_ten ?></td>
+                                    <td><?= $email ?></td>
+                                    <td><?= $sdt ?></td>
+                                    <td><?= $dia_chi ?></td>
+                                    <td><?php echo $trang_thai == 0 ? "Hoạt động tốt" : "Bị chặn"; ?></td>
+                                    <td>
+                                    <a href="khach-hang-update.php?ma_kh=<?= $ma_kh ?>">
+                                        <button class="btn btn-primary">Sửa</button>
+                                    </a>
+                                    <form method="post" action="khach-hang-khoa-mo.php">
+                                        <input type="hidden" name="ma_kh" value="<?= $ma_kh ?>">
+                                        <input type="hidden" name="trang_thai" value="<?= $trang_thai ?>">
+                                        <button type="submit" class="btn <?php echo $trang_thai == 0 ? 'btn-warning' : 'btn-success'; ?>">
+                                            <?php echo $trang_thai == 0 ? 'Khóa' : 'Mở'; ?>
+                                        </button>
+                                    </form>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="khach-hang-delete.php?ma_kh=<?= $ma_kh ?>">
+                                        <button class="btn btn-danger">Xóa</button>
+                                    </a>
+                                </td>
 
-                        <div class="form-group">
-                            <label for="">Đơn giá</label>
-                            <input type="number" class="form-control" id="don_gia" name="don_gia" placeholder="Nhập đơn giá ...">
-                        </div>
 
-                        <div class="form-group">
-                            <label for="">Giảm giá (%)</label>
-                            <input type="number" class="form-control" id="giam_gia" name="giam_gia" min="0" max="100" placeholder="Nhập giảm giá">
-                        </div>
-
-                        <div class="form-group">
-    <label for="">Hình ảnh</label>
-    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" class="form-control-file border" name="hinh">
-    <div class="product-pic-container">
-        <img src="../../../hinh-anh/trang-web/images.png" id="product-pic">
-    </div>
-</div>
-
-
-                        <!-- <div class="form-group">
-                            <label for="">Hình ảnh 1</label>
-                            <input type="file" class="form-control-file border" name="hinh1">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Hình ảnh 2</label>
-                            <input type="file" class="form-control-file border" name="hinh2">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Hình ảnh 3</label>
-                            <input type="file" class="form-control-file border" name="hinh3">
-                        </div> -->
-
-                        <div class="form-group">
-                            <label for="">Mô tả:</label>
-                            <textarea class="form-control" rows="5" id="mo_ta" name="mo_ta" placeholder="Mô tả hàng hóa ..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Mã loại?</label>
-                            <select name="ma_loai" class="form-control">
-                                <?php
-                                $loai_select_list = loai_hang_select_all();
-                                foreach ($loai_select_list as $loai) {
-                                    echo '<option value="' . $loai['ma_loai'] . '">' . $loai['ten_loai'] . '</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <button type="submit" name="btn_insert" class="btn btn-primary">Thêm mới</button>
-                        <a href="./hang-hoa-list.php"><button type="button" name="btn_insert" class="btn btn-info">Quay lại</button></a>
-                    </form>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <a href="../khach-hang/khach-hang-new.php"><button class="btn btn-danger">Thêm mới</button></a>
                 </div>
             </div>
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
     <script src="../../../css/admin/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="../../../css/admin/js/bootstrap.min.js"></script>
@@ -230,16 +200,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <script src="../../../css/admin/js/jquery.metisMenu.js"></script>
     <!-- Custom Js -->
     <script src="../../../css/admin/js/custom-scripts.js"></script>
-    <script>
-      //add img
-    let productPic = document.getElementById("product-pic");
-    let inputFile = document.getElementById("input-file");
-
-    inputFile.onchange =function(){
-      productPic.src= URL.createObjectURL(inputFile.files[0]);
-    }
-    </script>
-                    
 
 
 </body>
