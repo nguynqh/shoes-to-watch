@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2024 at 06:00 AM
+-- Generation Time: May 09, 2024 at 12:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -98,7 +98,7 @@ CREATE TABLE `hoa_don` (
 --
 
 INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VALUES
-(1, '2024-04-30', 'test hoa don 1', '1', 4);
+(3, '2024-05-09', '', '0', 4);
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VA
 CREATE TABLE `hoa_don_chi_tiet` (
   `ma_hd` int(11) NOT NULL,
   `ma_hh` int(11) NOT NULL,
-  `so_luong` int(10) NOT NULL
+  `so_luong` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -117,8 +117,10 @@ CREATE TABLE `hoa_don_chi_tiet` (
 --
 
 INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `ma_hh`, `so_luong`) VALUES
-(1, 54, 0),
-(1, 74, 12);
+(3, 13, 1),
+(3, 15, 1),
+(3, 21, 1),
+(3, 64, 1);
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ CREATE TABLE `khach_hang` (
   `email` varchar(50) NOT NULL,
   `sdt` int(12) NOT NULL,
   `dia_chi` varchar(50) NOT NULL,
-  `trang_thai` bit(1) NOT NULL DEFAULT b'0'
+  `trang_thai` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -143,8 +145,9 @@ CREATE TABLE `khach_hang` (
 
 INSERT INTO `khach_hang` (`ma_kh`, `ten_dang_nhap`, `ho_ten`, `mat_khau`, `email`, `sdt`, `dia_chi`, `trang_thai`) VALUES
 (4, 'hieu', 'Nguyễn Quang Hiếu', '123', 'h@gmail.com', 12345678, 'Quận 12', b'1'),
-(5, 'manh', 'tran manh', '123', 'manh@gmail.com', 931439171, '460 nơ trang long phường 13 quận bình thạnh', b'0'),
-(7, 'bebon', 'Thùy Trang', '0606', 'bon@gmail.com', 123456789, '460 nơ trang long phường 13 quận bình thạnh', b'0');
+(5, 'manh', 'tran manh', '123', 'manh@gmail.com', 931439171, '460 nơ trang long phường 13 quận bình thạnh', b'1'),
+(7, 'bebon', 'Thùy Trang', '0606', 'bon@gmail.com', 123456789, '460 nơ trang long phường 13 quận bình thạnh', b'1'),
+(8, 'hieu1', 'Nguyễn Quang Hiếu', '456', 'h@gmail.com', 12345678, 'Quận 12', b'1');
 
 -- --------------------------------------------------------
 
@@ -257,13 +260,13 @@ ALTER TABLE `hang_hoa`
 -- AUTO_INCREMENT for table `hoa_don`
 --
 ALTER TABLE `hoa_don`
-  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `khach_hang`
 --
 ALTER TABLE `khach_hang`
-  MODIFY `ma_kh` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ma_kh` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `loai_hang`

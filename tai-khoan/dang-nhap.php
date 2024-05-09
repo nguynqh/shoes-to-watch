@@ -46,6 +46,7 @@
 		if ($user && $user['trang_thai'] == 1) {
 			if ($user['mat_khau'] == $mat_khau) {
 				$_SESSION['user'] = $user;
+				$_SESSION['cart'] = array();
 				header('location: ../index.php');
 			} else {
 				echo '<script language="javascript">';

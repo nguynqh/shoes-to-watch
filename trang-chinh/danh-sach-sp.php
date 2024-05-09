@@ -220,7 +220,7 @@
                     ?>
 
                         <div class="sanpham">
-                            <a href="../trang-chinh/chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
+                            <a href="chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
                                 <span class="chi-tiet" style="margin-left: 10px">CHI TIẾT</span></a>
                             <a href="chi-tiet-sp.php?ma_hh=<?= $item['ma_hh'] ?>">
                                 <img style="height: 250px;" src="../hinh-anh/san-pham/<?= $item['hinh'] ?>" alt=""></a>

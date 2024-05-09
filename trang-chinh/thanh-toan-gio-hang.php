@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/products.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/products.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../bigshoes/css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/chi-tiet-sp/plugin/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+    <link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
     <title>Thanh toán</title>
 </head>
 
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../../bigshoes/css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
     <?php
     session_start();
     ?>
@@ -39,11 +39,11 @@
                     <?php
                     if (!isset($_SESSION['user'])) {
                     ?>
-                        <a href="../../bigshoes/tai-khoan/dang-nhap.php">
+                        <a href="../tai-khoan/dang-nhap.php">
                             <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
                         </a>
                     <?php } else { ?>
-                        <a href="../../bigshoes/tai-khoan/thong-tin-tk.php">
+                        <a href="../tai-khoan/thong-tin-tk.php">
                             <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
                         </a>
                     <?php } ?>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
                 <div class="logo">
-                    <a href="index.php"><img src="../css/danh-sach-sp/img/TBT.png" alt="anh"></a>
+                    <a href="index.php"><img src="../hinh-anh/trang-web/iconweb.png" alt="anh"></a>
                 </div>
             </div>
             <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
@@ -120,8 +120,8 @@
     </div>
 
     <?php
-    require_once('../../bigshoes/admin/dao/khach-hang.php');
-    require_once('../../bigshoes/admin/dao/hang-hoa.php');
+    require_once('../admin/dao/khach-hang.php');
+    require_once('../admin/dao/hang-hoa.php');
 
     extract($_REQUEST);
 
@@ -205,16 +205,16 @@
                         </tr>
                         <tr>
                             <td><b>Giao hàng</b></td>
-                            <td style="text-align:right;">Giao hàng miễn phí <br>
-                                Ứơc tính cho Việt Nam <br>
-                                Đổi địa chỉ</td>
+                            <td style="text-align:right;">
+                                Giao hàng miễn phí </br>
+                            </td>
                         </tr>
                         <tr>
                             <td><b>TỔNG</b></td>
                             <td style="text-align:right;"><b><?= number_format($total) ?> VNĐ</b></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><i>Quý khách vui lòng kiểm tra lại thông tin giao hàng và thông tin đơn hàng để tiến hành đặt hàng. Quý khách có thể tra cứu tình trạng đơn hàng tại BIGSHOES.com. Chúc quý khách ngày mới tốt lành !</i></td>
+                            <td colspan="2"><i>Quý khách vui lòng kiểm tra lại thông tin giao hàng và thông tin đơn hàng để tiến hành đặt hàng. Quý khách có thể tra cứu tình trạng đơn hàng tại MVH Watch. Chúc quý khách ngày mới tốt lành !</i></td>
                         </tr>
                         <tr>
                             <td><button type="submit" name="dathang" class="btn btn-danger"><b>ĐẶT HÀNG</b></button></td>
@@ -231,30 +231,31 @@
 
     <!-- KHI KHÁCH HÀNG TIẾN HÀNH ĐẶT HÀNG -->
     <?php
-    require_once('../../bigshoes/admin/dao/hoa-don.php');
+    require_once('../admin/dao/hoa-don.php');
     extract($_REQUEST);
     if (array_key_exists('dathang', $_REQUEST)) {
-
         try {
             $conn = pdo_get_connection();
 
-            $ngaymua = date("d-m-Y");
+            $ngaymua = date("Y-m-d");
 
             $thanh_toan = 'Tiền mặt';
 
-            $sql = "INSERT INTO hoa_don(ngay_mua,ghi_chu,ma_kh,thanh_toan) 
-                            VALUES ('" . $ngaymua . "','" . $ghi_chu . "','" . $ma_kh . "','" . $thanh_toan . "')";
+            $sql = "INSERT INTO hoa_don(ghi_chu,ma_kh) 
+                            VALUES ('" . $ghi_chu . "','" . $ma_kh . "')";
 
             $conn->exec($sql);
+            echo $sql;
 
             $ma_hd = $conn->lastInsertId();
 
             $items = $_SESSION['cart'];
             foreach ($items as $item) {
                 extract($item);
-                $sql = "INSERT INTO hoa_don_chi_tiet(ma_hd,ma_hh,so_luong,don_gia) VALUES ('" . $ma_hd . "','" . $ma_hh . "','" . $sl . "','" . $price . "')";
+                $sql = "INSERT INTO hoa_don_chi_tiet(ma_hd,ma_hh) VALUES ('" . $ma_hd . "','" . $ma_hh . "')";
                 $conn->exec($sql);
             }
+            unset($_SESSION['cart']);
             echo '<script language="javascript">';
             echo 'alert("Bạn đã đặt đơn hàng thành công !")';
             echo '</script>';
@@ -264,114 +265,7 @@
     }
     ?>
 
-    <div class="container-fluid now2" style="margin-top: 70px;">
-        <div class="row">
-            <div class="container" style="margin-top: 50px;">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <img src="../css/trang-chu/img/TBT.png" alt="" style="width:60px;">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <h5>Shop</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Hỗ trợ</h5>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>Bộ sưu tập</h5>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-top: 0px;">
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>
-                                        Nhiệm vụ của chúng tôi là mang đến những sản phẩm chất lượng với giá cả tốt nhất cho khách hàng.
-
-                                        Được hỗ trợ khách hàng là niềm vinh dự của chúng tôi . <br><br>
-                                        Xin cám ơn !
-                                    </p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-facebook "></i>
-                                    <i class="fa fa-firefox"></i>
-                                    <i class="fa fa-pinterest-p"></i>
-                                    <i class="fa fa-youtube"></i>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-
-                            <ul>
-
-                                <li>
-                                    <p>Trang chủ</p>
-                                </li>
-                                <li>
-                                    <p>Cửa hàng</p>
-                                </li>
-                                <li>
-                                    <p>Giới thiệu</p>
-                                </li>
-                                <li>
-                                    <p>Liên hệ</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Ưu đãi</p>
-                                </li>
-                                <li>
-                                    <p>Giao nhận</p>
-                                </li>
-                                <li>
-                                    <p>Đổi trả</p>
-                                </li>
-                                <li>
-                                    <p>Bảo mật</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="fo">
-                            <ul>
-                                <li>
-                                    <p>Nike</p>
-                                </li>
-                                <li>
-                                    <p>Adidas</p>
-                                </li>
-                                <li>
-                                    <p>Pegasus</p>
-                                </li>
-                                <li>
-                                    <p>Jordan</p>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <?php require('../footer.php');?>
 
 
     <script type="text/javascript">

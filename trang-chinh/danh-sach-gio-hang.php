@@ -122,7 +122,7 @@
                             <th>SẢN PHẨM</th>
                             <th>HÌNH ẢNH</th>
                             <th>GIÁ</th>
-                            <th>SL</th>
+                            <!-- <th>SL</th> -->
                             <th>TỔNG</th>
                             <th></th>
                         </tr>
@@ -143,16 +143,18 @@
                                         <td><?= $name ?></td>
                                         <td><img src="../hinh-anh/san-pham/<?= $hinh ?>" alt="" style="width:80px;"></td>
                                         <td><?= number_format($price - ($price * ($giam_gia / 100))) ?> VNĐ</td>
-                                        <td><input class="form-control" type="number" name='sl[<?= $ma_hh ?>]' value="<?= $sl ?>" min=1 style="width:50px;"></td>
+                                        <!-- <td><input class="form-control" type="number" name='sl[<?= $ma_hh ?>]' value="<?= $sl ?>" min=1 style="width:50px;"></td> -->
                                         <td><?= number_format(($price - ($price * ($giam_gia / 100))) * $sl);
                                             $total += (($price - ($price * ($giam_gia / 100))) * $sl);
                                             ?> VNĐ</td>
                                         <td><a onclick="return confirm('Bạn muốn bỏ sản phẩm này khỏi giỏ hàng ?')" style="color:black;" href="xoa-gio-hang.php?ma_hh=<?= $ma_hh ?>"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
                                     </tr>
 
-                            <?php }
+                            <?php 
+                            // print_r($items);
+                                }
                             } else {
-                                echo '<p>Giỏ hàng của bạn chưa có sản phẩm nào !</p><strong style="font-size: 20px;"><p>Vui lòng đăng nhập để sử dụng giỏ hàng!</p></strong>';
+                                echo '<p>Giỏ hàng của bạn chưa có sản phẩm nào !</p>';
                             } ?>
 
                     </tbody>
@@ -181,7 +183,7 @@
                             <td>Giao hàng</td>
                             <td style="text-align:right;">Giao hàng miễn phí <br>
                                 Ước tính cho Việt Nam <br>
-                                Đổi địa chỉ</td>
+                            </td>
                         </tr>
                         <form method="post">
                             <tr>
@@ -190,23 +192,30 @@
                             </tr>
                         </form>
                         <tr>
-                            <td colspan="2"><a href="thanh-toan-gio-hang.php">
-                                    <button class="btn btn-danger" style="width:100%;" name="payment" value="tienmat">THANH TOÁN TIỀN MẶT</button></a></td>
+                            <td colspan="2">
+                                <?php if(!empty($_SESSION['cart'])) { ?>
+                                    <a href="thanh-toan-gio-hang.php">
+                                    <button class="btn btn-danger" style="width:100%;" name="payment" value="tienmat">THANH TOÁN TIỀN MẶT</button>
+                                    </a>
+                                <?php } else {
+                                    echo '<button class="btn btn-danger" style="width:100%;" disabled>Chưa có sản phẩm trong giỏ hàng</button>';
+                                };?>
+                            </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="thanh-toan-momo.php">
                                 <td colspan="2"><a href="thanh-toan-gio-hang-atm.php">
                                         <input type="hidden" value="<?= $total ?>" name="sumprice">
                                         <button class="btn" style="width:100%;background:#D82D8B;color:white" name="payment" value="momo">THANH TOÁN BẰNG QR CODE MOMO</button></a></td>
                             </form>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <!-- <tr>
                             <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="thanh-toan-gio-hang-atm.php">
                                 <td colspan="2"><a href="thanh-toan-gio-hang-atm.php">
                                         <input type="hidden" value="<?= $total ?>" name="sumprice">
                                         <button class="btn" style="width:100%;background:#D82D8B;color:white" name="payment" value="momo">THANH TOÁN BẰNG ATM MOMO</button></a></td>
                             </form>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
