@@ -82,6 +82,7 @@
                 </div>
 
                 <?php
+                require_once('admin/dao/loai-hang.php');
                 $items = loai_hang_select_all();
                 ?>
                 <div class="col-md-3">

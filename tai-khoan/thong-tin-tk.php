@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+	<link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
 
 
 </head>
@@ -62,7 +62,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-logo">
-						<a href="./index.php"><img src="./css/tai-khoan/images/TBT.png" width="80px" alt=""></a>
+						<a href="./index.php"><img src="../hinh-anh/trang-web/iconweb.png" width="80px" alt=""></a>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
@@ -111,7 +111,7 @@
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="../index.php">
-							Home ?
+							Trang chủ ?
 						</a> or
 						<a class="txt1" href="../tai-khoan/cap-nhat-tk.php">
 							Cập nhật tài khoản ?

@@ -90,10 +90,6 @@
 
 
 
-
-
-
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12" style="background-color: rgb(211, 211, 211);">
@@ -111,7 +107,6 @@
             </div>
         </div>
 
-<!--ákjdalksdlaksjdlk-->
         <div class="container" style="margin-top: 50px;">
             <img src="../hinh-anh/trang-web/chinh-sach-bao-hanh.png" style="width:800px;height:400px;text-align:center;margin-left:180px"><br><br>
             <div class="content">
@@ -196,7 +191,7 @@
             </div>
         </div>
         <!-- footer -->
-        <?php require('../footer.php')?>
+        <?php require_once('../footer.php')?>
 </body>
 <!-- <script>
     function myFunction()

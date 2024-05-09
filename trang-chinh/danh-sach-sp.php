@@ -188,7 +188,7 @@
                                 $sql .= " giam_gia = " . $_GET['giam-gia'];
                             }
                         }
-                        echo $sql;
+                        // echo $sql;
                         echo "<div style='width: 100%; margin-top: 43px;'><h5 style='margin-left: 10px;'>Kết quả tìm kiếm</h5></div>";
                     } else if(isset($_GET['danh-muc']) && !isset($_GET['keywords'])) {
                         echo "<div style='width: 100%; margin-top: 43px;'><h5 style='margin-left: 10px;'>Danh mục</h5></div>";
