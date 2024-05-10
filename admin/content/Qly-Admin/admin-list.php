@@ -129,7 +129,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     <!-- /. XỬ LÝ CODE PHP  -->
                     <?php
-                    require_once('../../dao/khach-hang.php');
+                    require_once('../../dao/Qly-Admin.php');
 
                     $items = khach_hang_select_all();
                     ?>
@@ -143,8 +143,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             margin-top: 15px;">
                         <thead>
                             <tr>
-                                <th>NÃ KHÁCH HÀNG</th>
-                                <th>TÊN ĐĂNG NHẬP</th>
+                                <th>MÃ QUẢN TRỊ VIÊN</th>
                                 <th>HỌ VÀ TÊN</th>
                                 <th>EMAIL</th>
                                 <th>SĐT</th>
@@ -158,8 +157,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 extract($item);
                             ?>
                                 <tr>
-                                    <td><?= $ma_kh ?></td>
-                                    <td><?= $ten_dang_nhap ?></td>
+                                    <td><?= $ManagerID ?></td>
                                     <td><?= $ho_ten ?></td>
                                     <td><?= $email ?></td>
                                     <td><?= $sdt ?></td>

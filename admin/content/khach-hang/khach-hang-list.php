@@ -143,7 +143,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             margin-top: 15px;">
                         <thead>
                             <tr>
-                                <th>NÃ KHÁCH HÀNG</th>
+                                <th>MÃ KHÁCH HÀNG</th>
                                 <th>TÊN ĐĂNG NHẬP</th>
                                 <th>HỌ VÀ TÊN</th>
                                 <th>EMAIL</th>
