@@ -123,60 +123,55 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <div id="page-wrapper">
             <div class="header">
                 <div class="page-header">
-                    <h1>QUẢN LÝ KHÁCH HÀNG</h1>
-                    <p>Điền đầy đủ thông tin để tiến hành đăng ký khách hàng mới :</p>
+                <h1>QUẢN LÝ DANH SÁCH QUẢN TRỊ VIÊN</h1>
+                    <p>Điền đầy đủ thông tin để tiến hành đăng ký quản trị viên mới: </p>
 
                     <!-- /. CODE XỬ LÝ PHP  -->
                     <?php
-                    require_once('../../dao/khach-hang.php');
+                    require_once('../../dao/Qly-admin.php');
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_insert", $_REQUEST)) {
 
-                        khach_hang_insert($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
-                        unset($ma_kh, $ho_ten_, $mat_khau, $email, $sdt, $dia_chi);
+                        khach_hang_insert($Manager_Full_Name,$password,$Manager_email,$Manager_Phone,$Address);
+                        unset($ManagerID, $Manager_Full_Name,$password,$Manager_email,$Manager_Phone,$Address);
                         $message = "Thêm tài khoản thành công !";
-                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'khach-hang-list.php'</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href = 'admin-list.php'</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="">Tên đăng nhập:</label>
-                            <input type="text" class="form-control" name="ten_dang_nhap" placeholder="Nhập tên đăng nhập ...">
-                        </div>
-
-                        <div class="form-group">
                             <label for="">Họ và tên:</label>
-                            <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ và tên ...">
+                            <input type="text" class="form-control" name="Manager_Full_Name" placeholder="Nhập họ và tên ...">
                         </div>
 
                         <div class="form-group">
                             <label for="">Mật khẩu:</label>
-                            <input type="text" class="form-control" name="mat_khau" placeholder="Nhập mật khẩu ...">
+                            <input type="text" class="form-control" name="password" placeholder="Nhập mật khẩu ...">
                         </div>
 
                         <div class="form-group">
                             <label for="">Email:</label>
-                            <input type="text" class="form-control" name="email" placeholder="Nhập email ...">
+                            <input type="text" class="form-control" name="Manager_email" placeholder="Nhập email ...">
                         </div>
 
                         <div class="form-group">
                             <label for="">Số điện thoại:</label>
-                            <input type="text" class="form-control" name="sdt" placeholder="Nhập số điện thoại ...">
+                            <input type="text" class="form-control" name="Manager_Phone" placeholder="Nhập số điện thoại ...">
                         </div>
 
                         <div class="form-group">
                             <label for="">Địa chỉ:</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ ...">
+                            <input type="text" class="form-control" name="Address" placeholder="Nhập địa chỉ ...">
                         </div>
 
                         <div class="form-group">
                             <label for="">Vai trò:</label>
-                            <input type="text" class="form-control" placeholder="Khách hàng ..." readonly>
+                            <input type="text" class="form-control" placeholder="Quản Trị Viên" readonly>
                         </div>
                         <button type="submit" name="btn_insert" class="btn btn-danger">Thêm mới</button>
-                        <a href="./khach-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
+                        <a href="./admin-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

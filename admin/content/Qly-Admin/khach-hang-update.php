@@ -129,55 +129,51 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     <!-- /. CODE XỬ LÝ PHP  -->
                     <?php
-                    require_once('../../dao/khach-hang.php');
+                    require_once('../../dao/Qly-Admin.php');
                     extract($_REQUEST);
-                    $item = khach_hang_select_by_id($ma_kh);
+                    $item = khach_hang_select_by_id($ManagerID);
                     extract($item);
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_update", $_REQUEST)) {
-                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $email, $sdt, $dia_chi);
+                        khach_hang_update($ManagerID,$Manager_Full_Name,$Manager_email,$Manager_Phone,$Address);
                         $message = "Cập nhật tài khoản thành công !";
-                        echo "<script type='text/javascript'>alert('$message'); window.location.href='khach-hang-list.php';</script>";
+                        echo "<script type='text/javascript'>alert('$message'); window.location.href='admin-list.php';</script>";
                     }
                     ?>
                     <!-- /. CONTENT  -->
                     <form action="" method="post" enctype="multipart/form-data" >
                         <div class="form-group">
-                            <label for="">Mã khách hàng:</label>
-                            <input type="text" class="form-control" name="ma_kh" placeholder="Mã khách hàng đã được khóa" value="<?= $ma_kh ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tên đăng nhập:</label>
-                            <input type="text" class="form-control" name="ten_dang_nhap" placeholder="Nhập tên đăng nhập ..." value="<?= $ten_dang_nhap ?>">
+                            <label for="">Mã quản trị viên:</label>
+                            <input type="text" class="form-control" name="ManagerID " placeholder="Mã khách hàng đã được khóa" value="<?= $ManagerID  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="">Họ và tên:</label>
-                            <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ và tên ..." value="<?= $ho_ten ?>">
+                            <input type="text" class="form-control" name="Manager_Full_Name" placeholder="Nhập họ và tên ..." value="<?= $Manager_Full_Name	 ?>">
                         </div>
                         <div class="form-group">
                             <label for="">Email:</label>
-                            <input type="text" class="form-control" name="email" placeholder="Nhập email ..." value="<?= $email ?>">
+                            <input type="text" class="form-control" name="Manager_email" placeholder="Nhập email ..." value="<?= $Manager_email ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="">Số điện thoại:</label>
-                            <input type="text" class="form-control" name="sdt" placeholder="Nhập số điện thoại ..." value="<?= $sdt ?>">
+                            <input type="text" class="form-control" name="Manager_Phone" placeholder="Nhập số điện thoại ..." value="<?= $Manager_Phone ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="">Địa chỉ:</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ ..." value="<?= $dia_chi ?>">
+                            <input type="text" class="form-control" name="Address" placeholder="Nhập địa chỉ ..." value="<?= $Address ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="">Tình trạng</label>
-                            <input type="text" class="form-control" name="trang_thai" value="<?= $trang_thai == 0 ? 'Hoạt động tốt' : 'Bị khóa' ?>" readonly>
+                            <input type="text" class="form-control" name="status" value="<?= $status == 0 ? 'Hoạt động tốt' : 'Bị khóa' ?>" readonly>
                         </div>
 
 
                         <button type="submit" name="btn_update" class="btn btn-danger">Cập nhật</button>
-                        <a href="./khach-hang-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
+                        <a href="./admin-list.php"><button type="button" name="btn_update" class="btn btn-info">Quay lại</button></a>
                     </form>
                 </div>
             </div>

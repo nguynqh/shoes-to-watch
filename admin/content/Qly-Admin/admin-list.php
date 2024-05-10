@@ -124,8 +124,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <div id="page-wrapper">
             <div class="header">
                 <div class="page-header">
-                    <h1>QUẢN LÝ DANH SÁCH KHÁCH HÀNG</h1>
-                    <p>Dưới đây là danh sách các khách hàng đã đăng ký: </p>
+                    <h1>QUẢN LÝ DANH SÁCH QUẢN TRỊ VIÊN</h1>
+                    <p>Dưới đây là danh sách quản trị viên của trang Web: </p>
 
                     <!-- /. XỬ LÝ CODE PHP  -->
                     <?php
@@ -158,23 +158,23 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             ?>
                                 <tr>
                                     <td><?= $ManagerID ?></td>
-                                    <td><?= $ho_ten ?></td>
-                                    <td><?= $email ?></td>
-                                    <td><?= $sdt ?></td>
-                                    <td><?= $dia_chi ?></td>
-                                    <td><?php echo $trang_thai == 0 ? "Hoạt động tốt" : "Bị chặn"; ?></td>
+                                    <td><?= $Manager_Full_Name ?></td>
+                                    <td><?= $Manager_email ?></td>
+                                    <td><?= $Manager_Phone ?></td>
+                                    <td><?= $Address ?></td>
+                                    <td><?php echo $status == 0 ? "Hoạt động tốt" : "Bị chặn"; ?></td>
                                     <td>
-                                    <a href="khach-hang-update.php?ma_kh=<?= $ma_kh ?>">
+                                    <a href="khach-hang-update.php?ManagerID=<?= $ManagerID ?>">
                                         <button class="btn btn-primary">Sửa</button>
                                     </a>
                                     <form method="post" action="khach-hang-khoa-mo.php">
-                                        <input type="hidden" name="ma_kh" value="<?= $ma_kh ?>">
-                                        <input type="hidden" name="trang_thai" value="<?= $trang_thai ?>">
-                                        <button type="submit" class="btn <?php echo $trang_thai == 0 ? 'btn-warning' : 'btn-success'; ?>">
-                                            <?php echo $trang_thai == 0 ? 'Khóa' : 'Mở'; ?>
+                                        <input type="hidden" name="ManagerID" value="<?= $ManagerID ?>">
+                                        <input type="hidden" name="status" value="<?= $status ?>">
+                                        <button type="submit" class="btn <?php echo $status == 0 ? 'btn-warning' : 'btn-success'; ?>">
+                                            <?php echo $status == 0 ? 'Khóa' : 'Mở'; ?>
                                         </button>
                                     </form>
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="khach-hang-delete.php?ma_kh=<?= $ma_kh ?>">
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="khach-hang-delete.php?ManagerID=<?= $ManagerID ?>">
                                         <button class="btn btn-danger">Xóa</button>
                                     </a>
                                 </td>
@@ -184,7 +184,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             <?php } ?>
                         </tbody>
                     </table>
-                    <a href="../khach-hang/khach-hang-new.php"><button class="btn btn-danger">Thêm mới</button></a>
+                    <a href="../Qly-Admin/khach-hang-new.php"><button class="btn btn-danger">Thêm mới</button></a>
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@
 	extract($_REQUEST);
 	if (array_key_exists('btn_login', $_REQUEST)) {
 		$user = khach_hang_select_by_ten_dang_nhap($ten_dang_nhap);
-		if ($user && $user['trang_thai'] == 1) {
+		if ($user && $user['trang_thai'] == 0) {
 			if ($user['mat_khau'] == $mat_khau) {
 				$_SESSION['user'] = $user;
 				$_SESSION['cart'] = array();

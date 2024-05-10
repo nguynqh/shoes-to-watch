@@ -1,10 +1,10 @@
 <?php
-    require_once ('../../dao/khach-hang.php');
+    require_once ('../../dao/Qly-Admin.php');
 
     extract($_REQUEST);
 
-    khach_hang_delete($ma_kh);
+    khach_hang_delete($ManagerID);
 
-    header('location: khach-hang-list.php');
+    header('location:admin-list.php');
 
 ?>
