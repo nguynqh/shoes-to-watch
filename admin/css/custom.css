@@ -4,7 +4,7 @@
     overflow: hidden; /* Ẩn phần dư thừa nếu hình ảnh không phù hợp */
 }
 .square-image img {
-    width: 100%; /* Kích thước chiều rộng tương đương với kích thước hình vuông */
+    width: 50%; /* Kích thước chiều rộng tương đương với kích thước hình vuông */
     height: auto; /* Chiều cao tự động điều chỉnh cho phù hợp */
     object-fit: cover; /* Thay đổi tỷ lệ để hình ảnh phù hợp hoàn toàn với kích thước hình vuông */
 }

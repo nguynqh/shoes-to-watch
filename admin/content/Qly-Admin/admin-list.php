@@ -110,7 +110,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <li>
                         <a href="../khach-hang/khach-hang-list.php"><i class="fa fa-user"></i>KHÁCH HÀNG</a>
                     </li>
-
                     <li>
                         <a href="../Qly-Admin/admin-list.php"><i class="fa fa-user"></i>QUẢN TRỊ VIÊN</a>
                     </li>
