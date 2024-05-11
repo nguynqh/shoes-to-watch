@@ -111,6 +111,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <a href="../khach-hang/khach-hang-list.php"><i class="fa fa-user"></i>KHÁCH HÀNG</a>
                     </li>
                     <li>
+                        <a href="../Qly-Admin/admin-list.php"><i class="fa fa-user"></i>QUẢN TRỊ VIÊN</a>
+                    </li>
+                    <li>
                         <a href="../hoa-don/hoa-don-list.php"><i class="fa fa-edit"></i>ĐƠN HÀNG</a>
                     </li>
                 </ul>
@@ -130,6 +133,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
 
                     $items = hoa_don_select_all();
+                    $detail = hoa_don_chi_tiet_select_all();
                     ?>
                     <!-- /. CONTENT  -->
                     <table class="table table-hover" 
@@ -151,32 +155,49 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($items as $item) {
-                                extract($item);
-                                $total
-                            ?>
-                                <tr>
-                                    <td><?= $ma_hd ?></td>
-                                    <td><?= $ma_kh ?></td>
-                                    <td><?= $ngay_mua ?></td>
-                                    <td><?= $ghi_chu ?></td>
-                                    <td><?= $thanh_toan ?></td>
-                                    <td>
-                                        <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
-                                            <?php
-                                            if ($tinh_trang == 0) {
-                                                echo '<button class="btn btn-danger name="thanh_toan">';
-                                                echo "Chưa xử lý";
-                                            } else {
-                                                echo '<button class="btn btn-primary name ="thanh_toan">';
-                                                echo "Đã xử lý";
-                                            }
-                                            ?>
-                                            </button></a>
-                                    </td>
-                                    <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
-                                </tr>
-                            <?php } ?>
+                        <?php foreach ($items as $item) {
+                        extract($item);
+                        // Tìm dòng dữ liệu trong bảng hoa_don_chi_tiet có ma_hd tương ứng với đơn hàng hiện tại
+                        $thanh_toan_row = null;
+                        foreach ($detail as $detail_item) {
+                            if ($detail_item['ma_hd'] == $ma_hd) {
+                                $thanh_toan_row = $detail_item;
+                                break;
+                            }
+                        }
+                        
+                        // Kiểm tra và hiển thị hình thức thanh toán
+                        $hinh_thuc_thanh_toan = "";
+                        if ($thanh_toan_row) {
+                            $hinh_thuc_thanh_toan = $thanh_toan_row['Thanh_toan'] == 0 ? "Thanh toán tiền mặt" : "Thanh toán trực tuyến";
+                        }
+
+                        // Tiếp tục hiển thị dữ liệu đơn hàng
+                    ?>
+                    <tr>
+                        <td><?= $ma_hd ?></td>
+                        <td><?= $ma_kh ?></td>
+                        <td><?= $ngay_mua ?></td>
+                        <td><?= $ghi_chu ?></td>
+                        <td><?= $hinh_thuc_thanh_toan ?></td> <!-- Thêm dòng này để hiển thị hình thức thanh toán -->
+                        <td>
+                            <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
+                                <?php
+                                if ($tinh_trang == 0) {
+                                    echo '<button class="btn btn-danger name="thanh_toan">';
+                                    echo "Chưa xử lý";
+                                } else {
+                                    echo '<button class="btn btn-primary name ="thanh_toan">';
+                                    echo "Đã xử lý";
+                                }
+                                ?>
+                                </button>
+                            </a>
+                        </td>
+                        <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
+                    </tr>
+                    <?php } ?>
+
                         </tbody>
                     </table>
                 </div>

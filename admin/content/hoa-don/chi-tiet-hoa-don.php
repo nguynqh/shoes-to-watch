@@ -32,6 +32,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/custom.css">
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
@@ -110,6 +111,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <a href="../khach-hang/khach-hang-list.php"><i class="fa fa-user"></i>KHÁCH HÀNG</a>
                     </li>
                     <li>
+                        <a href="../Qly-Admin/admin-list.php"><i class="fa fa-user"></i>QUẢN TRỊ VIÊN</a>
+                    </li>
+                    <li>
                         <a href="../hoa-don/hoa-don-list.php"><i class="fa fa-edit"></i>ĐƠN HÀNG</a>
                     </li>
                 </ul>
@@ -125,13 +129,38 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                 extract($_REQUEST);
                 $items = hoa_don_chi_tiet_select_by_id($ma_hd);
                 $Total = 0;
-
+                $khach_hang_info = pdo_query_one("SELECT * FROM khach_hang WHERE ma_kh = ?", $ma_kh);
                 ?>
                 <div class="page-header">
-                    <h1>CHI TIẾT ĐƠN HÀNG SỐ <b><?= $ma_hd ?></b></h1><br>
-                    <h3>MÃ KHÁCH HÀNG : <b><?= $ma_kh; ?></b></h3>
-                    <p>Dưới đây là những sản phẩm mà khách hàng đã mua: </p>
-
+                    <h1>CHI TIẾT ĐƠN HÀNG MÃ SỐ <b><?= $ma_hd ?></b></h1><br>
+                    <h4>THÔNG TIN KHÁCH HÀNG MÃ SỐ <b><?= $ma_kh; ?></b></h4>
+                    <table class="table table-hover"
+                    style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
+                        <thead>
+                            <tr>
+                                <th>HỌ VÀ TÊN</th>
+                                <th>SỐ ĐIỆN THOẠI</th>
+                                <th>ĐỊA CHỈ</th>
+                                <th>EMAIL</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                                <tr>
+                                    <td><?= $khach_hang_info['ho_ten'] ?></td>
+                                    <td><?= $khach_hang_info['sdt'] ?></td>
+                                    <td><?= $khach_hang_info['dia_chi'] ?></td>
+                                    <td><a href="mailto:info@yoursite.com"><?= $khach_hang_info['email'] ?> </a></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <h4>CHI TIẾT CÁC SẢN PHẨM TRONG ĐƠN HÀNG <b></b></h4>
                     <!-- /. CONTENT  -->
                     <table class="table table-hover"
                     style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
@@ -143,6 +172,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <thead>
                             <tr>
                                 <th>TÊN HÀNG HÓA</th>
+                                <th>HÌNH ẢNH</th>
                                 <th>SỐ LƯỢNG</th>
                                 <th>ĐƠN GIÁ/SP</th>
                                 <th>THÀNH TIỀN</th>
@@ -154,6 +184,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             ?>
                                 <tr>
                                     <td><?= $ten_hh ?></td>
+                                    <td class="square-image" style="height:3px">
+                                        <img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="">
+                                    </td>
                                     <td><?= $so_luong ?></td>
                                     <td><?= number_format($don_gia) ?> VNĐ</td>
                                     <td><?= number_format($don_gia * $so_luong);
