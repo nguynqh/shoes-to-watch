@@ -129,31 +129,34 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
             <!-- Form lọc đơn hàng -->
             <div class="row">
+    <div class="col-md-2">
+        <h4><b>Lọc đơn hàng: </b></h4>
+    </div>
+    <div class="col-md-10">
+        <form action="" method="GET">
+            <div class="row g-3">
                 <div class="col-md-4">
-                    <h4>Lọc đơn hàng: </h4>
+                    <label for="date" class="form-label">Ngày đặt hàng</label>
+                    <input type="date" id="date" name="ngay_mua" required value="<?= isset($_GET['ngay_mua']) == true ? $_GET['ngay_mua'] : '' ?>" class="form-control">
                 </div>
-                <div class="col-md-8">
-                    <form action="" method="GET">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input type="date" name="ngay_mua" required value="<?= isset($_GET['ngay_mua']) == true ? $_GET['ngay_mua'] : '' ?>" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                <select name="tinh_trang" required class="form-select">
-                                    <option value="">Chọn tình trạng đơn hàng</option>
-                                    <option value="0" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '0' ? 'selected' : '') : '' ?>>Chưa xử lý</option>
-                                    <option value="1" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '1' ? 'selected' : '') : '' ?>>Đã xử lý</option>
-                                    <option value="2" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '2' ? 'selected' : '') : '' ?>>Đã hủy</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary">Lọc</button>
-                                <a href="hoa-don-list.php" class="btn btn-warning">Làm mới</a>
-                            </div>
-                        </div>
-                    </form>
+                <div class="col-md-4">
+                    <label for="inputSelectLarge" class="form-label">Tình trạng đơn hàng</label>
+                    <select id="inputSelectLarge" name="tinh_trang" required class="form-select form-select-lg">
+                        <option value="">Chọn tình trạng đơn hàng</option>
+                        <option value="0" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '0' ? 'selected' : '') : '' ?>>Chưa xử lý</option>
+                        <option value="1" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '1' ? 'selected' : '') : '' ?>>Đã xử lý</option>
+                        <option value="2" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '2' ? 'selected' : '') : '' ?>>Đã hủy</option>
+                    </select>
+                </div>
+                <div class="col-md-4 ">
+                    <strong>Hành động</strong><br>
+                    <button type="submit" class="btn btn-primary">Lọc</button>
+                    <a href="hoa-don-list.php" class="btn btn-warning">Làm mới</a>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
 
             <!-- Bảng hiển thị thông tin đơn hàng -->
             <table class="table table-hover">
@@ -171,13 +174,13 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                 <tbody>
                     <?php
                     require_once('../../dao/hoa-don.php');
-
+                    //nếu tồn tại 2 thông tin ngay mua và tình trạng
                     if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang'])) {
                         $date = $_GET['ngay_mua'];
                         $status = $_GET['tinh_trang'];
-
                         $enquires = mysqli_query($conn, "SELECT * FROM hoa_don WHERE ngay_mua ='$date' AND tinh_trang='$status' ORDER BY ma_hd DESC");
-
+                        //tìm các hoa_don trùng với 2 biến get  
+                        //nếu kết quả tìm được >0 thực hiện câu lệnh bên dưới
                         if (mysqli_num_rows($enquires) > 0) {
                             foreach ($enquires as $item) {
                                 extract($item);
@@ -218,10 +221,12 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 </tr>
                             <?php
                             }
+                            //nếu kết quả =0 thì không có đơn hàng phù hợp
                         } else {
                             echo "<tr><td colspan='7'>Không tìm thấy đơn hàng phù hợp.</td></tr>";
                         }
-                    } else {
+                    }// nếu không tồn tại giá trị lọc thì hiển thị tất cả sản phẩm
+                     else {
                         $items = hoa_don_select_all();
                         if (isset($items) && is_array($items)) {
                             foreach ($items as $item) {
@@ -268,7 +273,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                             }
                         } else {
                             echo "<tr><td colspan='7'>Không có đơn hàng.</td></tr>";
-                        }
+                        }//trường hợp chưa có đơn hàng
                     }
                     ?>
                 </tbody>
