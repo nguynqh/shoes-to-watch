@@ -180,7 +180,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
                         <div class="form-group">
                             <label for="">Thành Phố</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập Thành Phố..." >
+                            <input type="text" class="form-control" name="thanh_pho" placeholder="Nhập Thành Phố..." >
                         </div>
 
                         <div class="form-group">

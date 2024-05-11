@@ -179,7 +179,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
                         <div class="form-group">
                             <label for="">Thành Phố</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập Thành Phố..." value="<?= $thanh_pho ?>">
+                            <input type="text" class="form-control" name="thanh_pho" placeholder="Nhập Thành Phố..." value="<?= $thanh_pho ?>">
                         </div>
 
                         <div class="form-group">
