@@ -125,17 +125,24 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         <div id="page-wrapper">
             <div class="header">
                 <div class="page-header">
-                    <h1>QUẢN LÝ ĐƠN HÀNG</h1>
-                    <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua: </p>
-
-                    <!-- /. XỬ LÝ CODE PHP  -->
-                    <?php
+                     <!-- /. XỬ LÝ CODE PHP  -->
+                     <?php
                     require_once('../../dao/hoa-don.php');
-
-
                     $items = hoa_don_select_all();
                     $detail = hoa_don_chi_tiet_select_all();
                     ?>
+                    <h1>QUẢN LÝ ĐƠN HÀNG</h1>
+                    <p>Lọc đơn hàng: </p>
+                    <form action="xuly_loc_hoa_don.php" method="GET">
+                        <label for="tinh_trang">Chọn tình trạng:</label>
+                        <select name="tinh_trang" id="tinh_trang">
+                            <option value="0">Chưa xử lý</option>
+                            <option value="1">Đã xử lý</option>
+                            <option value="2">Đã hủy</option>
+                        </select>
+                        <button type="submit">Lọc</button>
+                    </form>
+                    <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua: </p>
                     <!-- /. CONTENT  -->
 
                     <table class="table table-hover" 
