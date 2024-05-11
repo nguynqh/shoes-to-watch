@@ -32,7 +32,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
-    <link href="../../../css/admin/css/admin_style.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
@@ -123,98 +122,162 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
-            <div class="header">
-                <div class="page-header">
-                     <!-- /. XỬ LÝ CODE PHP  -->
-                     <?php
-                    require_once('../../dao/hoa-don.php');
-                    $items = hoa_don_select_all();
-                    $detail = hoa_don_chi_tiet_select_all();
-                    ?>
-                    <h1>QUẢN LÝ ĐƠN HÀNG</h1>
-                    <p>Lọc đơn hàng: </p>
-                    <form action="xuly_loc_hoa_don.php" method="GET">
-                        <label for="tinh_trang">Chọn tình trạng:</label>
-                        <select name="tinh_trang" id="tinh_trang">
-                            <option value="0">Chưa xử lý</option>
-                            <option value="1">Đã xử lý</option>
-                            <option value="2">Đã hủy</option>
-                        </select>
-                        <button type="submit">Lọc</button>
+    <div class="header">
+        <div class="page-header">
+            <h1>QUẢN LÝ ĐƠN HÀNG</h1>
+            <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua:</p>
+
+            <!-- Form lọc đơn hàng -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Lọc đơn hàng: </h4>
+                </div>
+                <div class="col-md-8">
+                    <form action="" method="GET">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="date" name="ngay_mua" required value="<?= isset($_GET['ngay_mua']) == true ? $_GET['ngay_mua'] : '' ?>" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <select name="tinh_trang" required class="form-select">
+                                    <option value="">Chọn tình trạng đơn hàng</option>
+                                    <option value="0" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '0' ? 'selected' : '') : '' ?>>Chưa xử lý</option>
+                                    <option value="1" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '1' ? 'selected' : '') : '' ?>>Đã xử lý</option>
+                                    <option value="2" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '2' ? 'selected' : '') : '' ?>>Đã hủy</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary">Lọc</button>
+                                <a href="hoa-don-list.php" class="btn btn-warning">Làm mới</a>
+                            </div>
+                        </div>
                     </form>
-                    <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua: </p>
-                    <!-- /. CONTENT  -->
-
-                    <table class="table table-hover" 
-                    style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
-                            background: rgb(255, 255, 255);
-                            padding: 15px 14px;
-                            border-radius: 12px;
-                            margin: 0 14px;
-                            margin-top: 15px;">
-                        <thead>
-                            <tr>
-                                <th>MÃ HĐ</th>
-                                <th>MÃ KH</th>
-                                <th>NGÀY MUA</th>
-                                <th>GHI CHÚ</th>
-                                <th>HÌNH THỨC THANH TOÁN</th>
-                                <th>TÌNH TRẠNG</th>
-                                <th>CHI TIẾT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($items as $item) {
-                        extract($item);
-                        // Tìm dòng dữ liệu trong bảng hoa_don_chi_tiet có ma_hd tương ứng với đơn hàng hiện tại
-                        $thanh_toan_row = null;
-                        foreach ($detail as $detail_item) {
-                            if ($detail_item['ma_hd'] == $ma_hd) {
-                                $thanh_toan_row = $detail_item;
-                                break;
-                            }
-                        }
-                        
-                        // Kiểm tra và hiển thị hình thức thanh toán
-                        $hinh_thuc_thanh_toan = "";
-                        if ($thanh_toan_row) {
-                            $hinh_thuc_thanh_toan = $thanh_toan_row['Thanh_toan'] == 0 ? "Thanh toán tiền mặt" : "Thanh toán trực tuyến";
-                        }
-
-                        // Tiếp tục hiển thị dữ liệu đơn hàng
-                    ?>
-                    <tr>
-                        <td><?= $ma_hd ?></td>
-                        <td><?= $ma_kh ?></td>
-                        <td><?= $ngay_mua ?></td>
-                        <td><?= $ghi_chu ?></td>
-                        <td><?= $hinh_thuc_thanh_toan ?></td> <!-- Thêm dòng này để hiển thị hình thức thanh toán -->
-                        <td>
-                            <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
-                                <?php
-                                if ($tinh_trang == 0) {
-                                    echo '<button class="btn btn-warning name="thanh_toan">';
-                                    echo "Chưa xử lý";
-                                } else if($tinh_trang == 1){
-                                    echo '<button class="btn btn-primary name ="thanh_toan" disabled>';
-                                    echo "Đã xử lý";
-                                }else if($tinh_trang == 2){
-                                    echo '<button class="btn btn-danger name ="thanh_toan" disabled>';
-                                    echo "Đã hủy";
-                                }
-                                ?>
-                                </button>
-                            </a>
-                        </td>
-                        <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
-                    </tr>
-                    <?php } ?>
-
-                        </tbody>
-                    </table>
                 </div>
             </div>
+
+            <!-- Bảng hiển thị thông tin đơn hàng -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã HĐ</th>
+                        <th>Mã KH</th>
+                        <th>Ngày Mua</th>
+                        <th>Ghi Chú</th>
+                        <th>Hình Thức Thanh Toán</th>
+                        <th>Tình Trạng</th>
+                        <th>Chi Tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    require_once('../../dao/hoa-don.php');
+
+                    if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang'])) {
+                        $date = $_GET['ngay_mua'];
+                        $status = $_GET['tinh_trang'];
+
+                        $enquires = mysqli_query($conn, "SELECT * FROM hoa_don WHERE ngay_mua ='$date' AND tinh_trang='$status' ORDER BY ma_hd DESC");
+
+                        if (mysqli_num_rows($enquires) > 0) {
+                            foreach ($enquires as $item) {
+                                extract($item);
+                                $detail = hoa_don_chi_tiet_select_all();
+                                $hinh_thuc_thanh_toan = "";
+                                foreach ($detail as $detail_item) {
+                                    if ($detail_item['ma_hd'] == $ma_hd) {
+                                        $hinh_thuc_thanh_toan = $detail_item['Thanh_toan'] == 0 ? "Thanh toán tiền mặt" : "Thanh toán trực tuyến";
+                                        break;
+                                    }
+                                }
+                    ?>
+                                <tr>
+                                    <td><?= $ma_hd ?></td>
+                                    <td><?= $ma_kh ?></td>
+                                    <td><?= $ngay_mua ?></td>
+                                    <td><?= $ghi_chu ?></td>
+                                    <td><?= $hinh_thuc_thanh_toan ?></td>
+                                    <td>
+                                    <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
+                                        <?php
+                                        if ($tinh_trang == 0) {
+                                            echo '<button class="btn btn-warning name="thanh_toan">';
+                                            echo "Chưa xử lý";
+                                        } else if ($tinh_trang == 1) {
+                                            echo '<button class="btn btn-primary name ="thanh_toan" disabled>';
+                                            echo "Đã xử lý";
+                                        } else if ($tinh_trang == 2) {
+                                            echo '<button class="btn btn-danger name ="thanh_toan" disabled>';
+                                            echo "Đã hủy";
+                                        }
+                                        ?>
+                                    </button>
+                                    </a>
+
+                                    </td>
+                                    <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
+                                </tr>
+                            <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='7'>Không tìm thấy đơn hàng phù hợp.</td></tr>";
+                        }
+                    } else {
+                        $items = hoa_don_select_all();
+                        if (isset($items) && is_array($items)) {
+                            foreach ($items as $item) {
+                                extract($item);
+                                $detail = hoa_don_chi_tiet_select_all();
+                                $thanh_toan_row = null;
+                                foreach ($detail as $detail_item) {
+                                    if ($detail_item['ma_hd'] == $ma_hd) {
+                                        $thanh_toan_row = $detail_item;
+                                        break;
+                                    }
+                                }
+                                $hinh_thuc_thanh_toan = "";
+                                if ($thanh_toan_row) {
+                                    $hinh_thuc_thanh_toan = $thanh_toan_row['Thanh_toan'] == 0 ? "Thanh toán tiền mặt" : "Thanh toán trực tuyến";
+                                }
+                            ?>
+                                <tr>
+                                    <td><?= $ma_hd ?></td>
+                                    <td><?= $ma_kh ?></td>
+                                    <td><?= $ngay_mua ?></td>
+                                    <td><?= $ghi_chu ?></td>
+                                    <td><?= $hinh_thuc_thanh_toan ?></td>
+                                    <td>
+                                        <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
+                                        <?php
+                                        if ($tinh_trang == 0) {
+                                            echo '<button class="btn btn-warning name="thanh_toan">';
+                                            echo "Chưa xử lý";
+                                        } else if ($tinh_trang == 1) {
+                                            echo '<button class="btn btn-primary name ="thanh_toan" disabled>';
+                                            echo "Đã xử lý";
+                                        } else if ($tinh_trang == 2) {
+                                            echo '<button class="btn btn-danger name ="thanh_toan" disabled>';
+                                            echo "Đã hủy";
+                                        }
+                                        ?>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
+                                </tr>
+                    <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='7'>Không có đơn hàng.</td></tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <!-- Kết thúc bảng hiển thị thông tin đơn hàng -->
         </div>
+    </div>
+</div>
+
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
