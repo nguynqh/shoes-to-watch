@@ -32,6 +32,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
     <link href="../../../css/admin/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../../../css/admin/css/custom-styles.css" rel="stylesheet" />
+    <link href="../../../css/admin/css/admin_style.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/png" href="../../../hinh-anh/trang-web/iconweb.png" />
@@ -136,6 +137,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     $detail = hoa_don_chi_tiet_select_all();
                     ?>
                     <!-- /. CONTENT  -->
+
                     <table class="table table-hover" 
                     style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
                             background: rgb(255, 255, 255);
@@ -181,23 +183,22 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <td><?= $ghi_chu ?></td>
                         <td><?= $hinh_thuc_thanh_toan ?></td> <!-- Thêm dòng này để hiển thị hình thức thanh toán -->
                         <td>
-                            <?php if ($tinh_trang == 0): ?>
-                                <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
-                                    <button class="btn btn-warning name="thanh_toan">
-                                        Chưa xử lý
-                                    </button>
-                                </a>
-                            <?php elseif ($tinh_trang == 1): ?>
-                                <button class="btn btn-primary" disabled>
-                                    Đã xử lý
+                            <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
+                                <?php
+                                if ($tinh_trang == 0) {
+                                    echo '<button class="btn btn-warning name="thanh_toan">';
+                                    echo "Chưa xử lý";
+                                } else if($tinh_trang == 1){
+                                    echo '<button class="btn btn-primary name ="thanh_toan" disabled>';
+                                    echo "Đã xử lý";
+                                }else if($tinh_trang == 2){
+                                    echo '<button class="btn btn-danger name ="thanh_toan" disabled>';
+                                    echo "Đã hủy";
+                                }
+                                ?>
                                 </button>
-                            <?php elseif ($tinh_trang == 2): ?>
-                                <button class="btn btn-danger" disabled>
-                                    Đã hủy
-                                </button>
-                            <?php endif; ?>
+                            </a>
                         </td>
-
                         <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
                     </tr>
                     <?php } ?>
