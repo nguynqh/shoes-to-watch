@@ -136,7 +136,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     extract($_REQUEST);
                     if (array_key_exists("btn_update", $_REQUEST)) {
-                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $email, $sdt, $dia_chi);
+                        khach_hang_update($ma_kh,$ten_dang_nhap ,$ho_ten, $email, $sdt, $duong,$phuong,$quan,$thanh_pho);
                         $message = "Cập nhật tài khoản thành công !";
                         echo "<script type='text/javascript'>alert('$message'); window.location.href='khach-hang-list.php';</script>";
                     }
@@ -166,8 +166,20 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Địa chỉ:</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ ..." value="<?= $dia_chi ?>">
+                            <label for="">Đường</label>
+                            <input type="text" class="form-control" name="duong" placeholder="Nhập đường ..." value="<?= $duong ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phường</label>
+                            <input type="text" class="form-control" name="phuong" placeholder="Nhập Phường ..." value="<?= $phuong ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Quận</label>
+                            <input type="text" class="form-control" name="quan" placeholder="Nhập Quận ..." value="<?= $quan ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Thành Phố</label>
+                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập Thành Phố..." value="<?= $thanh_pho ?>">
                         </div>
 
                         <div class="form-group">

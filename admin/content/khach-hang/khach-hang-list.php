@@ -163,7 +163,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                     <td><?= $ho_ten ?></td>
                                     <td><?= $email ?></td>
                                     <td><?= $sdt ?></td>
-                                    <td><?= $dia_chi ?></td>
+                                    <td><?= $duong . ', ' . $phuong .  ', ' . $quan.  ', ' . $thanh_pho?></td>
                                     <td><?php echo $trang_thai == 0 ? "Hoạt động tốt" : "Bị chặn"; ?></td>
                                     <td>
                                     <a href="khach-hang-update.php?ma_kh=<?= $ma_kh ?>">

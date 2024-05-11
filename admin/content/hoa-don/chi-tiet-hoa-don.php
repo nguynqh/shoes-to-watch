@@ -130,6 +130,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                 $items = hoa_don_chi_tiet_select_by_id($ma_hd);
                 $Total = 0;
                 $khach_hang_info = pdo_query_one("SELECT * FROM khach_hang WHERE ma_kh = ?", $ma_kh);
+                // Giả sử $row là một hàng dữ liệu từ kết quả truy vấn SQL
+                $dia_chi = $khach_hang_info['duong'] . ', ' . $khach_hang_info['phuong'] .  ', ' . $khach_hang_info['quan'] .  ', ' . $khach_hang_info['thanh_pho'];
+
                 ?>
                 <div class="page-header">
                     <h1>CHI TIẾT ĐƠN HÀNG MÃ SỐ <b><?= $ma_hd ?></b></h1><br>
@@ -155,7 +158,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <tr>
                                     <td><?= $khach_hang_info['ho_ten'] ?></td>
                                     <td><?= $khach_hang_info['sdt'] ?></td>
-                                    <td><?= $khach_hang_info['dia_chi'] ?></td>
+                                    <td><?= $dia_chi ?></td>
                                     <td><a href="mailto:info@yoursite.com"><?= $khach_hang_info['email'] ?> </a></td>
                                 </tr>
                         </tbody>

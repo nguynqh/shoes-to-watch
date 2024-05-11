@@ -133,8 +133,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     extract($_REQUEST);
                     if (array_key_exists("btn_insert", $_REQUEST)) {
 
-                        khach_hang_insert($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $dia_chi);
-                        unset($ma_kh, $ho_ten_, $mat_khau, $email, $sdt, $dia_chi);
+                        khach_hang_insert($ten_dang_nhap, $ho_ten, $mat_khau, $email, $sdt, $duong,$phuong,$quan,$thanh_pho);
+                        unset($ma_kh, $ho_ten_, $mat_khau, $email, $sdt, $duong,$phuong,$quan,$thanh_pho);
                         $message = "Thêm tài khoản thành công !";
                         echo "<script type='text/javascript'>alert('$message'); window.location.href = 'khach-hang-list.php'</script>";
                     }
@@ -167,8 +167,20 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         </div>
 
                         <div class="form-group">
-                            <label for="">Địa chỉ:</label>
-                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ ...">
+                            <label for="">Đường</label>
+                            <input type="text" class="form-control" name="duong" placeholder="Nhập đường ..." >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phường</label>
+                            <input type="text" class="form-control" name="phuong" placeholder="Nhập Phường ..." >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Quận</label>
+                            <input type="text" class="form-control" name="quan" placeholder="Nhập Quận ..." >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Thành Phố</label>
+                            <input type="text" class="form-control" name="dia_chi" placeholder="Nhập Thành Phố..." >
                         </div>
 
                         <div class="form-group">

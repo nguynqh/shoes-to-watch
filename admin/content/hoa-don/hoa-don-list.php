@@ -181,19 +181,23 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <td><?= $ghi_chu ?></td>
                         <td><?= $hinh_thuc_thanh_toan ?></td> <!-- Thêm dòng này để hiển thị hình thức thanh toán -->
                         <td>
-                            <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
-                                <?php
-                                if ($tinh_trang == 0) {
-                                    echo '<button class="btn btn-danger name="thanh_toan">';
-                                    echo "Chưa xử lý";
-                                } else {
-                                    echo '<button class="btn btn-primary name ="thanh_toan">';
-                                    echo "Đã xử lý";
-                                }
-                                ?>
+                            <?php if ($tinh_trang == 0): ?>
+                                <a href="thanh-toan-gio-hang.php?ma_hd=<?= $ma_hd ?>">
+                                    <button class="btn btn-warning name="thanh_toan">
+                                        Chưa xử lý
+                                    </button>
+                                </a>
+                            <?php elseif ($tinh_trang == 1): ?>
+                                <button class="btn btn-primary" disabled>
+                                    Đã xử lý
                                 </button>
-                            </a>
+                            <?php elseif ($tinh_trang == 2): ?>
+                                <button class="btn btn-danger" disabled>
+                                    Đã hủy
+                                </button>
+                            <?php endif; ?>
                         </td>
+
                         <td><a href="chi-tiet-hoa-don.php?ma_hd=<?= $ma_hd ?>&ma_kh=<?= $ma_kh ?>"><button class="btn btn-success">Chi tiết</button></a></td>
                     </tr>
                     <?php } ?>
