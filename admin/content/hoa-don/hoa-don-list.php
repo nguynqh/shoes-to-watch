@@ -121,26 +121,33 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
-    <div class="header">
-        <div class="page-header">
+        <div id="page-wrapper" >
+    <div class="header" >
+        <div class="page-header" >
             <h1>QUẢN LÝ ĐƠN HÀNG</h1>
             <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua:</p>
 
             <!-- Form lọc đơn hàng -->
-            <div class="row">
-    <div class="col-md-2">
+            <div class="row" 
+            style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
+    <div class="col">
         <h4><b>Lọc đơn hàng: </b></h4>
     </div>
-    <div class="col-md-10">
+    <div class="row"><br></div>
+    <div class="row">
+    <div class="col-md-12">
         <form action="" method="GET">
-            <div class="row g-3">
                 <div class="col-md-4">
                     <label for="date" class="form-label">Ngày đặt hàng</label>
                     <input type="date" id="date" name="ngay_mua" required value="<?= isset($_GET['ngay_mua']) == true ? $_GET['ngay_mua'] : '' ?>" class="form-control">
                 </div>
                 <div class="col-md-4">
-                    <label for="inputSelectLarge" class="form-label">Tình trạng đơn hàng</label>
+                    <label for="inputSelectLarge" class="form-label">Tình trạng đơn hàng</label><br>
                     <select id="inputSelectLarge" name="tinh_trang" required class="form-select form-select-lg">
                         <option value="">Chọn tình trạng đơn hàng</option>
                         <option value="0" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '0' ? 'selected' : '') : '' ?>>Chưa xử lý</option>
@@ -148,18 +155,24 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                         <option value="2" <?= isset($_GET['tinh_trang']) == true ? ($_GET['tinh_trang'] == '2' ? 'selected' : '') : '' ?>>Đã hủy</option>
                     </select>
                 </div>
-                <div class="col-md-4 ">
+                <div class="col-md-4">
                     <strong>Hành động</strong><br>
                     <button type="submit" class="btn btn-primary">Lọc</button>
                     <a href="hoa-don-list.php" class="btn btn-warning">Làm mới</a>
                 </div>
-            </div>
         </form>
+    </div>
     </div>
 </div>
 
             <!-- Bảng hiển thị thông tin đơn hàng -->
-            <table class="table table-hover">
+            <table class="table table-hover" 
+            style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
                 <thead>
                     <tr>
                         <th>Mã HĐ</th>
@@ -175,7 +188,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <?php
                     require_once('../../dao/hoa-don.php');
                     //nếu tồn tại 2 thông tin ngay mua và tình trạng
-                    if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang'])) {
+                    if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang']) && isset($_GET['quan']) && isset($_GET['thanh_pho'])) {
                         $date = $_GET['ngay_mua'];
                         $status = $_GET['tinh_trang'];
                         $enquires = mysqli_query($conn, "SELECT * FROM hoa_don WHERE ngay_mua ='$date' AND tinh_trang='$status' ORDER BY ma_hd DESC");
