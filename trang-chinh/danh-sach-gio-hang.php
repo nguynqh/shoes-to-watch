@@ -61,7 +61,7 @@
                     <ul>
                         <li style="list-style: none;">
                             <p style="font-size: 14px;">
-                                <a href="" style="text-decoration:none;color:#f7941d;">ĐƠN MUA</a>
+                                <a href="don-mua.php" style="text-decoration:none;color:#f7941d;">ĐƠN MUA</a>
                             </p>
                         </li>
                         <li style="list-style: none;">
@@ -202,20 +202,6 @@
                                 };?>
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="thanh-toan-momo.php">
-                                <td colspan="2"><a href="thanh-toan-gio-hang-atm.php">
-                                        <input type="hidden" value="<?= $total ?>" name="sumprice">
-                                        <button class="btn" style="width:100%;background:#D82D8B;color:white" name="payment" value="momo">THANH TOÁN BẰNG QR CODE MOMO</button></a></td>
-                            </form>
-                        </tr> -->
-                        <!-- <tr>
-                            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="thanh-toan-gio-hang-atm.php">
-                                <td colspan="2"><a href="thanh-toan-gio-hang-atm.php">
-                                        <input type="hidden" value="<?= $total ?>" name="sumprice">
-                                        <button class="btn" style="width:100%;background:#D82D8B;color:white" name="payment" value="momo">THANH TOÁN BẰNG ATM MOMO</button></a></td>
-                            </form>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>

@@ -33,6 +33,9 @@
             ?>
                 <div>
                     <p style="font-size: 24px"><b>Dưới đây là những sản phẩm mà khách hàng đã mua: </b></p>
+                    <div class="container-fluid">
+                    <a href="huy-don-hang.php?ma_hd=<?= $_GET['ma_hd']?>"><button type="button" class="btn btn-danger">Hủy đơn hàng</button></a>
+                    </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
