@@ -4,7 +4,7 @@ require_once("../login/connect.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ma_hh = $_POST["ma_hh"];
     $trang_thai = $_POST["trang_thai"];
-    $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+    $conn = mysqli_connect('localhost', 'root', '', 'MVH_Watch');
 
     if ($trang_thai == 2) { // Nếu người dùng ấn vào nút "Ẩn"
         $sql_check_sold = "SELECT COUNT(*) AS sold_count FROM hoa_don_chi_tiet WHERE ma_hh = $ma_hh";

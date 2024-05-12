@@ -36,8 +36,8 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua ATM MoMo";
 $amount = $_POST['sumprice'];
 $orderId = time() . "";
-$redirectUrl = "http://localhost:8080/bigshoes/trang-chinh/don-mua.php";
-$ipnUrl = "http://localhost:8080/bigshoes/trang-chinh/don-mua.php";
+$redirectUrl = "http://localhost:8080/MVH_Watch/trang-chinh/don-mua.php";
+$ipnUrl = "http://localhost:8080/MVH_Watch/trang-chinh/don-mua.php";
 $extraData = "";
 
 $requestId = time() . "";

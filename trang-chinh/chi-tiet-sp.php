@@ -178,7 +178,7 @@
                     <div class="bottom-content-chitiet" style="font-size:16px; color: black;">
                         <?= $mo_ta ?>
                     </div>
-                    <div class="gu" style="margin-top: 20px;"> <img src="../../bigshoes/css/chi-tiet-sp/img/ttt.png" alt=""></div>
+                    <div class="gu" style="margin-top: 20px;"> <img src="../../MVH_Watch/css/chi-tiet-sp/img/ttt.png" alt=""></div>
                     <br>
                     <div class="product-content-right-product-button">
                         <?php

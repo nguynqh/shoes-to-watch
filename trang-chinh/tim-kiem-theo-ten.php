@@ -181,7 +181,7 @@
                             ?>
                                 <li class="list-group-item">
                                     <div class="row">
-                                        <div class="col-sm-4"><a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>&ma_loai=<?= $ma_loai ?>"><img style="width:80px;" src="../../bigshoes/css/admin/images/products/<?= $hinh ?>" alt=""></a></div>
+                                        <div class="col-sm-4"><a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>&ma_loai=<?= $ma_loai ?>"><img style="width:80px;" src="../../MVH_Watch/css/admin/images/products/<?= $hinh ?>" alt=""></a></div>
                                         <div class="col-sm-8"><?= $ten_hh ?><br><br><b><?= number_format($don_gia - ($don_gia * $giam_gia / 100)) ?> VNĐ</b></div>
                                     </div>
                                 </li>
@@ -237,7 +237,7 @@
                         extract($item);
                     ?>
                         <div class="item">
-                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px" src="../../bigshoes/css/admin/images/products/<?= $hinh ?>" alt="ds"></a>
+                            <a href="chi-tiet-sp.php?ma_hh=<?= $ma_hh ?>"><img style="width: 200px" src="../../MVH_Watch/css/admin/images/products/<?= $hinh ?>" alt="ds"></a>
                         </div>
                     <?php } ?>
 

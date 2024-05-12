@@ -26,7 +26,7 @@
     <div id="page-wrapper" class="container" style="padding-top: 30px;">
             <?php
             if (isset($_SESSION['user'])) {
-                $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                $conn = mysqli_connect('localhost', 'root', '', 'MVH_Watch');
                 $username = $_SESSION['user'];
                 $Total = 0;
                 $result1 = mysqli_query($conn, "SELECT * FROM hoa_don_chi_tiet WHERE ma_hd = '" . $_GET['ma_hd'] . "'");

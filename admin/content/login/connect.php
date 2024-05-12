@@ -3,7 +3,7 @@ $sname = "localhost";
 $uname = "root";
 $password = "";
 
-$db_name = "bigshoes";
+$db_name = "MVH_Watch";
 
 $conn = mysqli_connect($sname,$uname,$password,$db_name);
 

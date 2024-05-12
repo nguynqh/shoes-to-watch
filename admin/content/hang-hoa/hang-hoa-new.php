@@ -138,16 +138,6 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     if (array_key_exists("btn_insert", $_REQUEST)) {
                         $up_hinh = save_file("hinh", "../../../hinh-anh/san-pham/");
                         $hinh = strlen($up_hinh) > 0 ? $up_hinh : 'product.png';
-
-                        // $up_hinh1 = save_file("hinh1", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh1 = strlen($up_hinh1) > 0 ? $up_hinh1 : 'product.png';
-
-                        // $up_hinh2 = save_file("hinh2", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh2 = strlen($up_hinh2) > 0 ? $up_hinh2 : 'product.png';
-
-                        // $up_hinh3 = save_file("hinh3", "../../../../bigshoes/css/admin/images/products/");
-                        // $hinh3 = strlen($up_hinh3) > 0 ? $up_hinh3 : 'product.png';
-
                         hang_hoa_insert($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
                         unset($ten_hh, $hinh,$so_luong, $don_gia, $giam_gia, $mo_ta, $ma_loai);
                         $message = "Thêm hàng hóa thành công !";

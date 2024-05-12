@@ -178,6 +178,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                 <th>HÌNH ẢNH</th>
                                 <th>SỐ LƯỢNG</th>
                                 <th>ĐƠN GIÁ/SP</th>
+                                <th>GIẢM GIÁ</th>
                                 <th>THÀNH TIỀN</th>
                             </tr>
                         </thead>
@@ -192,8 +193,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                                     </td>
                                     <td><?= $so_luong ?></td>
                                     <td><?= number_format($don_gia) ?> VNĐ</td>
-                                    <td><?= number_format($don_gia * $so_luong);
-                                        $Total += ($don_gia * $so_luong) ?> VNĐ</td>
+                                    <td><?= number_format($giam_gia) ?> %</td>
+                                    <td><?= number_format($don_gia-($don_gia * $giam_gia /100));
+                                        $Total += ($don_gia-($don_gia * $giam_gia /100)) ?> VNĐ</td>
                                 </tr>
                             <?php } ?>
                             <tr>

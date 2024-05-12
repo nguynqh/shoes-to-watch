@@ -35,7 +35,7 @@
                     <h1>CÁC ĐƠN MUA</h1>
                     <p>Dưới đây là danh sách các đơn hàng mà khách hàng đã đặt mua: </p>
                 <?php
-                    $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                    $conn = mysqli_connect('localhost', 'root', '', 'MVH_Watch');
                     $Total = 0;
                     $result1 = mysqli_query($conn, "SELECT * FROM hoa_don WHERE ma_kh = '" . $_SESSION['user']['ma_kh'] . "'");
                     while ($value = $result1->fetch_assoc()) {

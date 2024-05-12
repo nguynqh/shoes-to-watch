@@ -144,7 +144,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
                     <?php
                     $result = "";
-                    $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                    $conn = mysqli_connect('localhost', 'root', '', 'MVH_Watch');
                     //thieu dieu kien kiem tra keyword co trong dtb khong 
                     //kiểm tra keyword
                     if (!empty(($_GET['keyword']))) {

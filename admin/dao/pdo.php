@@ -1,6 +1,6 @@
 <?php
     function pdo_get_connection(){
-        $pdo = new PDO("mysql:host=localhost;dbname=bigshoes",'root','');
+        $pdo = new PDO("mysql:host=localhost;dbname=MVH_Watch",'root','');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }
@@ -73,7 +73,7 @@
 
     function check_login(){
         if(!isset($_SESSION['user'])){      
-            header("location: /bigshoes/tai-khoan/dang-nhap.php");
+            header("location: /MVH_Watch/tai-khoan/dang-nhap.php");
         }
     }
     

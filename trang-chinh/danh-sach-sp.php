@@ -118,7 +118,7 @@
                     <?php
                     // tạo connection
                     require_once('../admin/dao/pdo.php');
-                    $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
+                    $conn = mysqli_connect('localhost', 'root', '', 'MVH_Watch');
                     
                     // lấy dữ liệu đẩy đủ
                     $sql = "SELECT * FROM hang_hoa";

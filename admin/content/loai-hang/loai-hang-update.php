@@ -47,7 +47,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../../../bigshoes/trang-chinh/" style="background:#00CC99;">
+                <a class="navbar-brand" href="../../index.php" style="background:#00CC99;">
                     <strong style="margin-left: 40px;">BIG SHOES</strong></a>
             </div>
 
