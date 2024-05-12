@@ -82,7 +82,7 @@ function hang_hoa_noi_bat()
 
 function hang_hoa_select_by_loai($ma_loai)
 {
-    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) WHERE ma_loai=?";
+    $sql = "SELECT * FROM hang_hoa WHERE ma_loai=? AND (trang_thai = 1 OR trang_thai = 0) ";
     return pdo_query($sql, $ma_loai);
 }
 

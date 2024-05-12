@@ -160,11 +160,9 @@
                                 }
                                 $sql .= " giam_gia = " . $_GET['giam-gia'];
                             }
-                            if($keyWordCheck || $danhMucCheck || $mucGiaCheck || $giamGiaCheck) {
-                                $sql .= " AND (trang_thai = 1 OR trang_thai = 0) ";
-                            } else {
-                                $sql .= " WHERE (trang_thai = 1 OR trang_thai = 0)";
-                            }
+                            $sql .= " AND (trang_thai = 1 OR trang_thai = 0) ";
+                        } else {
+                            $sql .= " WHERE (trang_thai = 1 OR trang_thai = 0)";
                         }
                         // echo $sql;
                         echo "<div style='width: 100%; margin-top: 43px;'><h5 style='margin-left: 10px;'>Kết quả tìm kiếm</h5></div>";
@@ -193,6 +191,7 @@
                     $total_page = ceil($total_records / $limit);
                     ///done sql
                     $sql .= " LIMIT $start, $limit";
+                    // echo $sql;
                     // echo $sql;
                     $result = mysqli_query($conn, $sql);
 
