@@ -166,8 +166,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 </div>
 
             <!-- Bảng hiển thị thông tin đơn hàng -->
-            <table class="table table-hover" 
-            style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+       <table class="table table-hover"  style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
                             background: rgb(255, 255, 255);
                             padding: 15px 14px;
                             border-radius: 12px;
@@ -188,9 +187,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     <?php
                     require_once('../../dao/hoa-don.php');
                     //nếu tồn tại 2 thông tin ngay mua và tình trạng
-                    if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang']) && isset($_GET['quan']) && isset($_GET['thanh_pho'])) {
+                    if (isset($_GET['ngay_mua']) && isset($_GET['tinh_trang'])) {
                         $date = $_GET['ngay_mua'];
                         $status = $_GET['tinh_trang'];
+
                         $enquires = mysqli_query($conn, "SELECT * FROM hoa_don WHERE ngay_mua ='$date' AND tinh_trang='$status' ORDER BY ma_hd DESC");
                         //tìm các hoa_don trùng với 2 biến get  
                         //nếu kết quả tìm được >0 thực hiện câu lệnh bên dưới
@@ -291,6 +291,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     ?>
                 </tbody>
             </table>
+          
             <!-- Kết thúc bảng hiển thị thông tin đơn hàng -->
         </div>
     </div>
