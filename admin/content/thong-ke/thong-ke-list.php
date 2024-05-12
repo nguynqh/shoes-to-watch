@@ -37,7 +37,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
 
     <!-- Chart 3D -->
     <script type="text/javascript" src="../../../js/loader.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         google.charts.load("current", {
             packages: ['corechart']
         });
@@ -83,7 +83,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
             var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
             chart.draw(view, options);
         }
-    </script>
+    </script> -->
 
 </head>
 
@@ -181,12 +181,100 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
             <div class="header">
                 <div class="page-header">
                     <h1>QUẢN TRỊ WEBSITE</h1>
-                    <p>Dưới đây là những số liệu thống kê hàng hóa của BIGSHOES hiện tại có trong kho: </p>
+                    <!--Bộ lọc thống kê-->
+                    <?php
+// Kiểm tra nếu đã nhận dữ liệu ngày mua từ form
+if(isset($_GET['ngay_mua'])) {
+    // Lấy ngày mua từ form
+    $ngay_mua = $_GET['ngay_mua'];
 
+    // Thực hiện kết nối đến cơ sở dữ liệu (giả sử đã có)
+    require_once("../login/connect.php");
+
+    // Truy vấn SQL để tính tổng tiền mua hàng của từng khách hàng
+    $query = "SELECT kh.ma_kh, kh.ten_dang_nhap, kh.email, kh.duong, kh.phuong, kh.quan, kh.thanh_pho,
+              SUM(hh.don_gia - hh.don_gia * hh.giam_gia) AS tong_tien
+              FROM hoa_don hd
+              INNER JOIN hoa_don_chi_tiet hct ON hd.ma_hd = hct.ma_hd
+              INNER JOIN hang_hoa hh ON hct.ma_hh = hh.ma_hh
+              INNER JOIN khach_hang kh ON hd.ma_kh = kh.ma_kh
+              WHERE hd.ngay_mua = '$ngay_mua'
+              GROUP BY kh.ma_kh
+              ORDER BY tong_tien DESC";
+
+    $result = mysqli_query($conn, $query);
+
+    // Lấy thông tin 5 khách hàng có mức mua hàng cao nhất trong ngày đã chọn
+    $top_customers = [];
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $top_customers[] = $row;
+        $count++;
+        if ($count >= 5) {
+            break;
+        }
+    }
+
+    // Hiển thị kết quả
+    echo "<h2>Top 5 Khách hàng có mức mua hàng cao nhất vào ngày $ngay_mua:</h2>";
+    echo "<table border='1'>
+          <tr>
+            <th>Mã Khách hàng</th>
+            <th>Tên đăng nhập</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Tổng tiền mua hàng</th>
+          </tr>";
+    foreach ($top_customers as $customer) {
+        echo "<tr>";
+        echo "<td>" . $customer['ma_kh'] . "</td>";
+        echo "<td>" . $customer['ten_dang_nhap'] . "</td>";
+        echo "<td>" . $customer['email'] . "</td>";
+        echo "<td>" . $customer['duong'] . ", " . $customer['phuong'] . ", " . $customer['quan'] . ", " . $customer['thanh_pho'] . "</td>";
+        echo "<td>" . number_format($customer['tong_tien']) . " đ</td>"; // Định dạng số tiền
+        echo "</tr>";
+    }
+    echo "</table>";
+
+    // Đóng kết nối
+    mysqli_close($conn);
+}
+?>
+
+
+
+                    <div class="row" 
+                     style="box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
+                            background: rgb(255, 255, 255);
+                            padding: 15px 14px;
+                            border-radius: 12px;
+                            margin: 0 14px;
+                            margin-top: 15px;">
+                        <div class="col">
+                            <h4><b>Lọc đơn hàng: </b></h4>
+                        </div>
+                        <div class="row"><br></div>
+                        <div class="row">
+                        <div class="col-md-12">
+                            <form action="" method="GET">
+                                    <div class="col-md-4">
+                                        <label for="date" class="form-label">Ngày đặt hàng</label>
+                                        <input type="date" id="date" name="ngay_mua" required value="<?= isset($_GET['ngay_mua']) == true ? $_GET['ngay_mua'] : '' ?>" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Hành động</strong><br>
+                                        <button type="submit" class="btn btn-primary">Lọc</button>
+                                        <a href="thong-ke-list.php" class="btn btn-warning">Làm mới</a>
+                                    </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    
                     <!-- /. CONTENT  -->
-                    <div id="columnchart_values" style="width: 100%; height: 300px;"></div><br><br><br><br><br><br><br><br><br><br>
+                    <!-- <div id="columnchart_values" style="width: 100%; height: 300px;"></div><br><br><br><br><br><br><br><br><br><br> -->
 
-                    <p>Số liệu thống kê cụ thể như sau: </p>
+                    <p>Dưới đây là những số liệu thống kê hàng hóa của BIGSHOES hiện tại có trong kho: </p>
                     <table class="table table-bordered" style="background-color:#fff">
                         <thead>
                             <tr>

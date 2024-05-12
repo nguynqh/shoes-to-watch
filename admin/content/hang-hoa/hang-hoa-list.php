@@ -175,37 +175,56 @@ if(isset($_SESSION['login']) && $_SESSION['login']==1){
                     $html = '';
                     ?>
                     <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>MÃ HÀNG HÓA</th>
-                                <th>TÊN HÀNG HÓA</th>
-                                <th>HÌNH ẢNH</th>
-                                <th>SỐ LƯỢNG</th>
-                                <th>ĐƠN GIÁ</th>
-                                <th>GIẢM GIÁ</th>
-                                <th>HÀNH ĐỘNG</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($item = $result->fetch_assoc()) {
-                            ?>
-                                <tr>
-                                    <td><?= $item['ma_hh'] ?></td>
-                                    <td><?= $item['ten_hh'] ?></td>
-                                    <td class="square-image">
-                                        <img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="">
-                                    </td>
-                                    <td><?= $item['so_luong'] ?></td>
-                                    <td ><?= number_format($item['don_gia']) ?> VNĐ</td>
-                                    <td><?= $item['giam_gia'] ?> <sup>%</sup></td>
-                                    <td>
-                                        <a href="hang-hoa-update.php?ma_hh=<?= $item['ma_hh'] ?>"><button class="btn btn-primary">Sửa</button></a>
-                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="hang-hoa-delete.php?ma_hh=<?= $item['ma_hh'] ?>"><button class="btn btn-danger">Xóa</button></a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <thead>
+                    <tr>
+                        <th>MÃ HÀNG HÓA</th>
+                        <th>TÊN HÀNG HÓA</th>
+                        <th>HÌNH ẢNH</th>
+                        <th>SỐ LƯỢNG</th>
+                        <th>ĐƠN GIÁ</th>
+                        <th>GIẢM GIÁ</th>
+                        <th>TRẠNG THÁI</th>
+                        <th>HÀNH ĐỘNG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($item = $result->fetch_assoc()) { ?>
+                        <tr>
+                            <td><?= $item['ma_hh'] ?></td>
+                            <td><?= $item['ten_hh'] ?></td>
+                            <td class="square-image">
+                                <img src="../../../hinh-anh/san-pham/<?= $item['hinh']?>" alt="">
+                            </td>
+                            <td><?= $item['so_luong'] ?></td>
+                            <td><?= number_format($item['don_gia']) ?> VNĐ</td>
+                            <td><?= $item['giam_gia'] ?> <sup>%</sup></td>
+                            <td class="status-<?php echo $item['trang_thai']; ?>">
+                                <?php
+                                if ($item['trang_thai'] == 0) {
+                                    echo "Chưa bán";
+                                } elseif ($item['trang_thai'] == 1) {
+                                    echo "Đã bán";
+                                } elseif ($item['trang_thai'] == 2) {
+                                    echo "Đã ẩn";
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <a href="hang-hoa-update.php?ma_hh=<?= $item['ma_hh'] ?>"><button class="btn btn-primary">Sửa</button></a>
+                                <form method="post" action="hang-hoa-khoa-mo.php">
+                                    <input type="hidden" name="ma_hh" value="<?= $item['ma_hh'] ?>">
+                                    <input type="hidden" name="trang_thai" value="<?= $item['trang_thai'] ?>">
+                                    <button type="submit" class="btn <?= $item['trang_thai'] == 2 ? 'btn-success' : 'btn-warning'; ?>">
+                                        <?= $item['trang_thai'] == 2 ? 'Hiện' : 'Ẩn'; ?>
+                                    </button>
+                                </form>
+                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa ?')" href="hang-hoa-delete.php?ma_hh=<?= $item['ma_hh'] ?>"><button class="btn btn-danger">Xóa</button></a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+
+                </table>
                     <a href="hang-hoa-new.php"><button class="btn btn-danger">Thêm mới</button></a><br>
                     <div class="col-md-9">
                         <div id="menu" style="margin-left: 480px;">
