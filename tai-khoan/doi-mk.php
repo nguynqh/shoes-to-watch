@@ -69,7 +69,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method = "post">
 					<span class="login100-form-logo">
-					<a href="../../bigshoes/trang-chinh/index.php"><img src="../css/tai-khoan/images/logo.png" width = "80px" alt=""></a>
+					<a href="../index.php"><img src="../hinh-anh/trang-web/iconweb.png" width = "80px" alt=""></a>
 					</span><br>
 
 					<span class="login100-form-title p-b-34 p-t-27">

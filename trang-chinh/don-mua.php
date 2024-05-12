@@ -58,17 +58,19 @@
                                     <td><?= $value['ngay_mua'] ?></td>
                                     <td><?= $value['ghi_chu'] ?></td>
                                     <td>
-                                        <a href="thanh-toan-gio-hang.php?ma_hd=<?= $value['ma_hd'] ?>">
                                             <?php
                                             if ($value['tinh_trang'] == 0) {
                                                 echo '<button class="btn btn-danger name="thanh_toan">';
-                                                echo "Chưa xử lý";
-                                            } else {
+                                                echo "Chờ xử lý";
+                                            } else if ($value['tinh_trang'] == 1) {
                                                 echo '<button class="btn btn-primary name ="thanh_toan">';
                                                 echo "Đã xử lý";
+                                            } else {
+                                                echo '<button class="btn btn-success name="thanh_toan">';
+                                                echo "Hủy đơn";
                                             }
                                             ?>
-                                            </button></a>
+                                            </button>
                                     </td>
                                     <td><a href="chi-tiet-don-mua.php?ma_hd=<?= $value['ma_hd'] ?>"><button class="btn btn-success">Chi tiết</button></a></td>
                                 </tr>

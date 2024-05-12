@@ -195,7 +195,7 @@
                             <td colspan="2">
                                 <?php if(!empty($_SESSION['cart'])) { ?>
                                     <a href="thanh-toan-gio-hang.php">
-                                    <button class="btn btn-danger" style="width:100%;" name="payment" value="tienmat">THANH TOÁN TIỀN MẶT</button>
+                                    <button class="btn btn-danger" style="width:100%;" name="payment" value="tienmat">THANH TOÁN</button>
                                     </a>
                                 <?php } else {
                                     echo '<button class="btn btn-danger" style="width:100%;" disabled>Chưa có sản phẩm trong giỏ hàng</button>';

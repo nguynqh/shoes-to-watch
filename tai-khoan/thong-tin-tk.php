@@ -70,35 +70,51 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="ma_kh" placeholder="Username" value="<?= $ma_kh ?>" readonly>
-						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
+						<h4 class="white-text" >Tên đăng nhập:</h4>
+						<input class="input100" type="text" name="ma_kh" placeholder="Username" value="<?= $ten_dang_nhap ?>" readonly>
+						<!-- <span class="focus-input100" data-placeholder="&#xf18e;"></span> -->
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter fullname">
+						<h4 class="white-text" >Họ và tên:</h4>
 						<input class="input100" type="text" name="ho_ten" placeholder="Fullname" value="<?= $ho_ten ?>" readonly>
-						<span class="focus-input100" class='fas' data-placeholder="&#xf18e;"></span>
+						<!-- <span class="focus-input100" class='fas' data-placeholder="&#xf18e;"></span> -->
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<h4 class="white-text" >Mật khẩu:</h4>
 						<input class="input100" type="text" name="mat_khau" placeholder="mat_khau" value="<?= $mat_khau ?>" readonly>
-						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
+						<!-- <span class="focus-input100" data-placeholder="&#xf18e;"></span> -->
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter email">
+						<h4 class="white-text" >Email:</h4>
 						<input class="input100" type="text" name="email" placeholder="Email" value="<?= $email ?>" readonly>
-						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
+						<!-- <span class="focus-input100" data-placeholder="&#xf18e;"></span> -->
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter phone">
+						<h4 class="white-text" >Số điện thoại:</h4>
 						<input class="input100" type="text" name="sdt" placeholder="Số điện thoại" value="<?= $sdt ?>" readonly>
-						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
+						<!-- <span class="focus-input100" data-placeholder="&#xf18e;"></span> -->
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter Address">
-						<input class="input100" type="text" name="dia_chi" placeholder="Address" value="<?= $dia_chi ?>" readonly>
-						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
+						<h4 class="white-text" >Địa chỉ:</h4>
+						<span style="padding-left: 15px;" class="white-text">-Đường:</span>
+						<input class="input100" type="text" name="duong" placeholder="Address" value="<?= $duong ?>" readonly>
+						<span style="padding-left: 15px;" class="white-text">-Phường:</span>
+						<input class="input100" type="text" name="phuong" placeholder="Address" value="<?= $phuong ?>" readonly>
+						<span style="padding-left: 15px;" class="white-text">-Quận:</span>
+						<input class="input100" type="text" name="quan" placeholder="Address" value="<?= $quan ?>" readonly>
+						<span style="padding-left: 15px;" class="white-text">-Thành phố</span>
+						<input class="input100" type="text" name="thanh_pho" placeholder="Address" value="<?= $thanh_pho ?>" readonly>
 					</div>
-
+					<style>
+						.white-text{
+							color: white;
+						}
+					</style>
 
 					<div class="container-login100-form-btn">
 						<a href="dang-xuat.php">

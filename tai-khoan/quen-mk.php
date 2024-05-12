@@ -27,7 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/tai-khoan/css/main.css">
 	<!--===============================================================================================-->
-	<link rel="shortcut icon" type="image/png" href="../css/trang-chu/img/TBT.png" />
+	<link rel="shortcut icon" type="image/png" href="../hinh-anh/trang-web/iconweb.png" />
 
 </head>
 
@@ -40,33 +40,41 @@
 	extract($_REQUEST);
 	if (array_key_exists('btn_forgot', $_REQUEST)) {
 
-		$user = khach_hang_select_by_id($ma_kh);
+		$user = khach_hang_select_by_ten_dang_nhap_user($ten_dang_nhap);
 		$mes = '';
 		if ($user) {
 			if ($user['email'] != $email) {
+				header('location: ../index.php');
 				echo '<script language="javascript">';
-				echo 'alert("Bạn đã nhập sai địa chỉ email !")';
+				echo 'alert("Bạn đã nhập sai địa chỉ email!")';
 				echo '</script>';
+				$mat_khau = "";
+				$tai_khoan = "";
 			} else {
 				$mat_khau = $user['mat_khau'];
-				$tai_khoan = $user['ma_kh'];
+				$tai_khoan = $user['ten_dang_nhap'];
 			}
 		} else {
 			echo '<script language="javascript">';
 			echo 'alert("Bạn đã nhập sai tên đăng nhập !")';
 			echo '</script>';
+			$mat_khau = "";
+			$tai_khoan = "";
 		}
 	}
 	?>
 
 	<!-- -->
+	<script>
+		confirm
+	</script>
 
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../css/tai-khoan/images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-logo">
-						<a href="../../bigshoes/trang-chinh/index.php"><img src="../css/tai-khoan/images/TBT.png" width="80px" alt=""></a>
+						<a href="../index.php"><img src="../hinh-anh/trang-web/iconweb.png" width="80px" alt=""></a>
 					</span><br>
 
 					<span class="login100-form-title p-b-34 p-t-27">
@@ -74,7 +82,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="ma_kh" placeholder="Tên đăng nhập">
+						<input class="input100" type="text" name="ten_dang_nhap" placeholder="Tên đăng nhập">
 						<span class="focus-input100" data-placeholder="&#xf18e;"></span>
 					</div>
 

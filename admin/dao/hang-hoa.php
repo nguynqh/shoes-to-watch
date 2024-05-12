@@ -58,31 +58,31 @@ function hang_hoa_select_by_id($ma_hh)
 
 function hang_hoa_ban_chay()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY don_gia DESC LIMIT 0,6";
+    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) ORDER BY don_gia DESC LIMIT 0,6";
     return pdo_query($sql);
 }
 
 function hang_hoa_sale()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY giam_gia ASC LIMIT 0,5";
+    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) ORDER BY giam_gia ASC LIMIT 0,5";
     return pdo_query($sql);
 }
 
 function hang_hoa_sale_9()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY giam_gia ASC LIMIT 0,9";
+    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) ORDER BY giam_gia ASC LIMIT 0,9";
     return pdo_query($sql);
 }
 
 function hang_hoa_noi_bat()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY giam_gia DESC LIMIT 0,8";
+    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) ORDER BY giam_gia DESC LIMIT 0,8";
     return pdo_query($sql);
 }
 
 function hang_hoa_select_by_loai($ma_loai)
 {
-    $sql = "SELECT * FROM hang_hoa WHERE ma_loai=?";
+    $sql = "SELECT * FROM hang_hoa WHERE (trang_thai = 1 OR trang_thai = 0) WHERE ma_loai=?";
     return pdo_query($sql, $ma_loai);
 }
 

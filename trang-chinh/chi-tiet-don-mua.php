@@ -24,17 +24,14 @@
     
     
     <div id="page-wrapper" class="container" style="padding-top: 30px;">
-        <div class="header">
             <?php
             if (isset($_SESSION['user'])) {
-                // echo "hiiiiiiiiiii";
                 $conn = mysqli_connect('localhost', 'root', '', 'bigshoes');
                 $username = $_SESSION['user'];
                 $Total = 0;
                 $result1 = mysqli_query($conn, "SELECT * FROM hoa_don_chi_tiet WHERE ma_hd = '" . $_GET['ma_hd'] . "'");
             ?>
-
-                <div class="page-header">
+                <div>
                     <p style="font-size: 24px"><b>Dưới đây là những sản phẩm mà khách hàng đã mua: </b></p>
                     <table class="table table-hover">
                         <thead>
@@ -54,26 +51,27 @@
                                     $result2 = mysqli_query($conn, "SELECT * FROM hang_hoa WHERE ma_hh ='" . $item['ma_hh'] . "'");
                                     $detail = mysqli_fetch_assoc($result2);
                             ?>
-                            <tr href="chi-tiet-sp.php?ma_hh=<?= $detail['ma_hh'] ?>">
-                                    <td><b><?= $detail['ten_hh'] ?></b></td>
+                            <tr>
+                                    <td><b><?= $detail['ten_hh']; ?></b></td>
                                     <td><img src="../hinh-anh/san-pham/<?= $detail['hinh']; ?>" alt="" style="width:80px;"></td>
-                                    <td><?= number_format($detail['don_gia']) ?> <sup>đ</sup></td>
+                                    <td><?= number_format($detail['don_gia']); ?> <sup>đ</sup></td>
                                     <td><b><?= number_format($detail['don_gia']);
-                                            $Total += ($detail['don_gia'] * $so_luong) ?> <sup>đ</sup></b></td>
+                                            $Total += ($detail['don_gia']); ?> <sup>đ</sup></b></td>
                             </tr>
                             <?php } ?>
                                 <tr>
-                                    <td colspan="3" style="text-align:center;background:#B6DDDA"><b>TỔNG TIỀN</b></td>
-                                    <td style="background: #01877   E;"><b><?= number_format($Total) ?> <sup>đ</sup></b></td>
+                                    <td colspan="3" style="text-align:center;background:#B6DDDA;"><b>TỔNG TIỀN</b></td>
+                                    <td style="background: #01877   E;"><b><?= number_format($Total); ?> <sup>đ</sup></b></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
         <?php 
-            } 
+            } else {
+                echo "<h1>Bạn chưa đăng nhập</h1>";
+            }
         ?>
-        </div>
     </div>
 
     <?php require('../footer.php'); ?>

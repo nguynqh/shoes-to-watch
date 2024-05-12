@@ -11,6 +11,11 @@
         pdo_execute($sql,$ten_dang_nhap,$ho_ten,$email,$sdt,$duong,$phuong,$quan,$thanh_pho,$ma_kh);
     }
 
+    function khach_hang_update_user($ma_kh,$ten_dang_nhap,$ho_ten,$mat_khau,$email,$sdt,$duong,$phuong,$quan,$thanh_pho){
+        $sql = "UPDATE khach_hang SET ten_dang_nhap=?,ho_ten=?,mat_khau=?,email=?,sdt=?,duong=?,phuong=?,quan=?,thanh_pho=? WHERE ma_kh=?";
+        pdo_execute($sql,$ten_dang_nhap,$ho_ten,$mat_khau,$email,$sdt,$duong,$phuong,$quan,$thanh_pho,$ma_kh);
+    }
+
     function khach_hang_delete($ma_kh){
         $sql = "DELETE FROM khach_hang WHERE ma_kh=?";
         if(is_array($ma_kh)){
@@ -32,7 +37,7 @@
         return pdo_query_one($sql,$ma_kh);
     }
 
-    function khach_hang_select_by_ten_dang_nhap($ten_dang_nhap){
+    function khach_hang_select_by_ten_dang_nhap_user($ten_dang_nhap){
         $sql = "SELECT * FROM khach_hang WHERE ten_dang_nhap =?";
         return pdo_query_one($sql,$ten_dang_nhap);
     }

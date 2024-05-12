@@ -25,89 +25,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../css/chi-tiet-sp/plugin/js/owl.carousel.min.js"></script>
     <?php
-    session_start();
+    require('../header.php');
     ?>
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="login">
-
-
-                    <!-- CODE CHECK ĐĂNG NHẬP -->
-                    <?php
-                    if (!isset($_SESSION['user'])) {
-                    ?>
-                        <a href="../tai-khoan/dang-nhap.php">
-                            <p><strong>ĐĂNG NHẬP / ĐĂNG KÍ</strong></p>
-                        </a>
-                    <?php } else { ?>
-                        <a href="../tai-khoan/thong-tin-tk.php">
-                            <p><strong>XIN CHÀO <?= $_SESSION['user']['ho_ten'] ?></strong></p>
-                        </a>
-                    <?php } ?>
-                </div>
-
-
-
-            </div>
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="logo">
-                    <a href="index.php"><img src="../hinh-anh/trang-web/iconweb.png" alt="anh"></a>
-                </div>
-            </div>
-            <div class="col-md-4" style="background-color: rgb(54, 54, 54);text-align: center">
-                <div class="giohang" style="position: reletive;">
-
-                    <?php
-                    $sll = 0;
-                    if (isset($_SESSION['cart'])) {
-                        foreach ($_SESSION['cart'] as $item) {
-                            extract($item);
-                            $sll += $sl;
-                        }
-                    }
-                    ?>
-                    <span style="position: absolute;padding:3px 8px;background-color:#fff;border-radius:50px;left:295px;top:25px;"><?= $sll ?></span>
-                    <ul>
-                        <li style="list-style: none;">
-                            <p style="font-size: 14px;">
-                                <a href="" style="text-decoration:none;color:#f7941d;">ĐƠN MUA</a>
-                            </p>
-                        </li>
-                        <li style="list-style: none;">
-                            <p style="color: rgb(212, 212, 212);font-size: 14px;">GIỎ HÀNG</p>
-                        </li>
-                        <a href="danh-sach-gio-hang.php">
-                            <li style="list-style: none;">
-                                <i class="fa fa-shopping-basket" style="font-size:28px;color:rgb(255, 255, 255)"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12" style="background-color: rgb(211, 211, 211);">
-                <div class="nav">
-                    <ul>
-                        <li><a href="index.php">TRANG CHỦ</a></li>
-                        <li><a href="danh-sach-sp.php">SẢN PHẨM</a></li>
-                        <li><a href="gioi-thieu.php">GIỚI THIỆU</a></li>
-                        <li><a href="bao-hanh.php">BẢO HÀNH</a></li>
-                        <li><a href="lien-he.php">LIÊN HỆ</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
 
     <div class="container" style="margin-top: 20px;">
         <div class="row">
@@ -162,7 +81,36 @@
                         <tr>
                             <div class="form-group">
                                 <label for=""><b>Địa chỉ:</b></label>
-                                <input type="text" class="form-control" id="" name="dia_chi" value="<?= $dia_chi ?>">
+                                <!-- <input type="text" class="form-control" id="" name="dia_chi" value=""> -->
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">Đường</span>
+                                    <input type="text" class="form-control" name="duong" value="<?= $duong?>" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">Phường</span>
+                                    <input type="text" class="form-control" name="phuong" value="<?= $phuong?>"  aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">Quận</span>
+                                    <input type="text" class="form-control" name="quan" value="<?= $quan?>"  aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">Thành phố</span>
+                                    <input type="text" class="form-control" name="thanh_pho" value="<?= $thanh_pho?>"  aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <label><b>Phương thức thanh toán:</b></label>
+                                <div class=".container-fluid">
+                                    <input type="radio" class="" id="tien-mat" name="thanh_toan" value="0">
+                                    <label for="tien-mat">Thanh toán tiền mặt</label>
+                                </div>
+                                <div class=".container-fluid">
+                                    <input type="radio" class="" id="online" name="thanh_toan" value="1">
+                                    <label for="online">Thanh toán online</label>
+                                </div>
                             </div>
                         </tr>
                         <tr>
@@ -172,7 +120,7 @@
                             </div>
                         </tr>
                     </table>
-            </div>
+                </div>
             <div class="col-sm-5">
                 <h4>ĐƠN HÀNG CỦA BẠN</h4>
                 <br>
@@ -228,7 +176,6 @@
         </div>
     </div>
 
-
     <!-- KHI KHÁCH HÀNG TIẾN HÀNH ĐẶT HÀNG -->
     <?php
     require_once('../admin/dao/hoa-don.php');
@@ -252,13 +199,14 @@
             $items = $_SESSION['cart'];
             foreach ($items as $item) {
                 extract($item);
-                $sql = "INSERT INTO hoa_don_chi_tiet(ma_hd,ma_hh) VALUES ('" . $ma_hd . "','" . $ma_hh . "')";
+                $sql = "INSERT INTO hoa_don_chi_tiet(ma_hd,ma_hh,duong,phuong,quan,thanh_pho,Thanh_toan) VALUES ('" . $ma_hd . "','" . $ma_hh . "','" . $duong . "','" . $phuong . "','" . $quan . "','" . $thanh_pho . "','" . $thanh_toan . "')";
                 $conn->exec($sql);
             }
             unset($_SESSION['cart']);
             echo '<script language="javascript">';
             echo 'alert("Bạn đã đặt đơn hàng thành công !")';
             echo '</script>';
+            header('location:../index.php');
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

@@ -37,6 +37,11 @@
         return pdo_query_one($sql,$ten_dang_nhap);
     }
 
+    function khach_hang_select_by_ten_dang_nhap_user($ten_dang_nhap){
+        $sql = "SELECT * FROM khach_hang WHERE ten_dang_nhap =?";
+        return pdo_query_one($sql,$ten_dang_nhap);
+    }
+
     function khach_hang_change_password($ManagerID, $mat_khau_moi){
         $sql = "UPDATE manager SET mat_khau=? WHERE ManagerID=?";
         pdo_execute($sql, $mat_khau_moi, $ManagerID);
