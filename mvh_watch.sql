@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 11, 2024 lúc 07:29 PM
+-- Thời gian đã tạo: Th5 12, 2024 lúc 07:10 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `bigshoes`
+-- Cơ sở dữ liệu: `mvh_watch`
 --
 
 -- --------------------------------------------------------
@@ -57,7 +57,7 @@ CREATE TABLE `hang_hoa` (
 --
 
 INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `hinh`, `so_luong`, `don_gia`, `giam_gia`, `mo_ta`, `trang_thai`, `ma_loai`) VALUES
-(13, 'Casio G-Shock GA2100-4A', 'casio_ga2100_4a.jpg', 1, 1500, 10, 'A rugged yet stylish analog-digital watch with carbon core guard structure.', 0, 20),
+(13, 'Casio G-Shock GA2100-4A', 'casio_ga2100_4a.jpg', 1, 1500, 10, 'A rugged yet stylish analog-digital watch with carbon core guard structure.', 1, 20),
 (15, 'Casio Edifice EFV130D-1A', 'casio_efv130d_1a.jpg', 1, 120, 15, 'A sophisticated analog watch with a stainless steel bracelet and chronograph features.', 0, 21),
 (16, 'Casio Pro Trek PRW-60-2A', 'casio_prw_60_2a.jpg', 1, 250, 20, 'A high-performance outdoor watch with triple sensor technology for accurate readings.', 0, 29),
 (21, 'Casio Baby-G BGA-190BC-1B', 'casio_bga_190bc_1b.jpg', 1, 100, 10, 'A sporty and stylish women\'s watch with shock resistance and world time feature.', 0, 25),
@@ -98,9 +98,9 @@ CREATE TABLE `hoa_don` (
 --
 
 INSERT INTO `hoa_don` (`ma_hd`, `ngay_mua`, `ghi_chu`, `tinh_trang`, `ma_kh`) VALUES
-(4, '2024-05-11', 'test\r\n', '1', 5),
-(5, '2024-05-11', 'test 2\r\n', '2', 5),
-(7, '2024-05-11', '', '1', 5);
+(10, '2024-05-12', '', '1', 5),
+(13, '2024-05-12', '', '1', 9),
+(14, '2024-05-12', '', '1', 9);
 
 -- --------------------------------------------------------
 
@@ -112,6 +112,10 @@ CREATE TABLE `hoa_don_chi_tiet` (
   `ma_hd` int(11) NOT NULL,
   `ma_hh` int(11) NOT NULL,
   `so_luong` int(10) NOT NULL,
+  `duong` varchar(20) NOT NULL,
+  `phuong` varchar(20) NOT NULL,
+  `quan` varchar(20) NOT NULL,
+  `thanh_pho` varchar(20) NOT NULL,
   `Thanh_toan` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -119,11 +123,12 @@ CREATE TABLE `hoa_don_chi_tiet` (
 -- Đang đổ dữ liệu cho bảng `hoa_don_chi_tiet`
 --
 
-INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `ma_hh`, `so_luong`, `Thanh_toan`) VALUES
-(4, 13, 0, b'0'),
-(4, 83, 0, b'0'),
-(5, 56, 0, b'0'),
-(7, 13, 0, b'0');
+INSERT INTO `hoa_don_chi_tiet` (`ma_hd`, `ma_hh`, `so_luong`, `duong`, `phuong`, `quan`, `thanh_pho`, `Thanh_toan`) VALUES
+(10, 13, 0, '', '', '', '', b'0'),
+(13, 15, 0, '123 caigido', '2', '5', 'Hồ Chí Minh', b'1'),
+(13, 54, 0, '123 caigido', '2', '5', 'Hồ Chí Minh', b'1'),
+(14, 56, 0, '123 caigido', '2', '5', 'Hồ Chí Minh', b'1'),
+(14, 57, 0, '123 caigido', '2', '5', 'Hồ Chí Minh', b'1');
 
 -- --------------------------------------------------------
 
@@ -268,7 +273,7 @@ ALTER TABLE `hang_hoa`
 -- AUTO_INCREMENT cho bảng `hoa_don`
 --
 ALTER TABLE `hoa_don`
-  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ma_hd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `khach_hang`
